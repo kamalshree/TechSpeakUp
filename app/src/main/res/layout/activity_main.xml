@@ -8,6 +8,15 @@
     tools:context="codesqills.org.techspeakup.MainActivity">
 
     <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_add_notification"
+        tools:layout_editor_absoluteX="315dp"
+        tools:layout_editor_absoluteY="485dp" />
+
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
