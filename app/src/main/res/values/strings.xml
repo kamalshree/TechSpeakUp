@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">TechSpeakUp</string>
+    <string name="app_name">Tech SpeakUp</string>
+    <string name="app_title">TechSpeakUp</string>
 </resources>
