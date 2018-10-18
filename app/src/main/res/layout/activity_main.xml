@@ -8,15 +8,6 @@
     tools:context="codesqills.org.techspeakup.MainActivity">
 
     <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_add_notification"
-        tools:layout_editor_absoluteX="315dp"
-        tools:layout_editor_absoluteY="485dp" />
-
-    <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,10 +23,10 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginBottom="@dimen/margin_160dp"
         android:text="@string/app_title"
         android:textColor="@color/colorAccent"
-        android:textSize="30sp"
+        android:textSize="@dimen/text_30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
