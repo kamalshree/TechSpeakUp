@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <ImageView
+        android:id="@+id/sigin_image_logo"
+        android:layout_width="@dimen/box_x_large"
+        android:layout_height="@dimen/box_x_large"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_xx_large"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/signin_logo" />
+
+    <TextView
+        android:id="@+id/signin_text_logotext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/signin_btn_speaker"
+        android:layout_below="@id/sigin_image_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_x_large"
+        android:fontFamily="@font/lato_bold"
+        android:text="@string/signin_text_logo"
+        android:textColor="#90ffffff"
+        android:textSize="@dimen/register_logo_text_size"/>
+
+    <Button
+        android:id="@+id/signin_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signin_text_logotext"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_xxx_extralarge"
+        android:layout_marginEnd="@dimen/margin_x_large"
+        android:layout_marginStart="@dimen/margin_x_large"
+        android:fontFamily="@font/lato_bold"
+        android:text="@string/signin_btn"
+        android:textColor="@color/colorTextOrange" />
+
+
+</RelativeLayout>

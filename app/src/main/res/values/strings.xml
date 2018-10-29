@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">Tech SpeakUp</string>
     <string name="app_title">TechSpeakUp</string>
+
+
+    <!-- Register -->
+    <string name="register_btn_speaker">Register as Speaker</string>
+    <string name="register_btn_user">Register as User</string>
+
+    <!-- Sign -->
+    <string name="signin_text_logo">TechSpeakUp</string>
+    <string name="signin_btn">SignIn</string>
+    <string name="signin_btn_speaker">SignIn as Speaker</string>
+    <string name="signin_btn_user">SignIn as User</string>
+
+    <!--Loading-->
+    <string name="loding_text">Please wait…</string>
+
 </resources>
