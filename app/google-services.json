@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "36669457617",
+    "firebase_url": "https://techspeakup-1540932084549.firebaseio.com",
+    "project_id": "techspeakup-1540932084549",
+    "storage_bucket": "techspeakup-1540932084549.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36669457617:android:328eeae190359409",
+        "android_client_info": {
+          "package_name": "codesqills.org.techspeakup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36669457617-ra08pmfpdf52mun1mub0ghk97d36crds.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOe7sjmiMNUILVqqQL06t4pDby_JESz_o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

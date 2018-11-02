@@ -27,6 +27,7 @@ dependencies {
 
     //RecyclerView
     implementation "com.android.support:recyclerview-v7:$rootProject.supportLibVersion"
+
     //cardview
     implementation "com.android.support:cardview-v7:$rootProject.supportLibVersion"
 
@@ -50,7 +51,18 @@ dependencies {
     //lottie
     implementation "com.airbnb.android:lottie:$rootProject.lottieVersion"
 
+    //firebase
+    implementation "com.google.firebase:firebase-core:$rootProject.firebaseVersion"
+    implementation "com.google.firebase:firebase-auth:$rootProject.firebaseauthVersion"
+    implementation "com.google.firebase:firebase-database:$rootProject.firebaseVersion"
+    implementation "com.google.firebase:firebase-messaging:$rootProject.firebaseFCMVersion"
+
+    //google
+    implementation "com.google.android.gms:play-services-auth:$rootProject.googlePlayVersion"
+    implementation group: 'com.google.code.gson', name: 'gson', version: "$rootProject.gsonVersion"
+
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation "com.android.support.test:runner:1.0.2"
 
 }
+apply plugin: 'com.google.gms.google-services'

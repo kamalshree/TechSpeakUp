@@ -1,7 +1,7 @@
 package codesqills.org.techspeakup.ui;
 
-import codesqills.org.techspeakup.ui.register.RegisterContract;
-import codesqills.org.techspeakup.ui.register.RegisterPresenter;
+import codesqills.org.techspeakup.ui.profile.ProfileContract;
+import codesqills.org.techspeakup.ui.profile.ProfilePresenter;
 import codesqills.org.techspeakup.ui.signin.SignInContract;
 import codesqills.org.techspeakup.ui.signin.SignInPresenter;
 
@@ -11,7 +11,11 @@ import codesqills.org.techspeakup.ui.signin.SignInPresenter;
 
 public class PresenterInjector {
 
-    public static void injectRegisterPresenter(RegisterContract.View registerView) {
-       new RegisterPresenter(registerView);
+    public static void injectSignInPresenter(SignInContract.View signInView) {
+        new SignInPresenter(signInView);
+    }
+
+    public static void injectProfilePresenter(ProfileContract.View profileView) {
+        new ProfilePresenter(profileView);
     }
 }

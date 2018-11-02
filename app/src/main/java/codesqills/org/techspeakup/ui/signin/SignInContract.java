@@ -1,5 +1,7 @@
 package codesqills.org.techspeakup.ui.signin;
 
+import android.net.Uri;
+
 import codesqills.org.techspeakup.ui.BasePresenter;
 import codesqills.org.techspeakup.ui.BaseView;
 
@@ -10,13 +12,20 @@ import codesqills.org.techspeakup.ui.BaseView;
 public interface SignInContract {
 
     interface View extends BaseView<Presenter> {
-            void showLoginSuccess();
-            void showLoginFailure();
+        void showLoginSuccess();
+
+        void showLoginFailure(int statusCode, String message);
+
+        void startSignIn();
+
+        void navigateToProfile();
     }
 
     interface Presenter extends BasePresenter {
         void handleLoginRequest();
-        void handleLoginSuccess();
-        void handleLoginFailure();
+
+        void handleLoginSuccess(String email, String displayName, Uri photoUrl);
+
+        void handleLoginFailure(int statusCode, String message);
     }
 }

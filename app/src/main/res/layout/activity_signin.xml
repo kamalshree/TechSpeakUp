@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/pb_signin"
+        android:layout_width="@dimen/loading_dots_width"
+        android:layout_height="@dimen/loading_dots_height"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="loading.json"
+        app:lottie_loop="true" />
 
     <ImageView
         android:id="@+id/sigin_image_logo"
@@ -14,30 +26,27 @@
         android:src="@drawable/signin_logo" />
 
     <TextView
-        android:id="@+id/signin_text_logotext"
+        android:id="@+id/signin_text_almost_there"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/signin_btn_speaker"
+        android:layout_above="@+id/google_signin_btn"
         android:layout_below="@id/sigin_image_logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_x_large"
         android:fontFamily="@font/lato_bold"
-        android:text="@string/signin_text_logo"
-        android:textColor="#90ffffff"
-        android:textSize="@dimen/register_logo_text_size"/>
+        android:text="@string/app_title"
+        android:textColor="#90ffffff" />
 
-    <Button
-        android:id="@+id/signin_btn"
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/google_signin_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/signin_text_logotext"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_xxx_extralarge"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/margin_x_large"
         android:layout_marginEnd="@dimen/margin_x_large"
-        android:layout_marginStart="@dimen/margin_x_large"
-        android:fontFamily="@font/lato_bold"
-        android:text="@string/signin_btn"
-        android:textColor="@color/colorTextOrange" />
+        android:layout_marginStart="@dimen/margin_x_large">
+
+    </com.google.android.gms.common.SignInButton>
 
 
 </RelativeLayout>

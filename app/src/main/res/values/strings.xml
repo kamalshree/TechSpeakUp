@@ -1,11 +1,7 @@
 <resources>
     <string name="app_name">Tech SpeakUp</string>
     <string name="app_title">TechSpeakUp</string>
-
-
-    <!-- Register -->
-    <string name="register_btn_speaker">Register as Speaker</string>
-    <string name="register_btn_user">Register as User</string>
+    <string name="google_id" translatable="false">36669457617-98hkugcdatagk6c37hi3tji5pgcbupsl.apps.googleusercontent.com</string>
 
     <!-- Sign -->
     <string name="signin_text_logo">TechSpeakUp</string>
@@ -15,5 +11,39 @@
 
     <!--Loading-->
     <string name="loding_text">Please wait…</string>
+    <string name="login_success_text">Login Successful</string>
+    <string name="login_failure_text">Login Failed</string>
+    <string name="unable_to_login">Unable to login with this account</string>
+
+    <!-- Profile Page-->
+    <string name="details_page_setup_profile">Setup Profile</string>
+    <string name="details_page_setup_profile_text">Profile Picture</string>
+    <string name="details_page_image_name_text">Profile Icon</string>
+    <string name="details_page_toolbar_logo_text">Profile Tolbar</string>
+    <string name="details_page_image_twitter_text">Twitter Icon</string>
+    <string name="details_page_image_track_text">Type Icon</string>
+    <string name="details_page_email">example@gmail.com</string>
+    <string name="details_page_name">Name</string>
+    <string name="details_page_twitter_handle">Twitter Handle</string>
+    <string name="details_page_Linkedin_handle">Linkedin Handle</string>
+    <string name="details_page_next_btn">Next</string>
+    <string name="details_page_change_photo">Change Profile Photo</string>
+    <string name="details_page_select_track">Select Your Type</string>
+
+    <string-array name="details_page_track_spinner">
+        <item>Select Type</item>
+        <item>Speaker</item>
+        <item>User</item>
+    </string-array>
+
+    <!--Details Screen Errors-->
+    <string name="user_name_empty_error">Enter your name</string>
+    <string name="select_your_Type">Select Your Track</string>
+    <string name="user_image_empty">Select a profile photo</string>
+    <string name="empty_type_list">No Type for the selected Filter</string>
+    <string name="something_went_wrong">Something went wrong. Please try again</string>
+    <string name="error_uploading_picture">Error while uploading profile picture. Please try again later.</string>
+    <string name="profile_saved_successfully">Logged in successfully</string>
+
 
 </resources>
