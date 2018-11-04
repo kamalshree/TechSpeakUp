@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-import codesqills.org.techspeakup.NavigationDrawerActivity;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.home.HomeActivity;
