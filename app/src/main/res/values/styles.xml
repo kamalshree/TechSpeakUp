@@ -11,6 +11,7 @@
     <style name="DetailsActivityButton" parent="Theme.AppCompat.Light">
         <item name="colorControlHighlight">@color/colorAccent</item>
     </style>
+
     <style name="ListSeparatorText" parent="android:Widget.TextView">
         <item name="android:background">@color/white</item>
     </style>

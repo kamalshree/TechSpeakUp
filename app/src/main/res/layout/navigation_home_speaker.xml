@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clipToPadding="false"
+    android:orientation="vertical">
+
+   <FrameLayout
+       android:id="@+id/frame_container"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+   <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+       android:id="@+id/navigation_home_speaker"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginEnd="0dp"
+       android:layout_marginStart="0dp"
+       android:background="?android:attr/windowBackground"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintLeft_toLeftOf="parent"
+       app:layout_constraintRight_toRightOf="parent"
+       app:itemBackground="@color/colorPrimary"
+       app:itemIconTint="@drawable/navigation_item_color_state"
+       app:itemTextColor="@drawable/navigation_item_color_state"
+       app:menu="@menu/navigation_home_speaker_menu">
+
+   </com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>
+</android.support.constraint.ConstraintLayout>

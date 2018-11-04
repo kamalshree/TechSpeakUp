@@ -41,4 +41,7 @@
 
     <dimen name="details_page_button_text">24sp</dimen>
     <dimen name="details_page_email_text">18sp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

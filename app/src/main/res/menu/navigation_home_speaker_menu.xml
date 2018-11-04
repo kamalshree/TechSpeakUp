@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_speaker_profile"
+        android:icon="@drawable/menu_profile"
+        android:checked="true"
+        android:title="@string/navigation_speaker_profile" />
+
+    <item
+        android:id="@+id/navigation_speaker_follower"
+        android:icon="@drawable/menu_follower"
+        android:title="@string/navigation_speaker_follower" />
+    <item
+        android:id="@+id/navigation_speaker_notification"
+        android:icon="@drawable/menu_notification"
+        android:title="@string/navigation_speaker_notification" />
+    <item
+        android:id="@+id/navigation_speaker_event"
+        android:icon="@drawable/menu_event"
+        android:title="@string/navigation_speaker_event" />
+
+</menu>

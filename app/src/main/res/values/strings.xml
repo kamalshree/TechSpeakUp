@@ -45,5 +45,18 @@
     <string name="error_uploading_picture">Error while uploading profile picture. Please try again later.</string>
     <string name="profile_saved_successfully">Logged in successfully</string>
 
+    <!-- Navigation menu -->
+
+    <string name="navigation_speaker_profile">Profile</string>
+    <string name="navigation_speaker_follower">Follower</string>
+    <string name="navigation_speaker_notification">Notification</string>
+    <string name="navigation_speaker_event">Event</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
 
 </resources>
