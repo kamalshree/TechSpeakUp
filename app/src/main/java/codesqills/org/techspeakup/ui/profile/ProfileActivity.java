@@ -14,7 +14,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.home.HomeActivity;
@@ -26,20 +29,31 @@ import codesqills.org.techspeakup.ui.home.HomeActivity;
 public class ProfileActivity extends AppCompatActivity implements ProfileContract.View,
         View.OnClickListener {
 
-    private ImageView mImgUserPic;
-    private Spinner mUserType;
-    private EditText mEtUserName;
-    private TextView mTvUserEmail;
-    private ProgressBar mProgressBar;
     private Button mBtnNext;
 
     private Bundle extras;
     private ProfileContract.Presenter mPresenter;
 
+    @BindView(R.id.img_user_pic)
+    ImageView mImgUserPic;
+
+    @BindView(R.id.details_page_spinner_track)
+    Spinner mUserType;
+
+    @BindView(R.id.et_user_name)
+    EditText mEtUserName;
+
+    @BindView(R.id.tv_email_details)
+    TextView mTvUserEmail;
+
+    @BindView(R.id.pb_profile)
+    ProgressBar mProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_page);
+        ButterKnife.bind(this);
         initializeUI();
 
         // Injecting presenter
@@ -50,17 +64,11 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
     }
 
     private void initializeUI() {
-        mImgUserPic = findViewById(R.id.img_user_pic);
-        mUserType = findViewById(R.id.details_page_spinner_track);
-        mEtUserName = findViewById(R.id.et_user_name);
-        mTvUserEmail = findViewById(R.id.tv_email_details);
 
         mBtnNext = findViewById(R.id.btn_details_proceed);
         mBtnNext.setOnClickListener(this);
 
-        mProgressBar = findViewById(R.id.pb_profile);
         mProgressBar.setIndeterminate(true);
-
     }
 
     @Override
@@ -78,6 +86,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
         }
         mEtUserName.setText(userName);
     }
+
     @Override
     public void loadEmailAddress(String emailAddress) {
         mTvUserEmail.setText(emailAddress);

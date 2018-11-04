@@ -1,5 +1,7 @@
 package codesqills.org.techspeakup.ui;
 
+import codesqills.org.techspeakup.ui.home.HomeContract;
+import codesqills.org.techspeakup.ui.home.HomePresenter;
 import codesqills.org.techspeakup.ui.profile.ProfileContract;
 import codesqills.org.techspeakup.ui.profile.ProfilePresenter;
 import codesqills.org.techspeakup.ui.signin.SignInContract;
@@ -17,5 +19,9 @@ public class PresenterInjector {
 
     public static void injectProfilePresenter(ProfileContract.View profileView) {
         new ProfilePresenter(profileView);
+    }
+
+    public static void injectHomePresenter(HomeContract.View homeeView) {
+        new HomePresenter(homeeView);
     }
 }

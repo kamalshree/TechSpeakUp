@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -21,6 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.profile.ProfileActivity;
@@ -32,13 +35,17 @@ import codesqills.org.techspeakup.ui.profile.ProfileActivity;
 public class SignInActivity extends AppCompatActivity implements SignInContract.View {
 
     private SignInContract.Presenter mPresenter;
-    private com.google.android.gms.common.SignInButton signin_btn;
     private static final int RC_SIGN_IN = 9001;
-    private LottieAnimationView mProgressBar;
     private Bundle extras;
     private FirebaseAuth mAuth;
 
     private GoogleSignInClient mGoogleSignInClient;
+
+    @BindView(R.id.pb_signin)
+    LottieAnimationView mProgressBar;
+
+    @BindView(R.id.google_signin_btn)
+    com.google.android.gms.common.SignInButton signin_btn;
 
     @Override
     protected void onStart() {
@@ -55,11 +62,7 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
-
-        mProgressBar = findViewById(R.id.pb_signin);
-
-
-        signin_btn = (com.google.android.gms.common.SignInButton) findViewById(R.id.google_signin_btn);
+        ButterKnife.bind(this);
 
         mAuth = FirebaseAuth.getInstance();
         GoogleSignInOptions mGso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

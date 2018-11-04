@@ -59,4 +59,10 @@
     <string name="action_settings">Settings</string>
 
 
+    <!-- Navigation_drawer -->
+
+    <string name="navigation_drawer_edit_profile">Edit Profile</string>
+    <string name="navigation_drawer_logout">Logout</string>
+    <string name="navigation_drawer_back">Back</string>
+
 </resources>
