@@ -12,6 +12,21 @@ public interface FirebaseHandler {
 
     void updateProfilePic(String profielPicUrl, Callback<Void> callback);
 
+    //edit profile
+
+    void updateEditLocation(String userLocation, Callback<Void> callback);
+
+    void updateEditJob(String userJob, Callback<Void> callback);
+
+    void updateEditTwitter(String userTwitter, Callback<Void> callback);
+
+    void updateEditLinkedin(String userLinkedin, Callback<Void> callback);
+
+    void updateEditWebsite(String userWebsite, Callback<Void> callback);
+
+    void updateUserAbout(String userAbout, Callback<Void> callback);
+
+
     void setUserInfo(User currentUser, Callback<Void> callback);
     void destroy();
 

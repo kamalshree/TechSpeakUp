@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/viewcolor"
+        android:orientation="vertical"
+        tools:context=".ui.speakerprofile.SpeakerProfileActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradientbackground">
+
+
+            <!-- ToolBar -->
+            <include
+                android:id="@+id/toolbar_speakerprofile"
+                layout="@layout/toolbar_speakerprofile" />
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/speaker_profile_cardviewone"
+                android:layout_width="@dimen/navigation_drawer_menu_height"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toolbar_speakerprofile"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/margin_larges"
+                android:layout_marginRight="@dimen/margin_larges"
+                app:cardBackgroundColor="@color/colorText">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:baselineAligned="false"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/speaker_editprofile_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_larges"
+                        android:layout_marginRight="@dimen/margin_larges"
+                        android:layout_marginTop="@dimen/margin_larges"
+                        android:hint="@string/speaker_editprofile_name" />
+                    <EditText
+                        android:id="@+id/speaker_editprofile_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_larges"
+                        android:layout_marginRight="@dimen/margin_larges"
+                        android:layout_marginTop="@dimen/margin_larges"
+                        android:hint="@string/speaker_editprofile_location" />
+
+                    <EditText
+                        android:id="@+id/speaker_editprofile_job"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_larges"
+                        android:layout_marginRight="@dimen/margin_larges"
+                        android:hint="@string/speaker_editprofile_job" />
+
+                    <EditText
+                        android:id="@+id/speaker_editprofile_twitter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_larges"
+                        android:layout_marginRight="@dimen/margin_larges"
+                        android:hint="@string/speaker_editprofile_twitter" />
+
+                    <EditText
+                        android:id="@+id/speaker_editprofile_linkedin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_larges"
+                        android:layout_marginRight="@dimen/margin_larges"
+                        android:hint="@string/speaker_editprofile_linkedin" />
+
+                    <EditText
+                        android:id="@+id/speaker_editprofile_website"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_larges"
+                        android:layout_marginRight="@dimen/margin_larges"
+                        android:hint="@string/speaker_editprofile_website" />
+
+                    <EditText
+                        android:id="@+id/speaker_editprofile_aboutme"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginLeft="@dimen/margin_larges"
+                        android:layout_marginRight="@dimen/margin_larges"
+                        android:ems="10"
+                        android:hint="@string/speaker_editprofile_aboutme"
+                        android:inputType="textMultiLine" />
+
+                    <Button
+                        android:id="@+id/speaker_editprofile_submit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_larges"
+                        android:background="@drawable/buttonborder"
+                        android:text="@string/speaker_editprofile_submit"
+                        android:textColor="@color/colorAccent" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

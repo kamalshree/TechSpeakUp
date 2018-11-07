@@ -44,6 +44,20 @@ import android.content.SharedPreferences;
     private static final String KEY_USER_TYPE = "key_user_type";
     private String mUserType;
 
+    //Edit profile
+    private static final String KEY_USER_LOCATION = "key_user_location";
+    private String mUserLocation;
+    private static final String KEY_USER_JOB = "key_user_job";
+    private String mUserJob;
+    private static final String KEY_USER_TWITTER = "key_user_twitter";
+    private String mUserTwitter;
+    private static final String KEY_USER_LINKEDIN= "key_user_linkedin";
+    private String mUserLinkedin;
+    private static final String KEY_USER_WEBSITE= "key_user_website";
+    private String mUserWebsite;
+    private static final String KEY_USER_ABOUT = "key_user_about";
+    private String mUserAbout;
+
 
     public void setUserName(String userName) {
         this.mUserName = userName;
@@ -106,6 +120,80 @@ import android.content.SharedPreferences;
         return mUserType;
     }
 
+    //Edit profile
+
+    public void setUserLocation(String userLocation) {
+        this.mUserLocation = userLocation;
+        mPrefs.edit().putString(KEY_USER_LOCATION, userLocation).apply();
+    }
+
+    public String getUserLocation() {
+        if (mUserLocation == null) {
+                mUserLocation = mPrefs.getString(KEY_USER_LOCATION, null);
+        }
+        return mUserLocation;
+    }
+
+    public void setUserJob(String userJob) {
+        this.mUserJob = userJob;
+        mPrefs.edit().putString(KEY_USER_JOB, userJob).apply();
+    }
+
+    public String getUserJob() {
+        if (mUserJob == null) {
+            mUserJob = mPrefs.getString(KEY_USER_JOB, null);
+        }
+        return mUserJob;
+    }
+
+    public void setUserTwitter(String userTwitter) {
+        this.mUserTwitter = userTwitter;
+        mPrefs.edit().putString(KEY_USER_TWITTER, userTwitter).apply();
+    }
+
+    public String getUserTwitter() {
+        if (mUserTwitter == null) {
+            mUserTwitter = mPrefs.getString(KEY_USER_TWITTER, null);
+        }
+        return mUserTwitter;
+    }
+
+    public void setUserLinkedin(String userLinkedin) {
+        this.mUserLinkedin = userLinkedin;
+        mPrefs.edit().putString(KEY_USER_LINKEDIN, userLinkedin).apply();
+    }
+
+    public String getUserLinkedin() {
+        if (mUserLinkedin == null) {
+            mUserLinkedin = mPrefs.getString(KEY_USER_LINKEDIN, null);
+        }
+        return mUserLinkedin;
+    }
+
+    public void setUserWebsite(String userWebsite) {
+        this.mUserWebsite = userWebsite;
+        mPrefs.edit().putString(KEY_USER_WEBSITE, userWebsite).apply();
+    }
+
+    public String getUserWebsite() {
+        if (mUserWebsite == null) {
+            mUserWebsite = mPrefs.getString(KEY_USER_WEBSITE, null);
+        }
+        return mUserWebsite;
+    }
+
+    public void setUserAbout(String userAbout) {
+        this.mUserAbout = userAbout;
+        mPrefs.edit().putString(KEY_USER_ABOUT, userAbout).apply();
+    }
+
+    public String getUserAbout() {
+        if (mUserAbout == null) {
+            mUserAbout = mPrefs.getString(KEY_USER_ABOUT, null);
+        }
+        return mUserAbout;
+    }
+
     public void destroy() {
         mPrefs.edit().clear().apply();
         mUserStatus = null;
@@ -113,6 +201,11 @@ import android.content.SharedPreferences;
         mUserEmail = null;
         mUserType = null;
         mUserName = null;
+        mUserJob=null;
+        mUserTwitter=null;
+        mUserLinkedin=null;
+        mUserWebsite=null;
+        mUserAbout=null;
     }
 
 }

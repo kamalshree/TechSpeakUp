@@ -20,6 +20,29 @@ public interface DataHandler {
     void saveUserType(String userType);
     String getUserType();
 
+   //Edit Profile
+
+    void saveEditName(String editName);
+    String getEditName();
+
+    void saveEditLocation(String editLocation);
+    String getEditLocation();
+
+    void saveEditJob(String editJob);
+    String getEditJob();
+
+    void saveEditTwitter(String editTwitter);
+    String getEditTwitter();
+
+    void saveEditLinkedin(String editLinkedin);
+    String getEditLinkedin();
+
+    void saveEditWebsite(String editWebsite);
+    String getEditWebsite();
+
+    void saveEditAboutMe(String editAboutMe);
+    String getEditAboutMe();
+
     boolean isLoggedIn();
     void destroy();
 

@@ -37,4 +37,14 @@ public class HomePresenter implements HomeContract.Presenter{
     public void getProfileDetails() {
         mView.loadMyUserName(mDataHandler.getUserName());
     }
+
+    @Override
+    public void handleUserProfile() {
+        mView.displayUserProfile();
+    }
+
+    @Override
+    public void handleEditProfile() {
+        mView.displayEditProfile();
+    }
 }

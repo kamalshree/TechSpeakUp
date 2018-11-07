@@ -63,6 +63,41 @@
 
     <string name="navigation_drawer_edit_profile">Edit Profile</string>
     <string name="navigation_drawer_logout">Logout</string>
-    <string name="navigation_drawer_back">Back</string>
 
+    <!-- UserProfile Page -->
+
+    <string name="speaker_profile_profiletext">Profile</string>
+    <string name="speaker_profile_events">Events</string>
+    <string name="speaker_profile_events_val">360</string>
+    <string name="speaker_profile_rate">Rate</string>
+    <string name="speaker_profile_rate_val">9.5</string>
+    <string name="speaker_profile_followers">Followers</string>
+    <string name="speaker_profile_followers_val">1205</string>
+
+
+
+    <string name="speaker_profile_wiliam_snoe">Wiliam Snoe</string>
+    <string name="speaker_profile_android_developer">Android developer</string>
+    <string name="speaker_profile_peru">Peru</string>
+    <string name="speaker_profile_website_text">www.speakup.com</string>
+    <string name="speaker_profile_about_me">About Me</string>
+    <string name="speaker_profile_about_me_text">Lorem ipsum dolor sit amet, ei per eirmod aliquam scriptorem, quaestio perpetua his in, sed ea suas aliquam adolescens. Tale putent at nec, his graecis eleifend ex. Eu eam eligendi repudiare, mutat sensibus mnesarchum per te. Quo altera semper aliquando ea.</string>
+    <string name="speaker_profile_profileimage">profileimage</string>
+
+    <string name="speaker_profile_speakup">speakup</string>
+    <string name="speaker_profile_twiiter_image">twiiter_image</string>
+    <string name="speaker_profile_map_image">map_image</string>
+    <string name="speaker_profile_link_map">link_map</string>
+
+    <!-- Speaker Edit profile -->
+    <string name="speaker_editprofile_profile">Edit Profile</string>
+    <string name="speaker_editprofile_name">Name</string>
+    <string name="speaker_editprofile_location">City,Country</string>
+    <string name="speaker_editprofile_job">Job</string>
+    <string name="speaker_editprofile_twitter">Twitter</string>
+    <string name="speaker_editprofile_linkedin">Linkedin</string>
+    <string name="speaker_editprofile_website">Website</string>
+    <string name="speaker_editprofile_aboutme">About Me</string>
+    <string name="speaker_editprofile_submit">Submit</string>
+    <string name="speaker_editprofile_saved_successfully">Data Saved successfully</string>
 </resources>

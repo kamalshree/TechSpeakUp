@@ -30,6 +30,14 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
     private static final String KEY_USER_EMAIL = "email";
     private static final String KEY_USER_TYPE = "type";
 
+    private static final String KEY_USER_LOCATION = "location";
+    private static final String KEY_USER_JOB = "job";
+    private static final String KEY_USER_TWITTER = "twitter";
+    private static final String KEY_USER_LINKEDIN = "linkedin";
+    private static final String KEY_USER_WEBSITE = "website";
+    private static final String KEY_USER_ABOUT = "about";
+
+
     private static final String KEY_NOTIF_PREFS = "prefs";
 
     private DatabaseReference mUsersRef;
@@ -60,12 +68,50 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
     }
 
     @Override
+    public void updateEditLocation(String userLocation, Callback<Void> callback) {
+        updateUserProperty(KEY_USER_LOCATION, userLocation, callback);
+    }
+
+    @Override
+    public void updateEditJob(String userJob, Callback<Void> callback) {
+        updateUserProperty(KEY_USER_JOB, userJob, callback);
+    }
+
+    @Override
+    public void updateEditTwitter(String userTwitter, Callback<Void> callback) {
+        updateUserProperty(KEY_USER_TWITTER, userTwitter, callback);
+    }
+
+    @Override
+    public void updateEditLinkedin(String userLinkedin, Callback<Void> callback) {
+        updateUserProperty(KEY_USER_LINKEDIN, userLinkedin, callback);
+    }
+
+    @Override
+    public void updateEditWebsite(String userWebsite, Callback<Void> callback) {
+        updateUserProperty(KEY_USER_WEBSITE, userWebsite, callback);
+
+    }
+
+    @Override
+    public void updateUserAbout(String userAbout, Callback<Void> callback) {
+        updateUserProperty(KEY_USER_ABOUT, userAbout, callback);
+    }
+
+
+    @Override
     public void setUserInfo(User currentUser, final Callback<Void> callback) {
         Map<String, Object> userData = new HashMap<>();
         userData.put(KEY_USER_EMAIL, currentUser.getEmail());
         userData.put(KEY_USER_PIC, currentUser.getImage());
         userData.put(KEY_USER_NAME, currentUser.getName());
         userData.put(KEY_USER_TYPE, currentUser.getType());
+        userData.put(KEY_USER_LOCATION, currentUser.getLocation());
+        userData.put(KEY_USER_JOB, currentUser.getJob());
+        userData.put(KEY_USER_TWITTER, currentUser.getTwitter());
+        userData.put(KEY_USER_LINKEDIN, currentUser.getLinkedin());
+        userData.put(KEY_USER_WEBSITE, currentUser.getWebsite());
+        userData.put(KEY_USER_ABOUT, currentUser.getAbout());
 
         if (mCurrentUser == null) {
             mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();

@@ -12,8 +12,12 @@ public interface HomeContract {
     interface View extends BaseView<Presenter>{
         void statusProfileDetails();
         void loadMyUserName(String username);
+        void displayUserProfile();
+        void displayEditProfile();
     }
     interface Presenter extends BasePresenter{
         void getProfileDetails();
+        void handleUserProfile();
+        void handleEditProfile();
     }
 }

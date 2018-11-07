@@ -31,6 +31,30 @@ public class User {
     @SerializedName("type")
     private String mType;
 
+    @Expose
+    @SerializedName("location")
+    private String mLocation;
+
+    @Expose
+    @SerializedName("job")
+    private String mJob;
+
+    @Expose
+    @SerializedName("twitter")
+    private String mTwitter;
+
+    @Expose
+    @SerializedName("linkedin")
+    private String mLinkedin;
+
+    @Expose
+    @SerializedName("website")
+    private String mWebsite;
+
+    @Expose
+    @SerializedName("about")
+    private String mAbout;
+
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
@@ -80,4 +104,66 @@ public class User {
         mType = type;
     }
 
+    //Edit Fields
+    @PropertyName("location")
+    public String getLocation() {
+        return mLocation;
+    }
+
+    @PropertyName("location")
+    public void setLocation(String location) {
+        mLocation = location;
+    }
+
+
+    @PropertyName("job")
+    public String getJob() {
+        return mJob;
+    }
+
+    @PropertyName("job")
+    public void setJob(String job) {
+        mJob = job;
+    }
+
+
+    @PropertyName("twitter")
+    public String getTwitter() {
+        return mTwitter;
+    }
+
+    @PropertyName("twitter")
+    public void setTwitter(String twitter) {
+        mTwitter = twitter;
+    }
+
+    @PropertyName("linkedin")
+    public String getLinkedin() {
+        return mLinkedin;
+    }
+
+    @PropertyName("linkedin")
+    public void setLinkedin(String linkedin) {
+        mLinkedin = linkedin;
+    }
+
+    @PropertyName("website")
+    public String getWebsite() {
+        return mWebsite;
+    }
+
+    @PropertyName("website")
+    public void setWebsite(String website) {
+        mWebsite = website;
+    }
+
+    @PropertyName("about")
+    public String getAbout() {
+        return mAbout;
+    }
+
+    @PropertyName("about")
+    public void setAbout(String about) {
+        mAbout = about;
+    }
 }

@@ -7,10 +7,18 @@
     <dimen name="margin_xxx_extralarge">128dp</dimen>
     <dimen name="margin_xx_large">64dp</dimen>
     <dimen name="margin_x_large">32dp</dimen>
+    <dimen name="margin_larges">20dp</dimen>
     <dimen name="margin_large">16dp</dimen>
     <dimen name="margin_regular">12dp</dimen>
     <dimen name="margin_medium">8dp</dimen>
     <dimen name="margin_small">4dp</dimen>
+
+    <!-- Padding -->
+
+    <dimen name="padding_10">10dp</dimen>
+    <dimen name="padding_20">20dp</dimen>
+    <dimen name="padding_5">5dp</dimen>
+
 
     <!--Box related-->
     <dimen name="box_x_large">160dp</dimen>
@@ -41,7 +49,22 @@
 
     <dimen name="details_page_button_text">24sp</dimen>
     <dimen name="details_page_email_text">18sp</dimen>
-    <dimen name="nav_header_vertical_spacing">8dp</dimen>
-    <dimen name="nav_header_height">176dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- NavigationView -->
+    <dimen name="navigation_drawer_menu_height">400dp</dimen>
+
+    <!-- SpeakerProfile Page -->
+    <dimen name="speaker_profile_image_width">380dp</dimen>
+
+    <dimen name="speaker_profile_font_18sp">18sp</dimen>
+      <dimen name="speaker_profile_width">150dp</dimen>
+    <dimen name="speaker_profile_height">150dp</dimen>
+    <dimen name="speaker_profile_font_24sp">24sp</dimen>
+    <dimen name="speaker_profile_card_width">400dp</dimen>
+    <dimen name="speaker_profile_margin_20">20dp</dimen>
+    <dimen name="speaker_profile_margin_top">320dp</dimen>
+
+
+    <dimen name="font_20sp">20sp</dimen>
+
 </resources>

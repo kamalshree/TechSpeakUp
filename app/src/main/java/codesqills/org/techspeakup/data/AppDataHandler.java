@@ -42,6 +42,12 @@ class AppDataHandler implements DataHandler {
         currentUser.setName(mPreferences.getUserName());
         currentUser.setEmail(mPreferences.getUserEmail());
         currentUser.setType(mPreferences.getUserType());
+        currentUser.setLocation(mPreferences.getUserLocation());
+        currentUser.setJob(mPreferences.getUserJob());
+        currentUser.setTwitter(mPreferences.getUserTwitter());
+        currentUser.setLinkedin(mPreferences.getUserLinkedin());
+        currentUser.setWebsite(mPreferences.getUserWebsite());
+        currentUser.setAbout(mPreferences.getUserAbout());
 
         mFirebaseHandler.setUserInfo(currentUser, new FirebaseCallback<>(callback));
     }
@@ -90,6 +96,74 @@ class AppDataHandler implements DataHandler {
     @Override
     public boolean isLoggedIn() {
         return (mPreferences.getUserType() != null);
+    }
+
+    // Edit Profile setters and getters
+    @Override
+    public void saveEditName(String userName) {
+        mPreferences.setUserName(userName);
+    }
+
+    @Override
+    public String getEditName() {
+        return mPreferences.getUserName();
+    }
+
+    @Override
+    public void saveEditLocation(String userLocation) {
+        mPreferences.setUserLocation(userLocation);
+    }
+
+    @Override
+    public String getEditLocation() {
+        return mPreferences.getUserLocation();
+    }
+
+    @Override
+    public void saveEditJob(String userJob) {
+        mPreferences.setUserJob(userJob);
+    }
+
+    @Override
+    public String getEditJob() {
+        return mPreferences.getUserJob();
+    }
+
+    @Override
+    public void saveEditTwitter(String userTwitter) {
+        mPreferences.setUserTwitter(userTwitter);
+    }
+
+    @Override
+    public String getEditTwitter() {
+        return mPreferences.getUserTwitter();
+    }
+
+    @Override
+    public void saveEditLinkedin(String userLinkedin) {mPreferences.setUserLinkedin(userLinkedin);
+    }
+
+    @Override
+    public String getEditLinkedin() {
+        return mPreferences.getUserLinkedin();
+    }
+
+    @Override
+    public void saveEditWebsite(String userWebsite) {mPreferences.setUserWebsite(userWebsite);
+    }
+
+    @Override
+    public String getEditWebsite() {
+        return mPreferences.getUserWebsite();
+    }
+
+    @Override
+    public void saveEditAboutMe(String userAbout) {mPreferences.setUserAbout(userAbout);
+    }
+
+    @Override
+    public String getEditAboutMe() {
+        return mPreferences.getUserAbout();
     }
 
     @Override

@@ -27,7 +27,7 @@ import codesqills.org.techspeakup.ui.home.HomeActivity;
  */
 
 public class ProfileActivity extends AppCompatActivity implements ProfileContract.View,
-        View.OnClickListener {
+            View.OnClickListener {
 
     private Button mBtnNext;
 
@@ -137,7 +137,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
     }
 
     @Override
-    public void onClick(View v) {
+        public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_details_proceed:
                 if (mEtUserName.getText().toString().trim().equals("")) {

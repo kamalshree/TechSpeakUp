@@ -5,8 +5,8 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:openDrawer="start"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
     <LinearLayout
         android:id="@+id/linear_layout"
@@ -14,10 +14,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!-- Toolbar -->
         <include
             android:id="@+id/toolbar_home_page"
-            layout="@layout/toolbar_home_page"></include>
-        <!-- Bottom Navigation Menu -->
+            layout="@layout/toolbar_home_page" />
+
+        <!-- Bottom Navigation MenuBar-->
         <include
             layout="@layout/navigation_home_speaker"
             android:layout_width="match_parent"
@@ -27,13 +29,14 @@
 
     </LinearLayout>
 
+    <!-- Navigation Menu with header -->
     <android.support.design.widget.NavigationView
         android:id="@+id/navigationview_home"
         android:layout_width="wrap_content"
-        android:layout_height="400dp"
-        app:menu="@menu/navigation_drawer_home_speaker_menu"
+        android:layout_height="@dimen/navigation_drawer_menu_height"
+        android:layout_gravity="start"
         app:headerLayout="@layout/navigation_drawer_header"
-        android:layout_gravity="start">
+        app:menu="@menu/navigation_drawer_home_speaker_menu">
 
     </android.support.design.widget.NavigationView>
 

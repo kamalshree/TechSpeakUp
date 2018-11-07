@@ -179,6 +179,12 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.anim_nothing, R.anim.slide_out_right);
+    }
 }
 
 

@@ -26,6 +26,9 @@
         <activity android:name=".ui.profile.ProfileActivity" />
         <activity android:name=".ui.home.HomeActivity" />
 
+        <activity android:name=".ui.speakerprofile.SpeakerProfileActivity"/>
+        <activity android:name=".ui.editprofile.SpeakerEditProfileActivity"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
