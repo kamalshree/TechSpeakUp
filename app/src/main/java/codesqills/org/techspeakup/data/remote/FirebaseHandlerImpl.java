@@ -8,8 +8,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -17,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import codesqills.org.techspeakup.data.models.Events;
 import codesqills.org.techspeakup.data.models.User;
 
 /**
@@ -37,10 +41,13 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
     private static final String KEY_USER_WEBSITE = "website";
     private static final String KEY_USER_ABOUT = "about";
 
+    private static final String KEY_LAST_MODIFIED = "eventdate";
+
 
     private static final String KEY_NOTIF_PREFS = "prefs";
 
     private DatabaseReference mUsersRef;
+    private DatabaseReference mEventsRef;
 
     private List<ValueEventListener> mValueListeners;
 
@@ -53,52 +60,81 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
 
         mValueListeners = new ArrayList<>();
         mUsersRef = rootRef.child(REF_USERS_NODE);
+        mEventsRef = rootRef.child(REF_EVENTS_NODE);
 
 
     }
 
+//Fetch Events by ID
     @Override
-    public void updateUserName(String userName, final Callback<Void> callback) {
-        updateUserProperty(KEY_USER_NAME, userName, callback);
+    public void fetchEventById(String eventId, final Callback<Events> callback) {
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    Events singleEvent = snapshot.getValue(Events.class);
+                    if (singleEvent != null) {
+                        singleEvent.setKey(snapshot.getKey());
+                        callback.onReponse(singleEvent);
+                    } else {
+                        callback.onError();
+                    }
+                } else {
+                    callback.onError();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+        mEventsRef.child(eventId).addValueEventListener(listener);
+        mValueListeners.add(listener);
     }
 
+    //Fetch all events
     @Override
-    public void updateProfilePic(String profilePicUrl, final Callback<Void> callback) {
-        updateUserProperty(KEY_USER_PIC, profilePicUrl, callback);
+    public void fetchEvents(int limitToFirst, final Callback<List<Events>> callback) {
+
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    List<Events> eventsList = new ArrayList<>();
+                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                        try {
+                            Events singleEvents = childSnapshot.getValue(Events.class);
+                            if (singleEvents != null && singleEvents.getEventName() != null) {
+                                    singleEvents.setKey(childSnapshot.getKey());
+                                    eventsList.add(singleEvents);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    callback.onReponse(eventsList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+        Query eventsRefQuery = mEventsRef.orderByChild(KEY_LAST_MODIFIED);
+
+        // TODO: Implement pagination here.
+        if (limitToFirst > 0) {
+            eventsRefQuery.limitToFirst(limitToFirst);
+        }
+        eventsRefQuery.addValueEventListener(listener);
+        mValueListeners.add(listener);
     }
 
-    @Override
-    public void updateEditLocation(String userLocation, Callback<Void> callback) {
-        updateUserProperty(KEY_USER_LOCATION, userLocation, callback);
-    }
-
-    @Override
-    public void updateEditJob(String userJob, Callback<Void> callback) {
-        updateUserProperty(KEY_USER_JOB, userJob, callback);
-    }
-
-    @Override
-    public void updateEditTwitter(String userTwitter, Callback<Void> callback) {
-        updateUserProperty(KEY_USER_TWITTER, userTwitter, callback);
-    }
-
-    @Override
-    public void updateEditLinkedin(String userLinkedin, Callback<Void> callback) {
-        updateUserProperty(KEY_USER_LINKEDIN, userLinkedin, callback);
-    }
-
-    @Override
-    public void updateEditWebsite(String userWebsite, Callback<Void> callback) {
-        updateUserProperty(KEY_USER_WEBSITE, userWebsite, callback);
-
-    }
-
-    @Override
-    public void updateUserAbout(String userAbout, Callback<Void> callback) {
-        updateUserProperty(KEY_USER_ABOUT, userAbout, callback);
-    }
-
-
+    //user Information
     @Override
     public void setUserInfo(User currentUser, final Callback<Void> callback) {
         Map<String, Object> userData = new HashMap<>();
@@ -137,6 +173,8 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
         // Remove all listeners
         for (ValueEventListener listener : mValueListeners) {
             mUsersRef.removeEventListener(listener);
+            mEventsRef.removeEventListener(listener);
+
         }
     }
 
@@ -165,4 +203,6 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
             callback.onError();
         }
     }
+
+
 }

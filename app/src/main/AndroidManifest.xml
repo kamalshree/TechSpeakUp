@@ -28,6 +28,8 @@
 
         <activity android:name=".ui.speakerprofile.SpeakerProfileActivity"/>
         <activity android:name=".ui.editprofile.SpeakerEditProfileActivity"/>
+        <activity android:name=".ui.events.EventsActivity"/>
+        <activity android:name=".ui.eventsdetails.EventsDetailsActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

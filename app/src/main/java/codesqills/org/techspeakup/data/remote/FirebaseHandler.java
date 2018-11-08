@@ -1,5 +1,8 @@
 package codesqills.org.techspeakup.data.remote;
 
+import java.util.List;
+
+import codesqills.org.techspeakup.data.models.Events;
 import codesqills.org.techspeakup.data.models.User;
 
 /**
@@ -8,29 +11,15 @@ import codesqills.org.techspeakup.data.models.User;
 
 public interface FirebaseHandler {
 
-    void updateUserName(String userName, Callback<Void> callback);
 
-    void updateProfilePic(String profielPicUrl, Callback<Void> callback);
-
-    //edit profile
-
-    void updateEditLocation(String userLocation, Callback<Void> callback);
-
-    void updateEditJob(String userJob, Callback<Void> callback);
-
-    void updateEditTwitter(String userTwitter, Callback<Void> callback);
-
-    void updateEditLinkedin(String userLinkedin, Callback<Void> callback);
-
-    void updateEditWebsite(String userWebsite, Callback<Void> callback);
-
-    void updateUserAbout(String userAbout, Callback<Void> callback);
-
+    void fetchEvents(int limitToFirst, Callback<List<Events>> callback);
+    void fetchEventById(String eventId, Callback<Events> callback);
 
     void setUserInfo(User currentUser, Callback<Void> callback);
     void destroy();
 
     String REF_USERS_NODE = "users";
+    String REF_EVENTS_NODE = "events";
 
     interface Callback<T> {
         void onReponse(T result);

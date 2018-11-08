@@ -59,6 +59,7 @@ import android.content.SharedPreferences;
     private String mUserAbout;
 
 
+
     public void setUserName(String userName) {
         this.mUserName = userName;
         mPrefs.edit().putString(KEY_USER_NAME, userName).apply();
@@ -194,6 +195,8 @@ import android.content.SharedPreferences;
         return mUserAbout;
     }
 
+
+
     public void destroy() {
         mPrefs.edit().clear().apply();
         mUserStatus = null;
@@ -206,6 +209,8 @@ import android.content.SharedPreferences;
         mUserLinkedin=null;
         mUserWebsite=null;
         mUserAbout=null;
+
+
     }
 
 }

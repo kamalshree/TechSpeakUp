@@ -57,7 +57,7 @@
     <dimen name="speaker_profile_image_width">380dp</dimen>
 
     <dimen name="speaker_profile_font_18sp">18sp</dimen>
-      <dimen name="speaker_profile_width">150dp</dimen>
+    <dimen name="speaker_profile_width">150dp</dimen>
     <dimen name="speaker_profile_height">150dp</dimen>
     <dimen name="speaker_profile_font_24sp">24sp</dimen>
     <dimen name="speaker_profile_card_width">400dp</dimen>
@@ -66,5 +66,10 @@
 
 
     <dimen name="font_20sp">20sp</dimen>
+    <dimen name="font_30sp">30sp</dimen>
+
+    <!-- EventDetails -->
+    <dimen name="eventdetails_height">30dp</dimen>
+
 
 </resources>

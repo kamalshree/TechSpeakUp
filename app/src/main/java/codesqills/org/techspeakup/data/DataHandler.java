@@ -1,5 +1,9 @@
 package codesqills.org.techspeakup.data;
 
+import java.util.List;
+
+import codesqills.org.techspeakup.data.models.Events;
+
 /**
  * Created by kamalshree on 10/25/2018.
  */
@@ -42,6 +46,10 @@ public interface DataHandler {
 
     void saveEditAboutMe(String editAboutMe);
     String getEditAboutMe();
+
+    //Event Details
+    void fetchEvents(int limitToFirst, Callback<List<Events>> callback);
+    void fetchEventById(String eventId, Callback<Events> callback);
 
     boolean isLoggedIn();
     void destroy();

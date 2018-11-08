@@ -47,4 +47,9 @@ public class HomePresenter implements HomeContract.Presenter{
     public void handleEditProfile() {
         mView.displayEditProfile();
     }
+
+    @Override
+    public void handleUserEvent() {
+        mView.displayEvent();
+    }
 }

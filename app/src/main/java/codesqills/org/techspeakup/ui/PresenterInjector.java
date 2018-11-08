@@ -2,6 +2,10 @@ package codesqills.org.techspeakup.ui;
 
 import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfileContract;
 import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfilePresenter;
+import codesqills.org.techspeakup.ui.events.EventsContract;
+import codesqills.org.techspeakup.ui.events.EventsPresenter;
+import codesqills.org.techspeakup.ui.eventsdetails.EventsDetailsContract;
+import codesqills.org.techspeakup.ui.eventsdetails.EventsDetailsPresenter;
 import codesqills.org.techspeakup.ui.home.HomeContract;
 import codesqills.org.techspeakup.ui.home.HomePresenter;
 import codesqills.org.techspeakup.ui.profile.ProfileContract;
@@ -35,5 +39,13 @@ public class PresenterInjector {
 
     public static void injectSpeakerEditProfilePresenter(SpeakerEditProfileContract.View SpeakerEditProfileView) {
         new SpeakerEditProfilePresenter(SpeakerEditProfileView);
+    }
+
+    public static void injectEventsPresenter(EventsContract.View EventsProfileView) {
+        new EventsPresenter(EventsProfileView);
+    }
+
+    public static void injectEventsDetailsPresenter(EventsDetailsContract.View EventsDetailsProfileView) {
+        new EventsDetailsPresenter(EventsDetailsProfileView);
     }
 }

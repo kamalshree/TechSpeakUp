@@ -8,15 +8,11 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
@@ -25,6 +21,7 @@ import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfileActivity;
+import codesqills.org.techspeakup.ui.events.EventsActivity;
 import codesqills.org.techspeakup.ui.speakerprofile.SpeakerProfileActivity;
 
 /**
@@ -145,6 +142,12 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         startActivity(editProfileIntent);
     }
 
+    @Override
+    public void displayEvent() {
+        Intent eventIntent = new Intent(this, EventsActivity.class);
+        startActivity(eventIntent);
+    }
+
     //Bottom Navigation bar Click items
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -159,6 +162,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             case R.id.navigation_speaker_notification:
                 break;
             case R.id.navigation_speaker_event:
+                mPresenter.handleUserEvent();
                 break;
         }
 

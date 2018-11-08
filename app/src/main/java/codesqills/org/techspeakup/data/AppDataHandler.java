@@ -3,7 +3,11 @@ package codesqills.org.techspeakup.data;
 
 import android.content.Context;
 
+import java.util.HashSet;
+import java.util.List;
+
 import codesqills.org.techspeakup.application.AppClass;
+import codesqills.org.techspeakup.data.models.Events;
 import codesqills.org.techspeakup.data.models.User;
 import codesqills.org.techspeakup.data.remote.FirebaseHandler;
 import codesqills.org.techspeakup.data.remote.FirebaseProvider;
@@ -34,6 +38,20 @@ class AppDataHandler implements DataHandler {
         }
         return INSTANCE;
     }
+
+
+    @Override
+    public void fetchEvents(int limitToFirst, final Callback<List<Events>> callback) {
+        // Fetch all the events
+        mFirebaseHandler.fetchEvents(limitToFirst, new FirebaseCallback<List<Events>>(callback));
+
+    }
+
+    @Override
+    public void fetchEventById(String eventId, Callback<Events> callback) {
+        mFirebaseHandler.fetchEventById(eventId, new FirebaseCallback<Events>(callback));
+    }
+
 
     @Override
     public void setUserInfo(Callback<Void> callback) {

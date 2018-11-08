@@ -100,4 +100,14 @@
     <string name="speaker_editprofile_aboutme">About Me</string>
     <string name="speaker_editprofile_submit">Submit</string>
     <string name="speaker_editprofile_saved_successfully">Data Saved successfully</string>
+
+    <!-- Event -->
+    <string name="speaker_event_profile">Events</string>
+    <string name="speaker_event_details">Events Details</string>
+    <string name="tv_eventdetail_eventname">Flutter Event I/O</string>
+    <string name="event_details_eventsubTitle">Flutter Event I/O</string>
+    <string name="event_details_eventdate">15th Jan 2019</string>
+    <string name="event_details_eventlocation">Bangalore,India</string>
+    <string name="event_details_eventdetails">The first version of Flutter was known as and ran on the Android operating system. It was unveiled at the 2015 Dart developer summit with the stated intent of being able to render consistently at 120 frames per second.[6] During the keynote of Google Developer Days in Shanghai, Google announced Flutter Release Preview 2 which is the last big release before Flutter 1.0.</string>
+
 </resources>
