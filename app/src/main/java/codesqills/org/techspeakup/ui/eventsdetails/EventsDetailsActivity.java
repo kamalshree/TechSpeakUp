@@ -1,8 +1,13 @@
 package codesqills.org.techspeakup.ui.eventsdetails;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,12 +15,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.ui.PresenterInjector;
+import codesqills.org.techspeakup.utils.NetworkUtils;
 
 /**
  * Created by kamalshree on 11/7/2018.
  */
 
-public class EventsDetailsActivity extends AppCompatActivity implements EventsDetailsContract.View,View.OnClickListener{
+public class EventsDetailsActivity extends AppCompatActivity implements EventsDetailsContract.View, View.OnClickListener {
 
     private EventsDetailsContract.Presenter mPresenter;
     private Bundle extras;
@@ -41,6 +47,20 @@ public class EventsDetailsActivity extends AppCompatActivity implements EventsDe
     @BindView(R.id.tv_event_details_eventdetails)
     TextView eventDetailsDetails;
 
+    @BindView(R.id.speaker_profile_cardviewone)
+    CardView mCard;
+
+    @BindView(R.id.layout_internet)
+    View layout_internet;
+
+    @BindView(R.id.toolbar_speakerprofile)
+    View toolbar_event;
+
+    @BindView(R.id.tv_no_internet)
+    TextView noInternet;
+    @BindView(R.id.refresh)
+    Button refreshBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,16 +70,23 @@ public class EventsDetailsActivity extends AppCompatActivity implements EventsDe
 
         PresenterInjector.injectEventsDetailsPresenter(this);
         intialiseUI();
+        if (!NetworkUtils.connectionStatus(this)) {
+            ShowNoInternetMessage();
+            buildDialog(this).show();
+        }
         extras = getIntent().getExtras();
         mPresenter.start(getIntent().getExtras());
     }
+
     private void intialiseUI() {
         editProfile.setText(getResources().getString(R.string.speaker_event_details));
         mBack.setOnClickListener(this);
+        refreshBtn.setOnClickListener(this);
     }
+
     @Override
     public void setPresenter(EventsDetailsContract.Presenter presenter) {
-        this.mPresenter=presenter;
+        this.mPresenter = presenter;
     }
 
     @Override
@@ -84,6 +111,9 @@ public class EventsDetailsActivity extends AppCompatActivity implements EventsDe
         switch (view.getId()) {
             case R.id.speaker_profile_page_back:
                 onBackPressed();
+                break;
+            case R.id.refresh:
+                checkInternet();
                 break;
             default:
                 break;
@@ -110,5 +140,42 @@ public class EventsDetailsActivity extends AppCompatActivity implements EventsDe
     @Override
     public void loadEventDetails(String eventDetails) {
         eventDetailsDetails.setText(eventDetails);
+    }
+
+
+    private void checkInternet() {
+        if (NetworkUtils.connectionStatus(this)) {
+            mCard.setVisibility(View.VISIBLE);
+            toolbar_event.setVisibility(View.VISIBLE);
+        } else {
+            ShowNoInternetMessage();
+        }
+    }
+
+    /*Action when internet not available */
+    private void ShowNoInternetMessage() {
+        mCard.setVisibility(View.INVISIBLE);
+        layout_internet.setVisibility(View.VISIBLE);
+        noInternet.setVisibility(View.VISIBLE);
+        refreshBtn.setVisibility(View.VISIBLE);
+    }
+
+    /* No Internet Dialog */
+    private AlertDialog.Builder buildDialog(Context c) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle(getString(R.string.no_internet_title));
+        builder.setMessage(getString(R.string.no_internet_message));
+
+        builder.setPositiveButton(getString(R.string.no_interent_okbutton), new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+
+        });
+
+        return builder;
     }
 }

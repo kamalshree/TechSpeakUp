@@ -111,7 +111,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
 
     @Override
     public void onProfileSaved() {
-        Toast.makeText(this, getString(R.string.profile_saved_successfully), Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, getString(R.string.profile_saved_successfully), Toast.LENGTH_SHORT).show();
         // Navigate to home activity
         Intent homeIntent = new Intent(this, HomeActivity.class);
         if (extras != null) {

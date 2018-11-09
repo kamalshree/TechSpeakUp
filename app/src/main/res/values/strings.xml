@@ -110,4 +110,11 @@
     <string name="event_details_eventlocation">Bangalore,India</string>
     <string name="event_details_eventdetails">The first version of Flutter was known as and ran on the Android operating system. It was unveiled at the 2015 Dart developer summit with the stated intent of being able to render consistently at 120 frames per second.[6] During the keynote of Google Developer Days in Shanghai, Google announced Flutter Release Preview 2 which is the last big release before Flutter 1.0.</string>
 
+
+    <!-- No Internet -->
+
+    <string name="no_internet_title">No Internet Connection</string>
+    <string name="no_internet_message">You need to have Mobile Data or wifi to access this. Press ok to Exit</string>
+    <string name="no_interent_okbutton">ok</string>
+    <string name="no_internet_connection">No internet Connection</string>
 </resources>

@@ -166,7 +166,7 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
 
     @Override
     public void onProfileSaved() {
-        Toast.makeText(this, getString(R.string.speaker_editprofile_saved_successfully), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, getString(R.string.speaker_editprofile_saved_successfully), Toast.LENGTH_SHORT).show();
     }
     @Override
     public void onSaveError() {
