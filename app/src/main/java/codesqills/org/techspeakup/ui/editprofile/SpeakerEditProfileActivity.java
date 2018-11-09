@@ -1,7 +1,9 @@
 package codesqills.org.techspeakup.ui.editprofile;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -10,11 +12,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.home.HomeActivity;
+import codesqills.org.techspeakup.ui.signin.SignInActivity;
 
 /**
  * Created by kamalshree on 11/5/2018.
@@ -166,6 +172,7 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
 
     @Override
     public void onProfileSaved() {
+        showSuccessDialog();
         //Toast.makeText(this, getString(R.string.speaker_editprofile_saved_successfully), Toast.LENGTH_SHORT).show();
     }
     @Override
@@ -178,5 +185,19 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.anim_nothing, R.anim.slide_out_right);
+    }
+
+    private void showSuccessDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle(getResources().getString(R.string.sucess_title))
+                .setMessage(getString(R.string.sucess_message))
+                .setNegativeButton(getString(R.string.sucess_cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        finish();
+                    }
+                })
+                .create().show();
     }
 }

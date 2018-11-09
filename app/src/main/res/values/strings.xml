@@ -117,4 +117,18 @@
     <string name="no_internet_message">You need to have Mobile Data or wifi to access this. Press ok to Exit</string>
     <string name="no_interent_okbutton">ok</string>
     <string name="no_internet_connection">No internet Connection</string>
+
+    <!-- Signout -->
+
+    <string name="sign_out_title">Are you sure?</string>
+    <string name="sign_out_ok">Yes</string>
+    <string name="sign_out_cancel">Cancel</string>
+    <string name="sign_out_message">This will sign you out from this device</string>
+
+    <!-- Success -->
+
+    <string name="sucess_title">Success</string>
+    <string name="sucess_cancel">Ok</string>
+    <string name="sucess_message">Changes are saved successfully</string>
+
 </resources>
