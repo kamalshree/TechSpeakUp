@@ -15,11 +15,16 @@ public interface FirebaseHandler {
     void fetchEvents(int limitToFirst, Callback<List<Events>> callback);
     void fetchEventById(String eventId, Callback<Events> callback);
 
+    void fetchFollowers(int limitToFirst, String myUid,Callback<List<String>> callback);
+    void fetchFollowersDetails(String myUid,Callback<List<User>> callback);
+
+
     void setUserInfo(User currentUser, Callback<Void> callback);
     void destroy();
 
     String REF_USERS_NODE = "users";
     String REF_EVENTS_NODE = "events";
+    String REF_FOLLOWERS_NODE = "followers";
 
     interface Callback<T> {
         void onReponse(T result);

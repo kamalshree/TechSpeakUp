@@ -131,4 +131,9 @@
     <string name="sucess_cancel">Ok</string>
     <string name="sucess_message">Changes are saved successfully</string>
 
+
+    <!-- Follower -->
+
+    <string name="speaker_followers_profile">Followers</string>
+
 </resources>

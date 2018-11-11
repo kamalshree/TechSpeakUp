@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,6 +28,7 @@ import codesqills.org.techspeakup.data.DataHandlerProvider;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfileActivity;
 import codesqills.org.techspeakup.ui.events.EventsActivity;
+import codesqills.org.techspeakup.ui.followers.FollowersActivity;
 import codesqills.org.techspeakup.ui.signin.SignInActivity;
 import codesqills.org.techspeakup.ui.speakerprofile.SpeakerProfileActivity;
 
@@ -161,6 +163,12 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     }
 
     @Override
+    public void displayFollowers() {
+        Intent followersIntent = new Intent(this, FollowersActivity.class);
+        startActivity(followersIntent);
+    }
+
+    @Override
     public void displayEvent() {
         Intent eventIntent = new Intent(this, EventsActivity.class);
         startActivity(eventIntent);
@@ -176,6 +184,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 mPresenter.handleUserProfile();
                 break;
             case R.id.navigation_speaker_follower:
+                mPresenter.handleUserFollowers();
                 break;
             case R.id.navigation_speaker_notification:
                 break;

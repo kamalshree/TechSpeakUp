@@ -3,9 +3,14 @@ package codesqills.org.techspeakup.ui.profile;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import codesqills.org.techspeakup.data.DataHandler;
 import codesqills.org.techspeakup.data.DataHandlerProvider;
+import codesqills.org.techspeakup.data.models.User;
 
 /**
  * Created by kamalshree on 10/29/2018.
@@ -70,5 +75,9 @@ public class ProfilePresenter implements ProfileContract.Presenter {
                     mView.onSaveError();
                 }
             });
+
+
+
+
     }
 }

@@ -14,11 +14,13 @@ public interface HomeContract {
         void loadMyUserName(String username);
         void displayUserProfile();
         void displayEditProfile();
+        void displayFollowers();
         void displayEvent();
     }
     interface Presenter extends BasePresenter{
         void getProfileDetails();
         void handleUserProfile();
+        void handleUserFollowers();
         void handleEditProfile();
         void handleUserEvent();
     }

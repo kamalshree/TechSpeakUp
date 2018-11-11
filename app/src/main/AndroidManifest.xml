@@ -30,6 +30,7 @@
         <activity android:name=".ui.editprofile.SpeakerEditProfileActivity"/>
         <activity android:name=".ui.events.EventsActivity"/>
         <activity android:name=".ui.eventsdetails.EventsDetailsActivity"/>
+        <activity android:name=".ui.followers.FollowersActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

@@ -52,4 +52,9 @@ public class HomePresenter implements HomeContract.Presenter{
     public void handleUserEvent() {
         mView.displayEvent();
     }
+
+    @Override
+    public void handleUserFollowers() {
+        mView.displayFollowers();
+    }
 }

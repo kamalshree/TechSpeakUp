@@ -121,6 +121,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
         this.finish();
     }
 
+
+
     @Override
     public void setPresenter(ProfileContract.Presenter presenter) {
         this.mPresenter = presenter;

@@ -166,4 +166,14 @@ public class User {
     public void setAbout(String about) {
         mAbout = about;
     }
+
+    @Exclude
+    public String getKey() {
+        return mKey;
+    }
+
+    @Exclude
+    public void setKey(String key) {
+        this.mKey = key;
+    }
 }

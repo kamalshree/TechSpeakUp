@@ -34,6 +34,7 @@ public interface ProfileContract {
         void saveProfile(@Nullable Bitmap picture, String userType);
 
         void saveProfile(@Nullable String pictureUrl, String username,String userType);
+
     }
 
 }

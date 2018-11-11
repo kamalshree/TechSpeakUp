@@ -34,6 +34,8 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
     private static final String KEY_USER_EMAIL = "email";
     private static final String KEY_USER_TYPE = "type";
 
+    private static final String KEY_USER_KEY = "key";
+
     private static final String KEY_USER_LOCATION = "location";
     private static final String KEY_USER_JOB = "job";
     private static final String KEY_USER_TWITTER = "twitter";
@@ -48,6 +50,7 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
 
     private DatabaseReference mUsersRef;
     private DatabaseReference mEventsRef;
+    private DatabaseReference mFollowersRef;
 
     private List<ValueEventListener> mValueListeners;
 
@@ -61,11 +64,43 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
         mValueListeners = new ArrayList<>();
         mUsersRef = rootRef.child(REF_USERS_NODE);
         mEventsRef = rootRef.child(REF_EVENTS_NODE);
+        mFollowersRef = rootRef.child(REF_FOLLOWERS_NODE);
 
 
     }
 
-//Fetch Events by ID
+    @Override
+    public void fetchFollowersDetails(String myUid, final Callback<List<User>> callback) {
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    List<User> eventsList = new ArrayList<>();
+                    User singleEvent = snapshot.getValue(User.class);
+                    if (singleEvent != null) {
+                        singleEvent.setKey(snapshot.getKey());
+                        eventsList.add(singleEvent);
+                        callback.onReponse(eventsList);
+                    } else {
+                        callback.onError();
+                    }
+                } else {
+                    callback.onError();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+        mUsersRef.child(myUid).addValueEventListener(listener);
+        mValueListeners.add(listener);
+    }
+
+
+    //Fetch Events by ID
     @Override
     public void fetchEventById(String eventId, final Callback<Events> callback) {
         ValueEventListener listener = new ValueEventListener() {
@@ -94,6 +129,52 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
         mValueListeners.add(listener);
     }
 
+
+
+    //Fetch all followers
+    @Override
+    public void fetchFollowers(int limitToFirst, final String myUid, final Callback<List<String>> callback) {
+
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    List<String> followersList = new ArrayList<>();
+                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                        try {
+                            // followersList.add(childSnapshot.getValue().toString());
+                            if(childSnapshot.getKey().equals(myUid)){
+                                for (DataSnapshot userid :childSnapshot.getChildren()) {
+                                    followersList.add(userid.getValue().toString());
+                                }
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    callback.onReponse(followersList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+        Query followersRefQuery = mFollowersRef.orderByChild(KEY_LAST_MODIFIED);
+
+        // TODO: Implement pagination here.
+        if (limitToFirst > 0) {
+            mFollowersRef.limitToFirst(limitToFirst);
+        }
+        mFollowersRef.addValueEventListener(listener);
+        mValueListeners.add(listener);
+    }
+
+
+
     //Fetch all events
     @Override
     public void fetchEvents(int limitToFirst, final Callback<List<Events>> callback) {
@@ -107,8 +188,8 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
                         try {
                             Events singleEvents = childSnapshot.getValue(Events.class);
                             if (singleEvents != null && singleEvents.getEventName() != null) {
-                                    singleEvents.setKey(childSnapshot.getKey());
-                                    eventsList.add(singleEvents);
+                                singleEvents.setKey(childSnapshot.getKey());
+                                eventsList.add(singleEvents);
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -167,6 +248,7 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
                     }
                 });
     }
+
 
     @Override
     public void destroy() {

@@ -48,6 +48,19 @@ class AppDataHandler implements DataHandler {
     }
 
     @Override
+    public void fetchFollowers(int limitToFirst, String myUid,final Callback<List<String>> callback) {
+        // Fetch all the Followers
+        mFirebaseHandler.fetchFollowers(limitToFirst,myUid, new FirebaseCallback<List<String>>(callback));
+
+    }
+    @Override
+    public void fetchFollowersDetails(String myUid,final Callback<List<User>> callback) {
+        // Fetch all the Followers
+        mFirebaseHandler.fetchFollowersDetails(myUid, new FirebaseCallback<List<User>>(callback));
+
+    }
+
+    @Override
     public void fetchEventById(String eventId, Callback<Events> callback) {
         mFirebaseHandler.fetchEventById(eventId, new FirebaseCallback<Events>(callback));
     }
@@ -69,6 +82,8 @@ class AppDataHandler implements DataHandler {
 
         mFirebaseHandler.setUserInfo(currentUser, new FirebaseCallback<>(callback));
     }
+
+
 
     @Override
     public void saveUserEmail(String userEmail) {
