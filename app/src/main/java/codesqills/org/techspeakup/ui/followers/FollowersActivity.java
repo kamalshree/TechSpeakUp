@@ -21,6 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
+import codesqills.org.techspeakup.data.models.Followers;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.utils.NetworkUtils;
 
@@ -120,7 +121,7 @@ public class FollowersActivity extends AppCompatActivity implements FollowersAda
     }
 
     @Override
-    public void loadFollowers(List<String> followers) {
+    public void loadFollowers(List<Followers> followers) {
         mFollowersRecyclerView.setVisibility(View.VISIBLE);
         mFollowersAdapter.loadFollowers(followers);
     }

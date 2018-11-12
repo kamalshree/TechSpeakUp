@@ -66,10 +66,14 @@
 
 
     <dimen name="font_20sp">20sp</dimen>
+    <dimen name="font_18sp">18sp</dimen>
     <dimen name="font_30sp">30sp</dimen>
 
     <!-- EventDetails -->
     <dimen name="eventdetails_height">30dp</dimen>
+
+    <!-- Followers-->
+    <dimen name="followers_layout_marginTop">108dp</dimen>
 
 
 </resources>

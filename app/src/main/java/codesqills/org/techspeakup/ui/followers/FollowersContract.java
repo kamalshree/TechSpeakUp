@@ -2,8 +2,7 @@ package codesqills.org.techspeakup.ui.followers;
 
 import java.util.List;
 
-import codesqills.org.techspeakup.data.models.Events;
-import codesqills.org.techspeakup.data.models.User;
+import codesqills.org.techspeakup.data.models.Followers;
 import codesqills.org.techspeakup.ui.BasePresenter;
 import codesqills.org.techspeakup.ui.BaseView;
 
@@ -13,11 +12,11 @@ import codesqills.org.techspeakup.ui.BaseView;
 
 public interface FollowersContract {
 
-    interface View extends BaseView<Presenter>{
-        void loadFollowers(List<String> followers);
+    interface View extends BaseView<Presenter> {
+        void loadFollowers(List<Followers> followers);
     }
 
-    interface Presenter extends BasePresenter{
+    interface Presenter extends BasePresenter {
 
     }
 }

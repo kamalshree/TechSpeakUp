@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
-    app:cardBackgroundColor="@color/colorPrimary"
+    android:layout_marginEnd="@dimen/margin_medium"
+    android:layout_marginStart="@dimen/margin_medium"
+    app:cardBackgroundColor="@color/background_color"
     app:cardCornerRadius="2dp"
     app:cardElevation="2dp"
     app:cardMaxElevation="2dp"
@@ -15,38 +15,52 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:padding="@dimen/margin_medium">
 
 
         <ImageView
             android:id="@+id/img_follower_pic"
             android:layout_width="@dimen/details_page_profile_pic_width"
             android:layout_height="@dimen/details_page_profile_pic_height"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
             android:contentDescription="@string/details_page_image_name_text"
             android:src="@drawable/details_page_profile_pic"
+            app:layout_constraintBottom_toTopOf="@+id/tv_follower_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        />
 
         <TextView
             android:id="@+id/tv_follower_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="108dp"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/followers_layout_marginTop"
             android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/font_20sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_follower_job"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Rahul Kumar" />
+            tools:text="@string/tv_follower_name" />
+
+        <TextView
+            android:id="@+id/tv_follower_job"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/font_18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_follower_name"
+            tools:text="@string/tv_follower_job" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 import codesqills.org.techspeakup.data.models.Events;
+import codesqills.org.techspeakup.data.models.Followers;
 import codesqills.org.techspeakup.data.models.User;
 
 /**
@@ -69,37 +70,38 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
 
     }
 
-    @Override
-    public void fetchFollowersDetails(String myUid, final Callback<List<User>> callback) {
-        ValueEventListener listener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot != null) {
-                    List<User> eventsList = new ArrayList<>();
-                    User singleEvent = snapshot.getValue(User.class);
-                    if (singleEvent != null) {
-                        singleEvent.setKey(snapshot.getKey());
-                        eventsList.add(singleEvent);
-                        callback.onReponse(eventsList);
+    /*
+        @Override
+        public void fetchFollowersDetails(String myUid, final Callback<List<User>> callback) {
+            ValueEventListener listener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    if (snapshot != null) {
+                        List<User> eventsList = new ArrayList<>();
+                        User singleEvent = snapshot.getValue(User.class);
+                        if (singleEvent != null) {
+                            singleEvent.setKey(snapshot.getKey());
+                            eventsList.add(singleEvent);
+                            callback.onReponse(eventsList);
+                        } else {
+                            callback.onError();
+                        }
                     } else {
                         callback.onError();
                     }
-                } else {
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
                     callback.onError();
                 }
-            }
+            };
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                callback.onError();
-            }
-        };
+            mUsersRef.child(myUid).addValueEventListener(listener);
+            mValueListeners.add(listener);
+        }
 
-        mUsersRef.child(myUid).addValueEventListener(listener);
-        mValueListeners.add(listener);
-    }
-
-
+    */
     //Fetch Events by ID
     @Override
     public void fetchEventById(String eventId, final Callback<Events> callback) {
@@ -130,24 +132,22 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
     }
 
 
-
     //Fetch all followers
     @Override
-    public void fetchFollowers(int limitToFirst, final String myUid, final Callback<List<String>> callback) {
-
+    public void fetchFollowers(final Callback<List<Followers>> callback) {
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot != null) {
-                    List<String> followersList = new ArrayList<>();
+                    List<Followers> followersList = new ArrayList<>();
                     for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                         try {
-                            // followersList.add(childSnapshot.getValue().toString());
-                            if(childSnapshot.getKey().equals(myUid)){
-                                for (DataSnapshot userid :childSnapshot.getChildren()) {
-                                    followersList.add(userid.getValue().toString());
-                                }
-                            }
+                            Followers singleFollowers = childSnapshot.getValue(Followers.class);
+                            singleFollowers.setmKey(childSnapshot.getKey());
+                            followersList.add(singleFollowers);
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -163,16 +163,10 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
             }
         };
 
-        Query followersRefQuery = mFollowersRef.orderByChild(KEY_LAST_MODIFIED);
 
-        // TODO: Implement pagination here.
-        if (limitToFirst > 0) {
-            mFollowersRef.limitToFirst(limitToFirst);
-        }
-        mFollowersRef.addValueEventListener(listener);
-        mValueListeners.add(listener);
+        mFollowersRef.child(mCurrentUser.getUid())
+                .addValueEventListener(listener);
     }
-
 
 
     //Fetch all events

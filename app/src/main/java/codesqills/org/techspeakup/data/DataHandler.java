@@ -3,7 +3,7 @@ package codesqills.org.techspeakup.data;
 import java.util.List;
 
 import codesqills.org.techspeakup.data.models.Events;
-import codesqills.org.techspeakup.data.models.User;
+import codesqills.org.techspeakup.data.models.Followers;
 
 /**
  * Created by kamalshree on 10/25/2018.
@@ -53,8 +53,8 @@ public interface DataHandler {
     void fetchEventById(String eventId, Callback<Events> callback);
 
     //Followers
-    void fetchFollowers(int limitToFirst,String myUid, Callback<List<String>> callback);
-    void fetchFollowersDetails(String myUid, Callback<List<User>> callback);
+    void fetchFollowers(Callback<List<Followers>> callback);
+   // void fetchFollowersDetails(String myUid, Callback<List<User>> callback);
     boolean isLoggedIn();
     void destroy();
 

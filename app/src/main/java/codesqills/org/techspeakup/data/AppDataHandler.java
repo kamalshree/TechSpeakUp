@@ -8,6 +8,7 @@ import java.util.List;
 
 import codesqills.org.techspeakup.application.AppClass;
 import codesqills.org.techspeakup.data.models.Events;
+import codesqills.org.techspeakup.data.models.Followers;
 import codesqills.org.techspeakup.data.models.User;
 import codesqills.org.techspeakup.data.remote.FirebaseHandler;
 import codesqills.org.techspeakup.data.remote.FirebaseProvider;
@@ -48,17 +49,17 @@ class AppDataHandler implements DataHandler {
     }
 
     @Override
-    public void fetchFollowers(int limitToFirst, String myUid,final Callback<List<String>> callback) {
+    public void fetchFollowers(final Callback<List<Followers>> callback) {
         // Fetch all the Followers
-        mFirebaseHandler.fetchFollowers(limitToFirst,myUid, new FirebaseCallback<List<String>>(callback));
+        mFirebaseHandler.fetchFollowers(new FirebaseCallback<List<Followers>>(callback));
 
     }
-    @Override
-    public void fetchFollowersDetails(String myUid,final Callback<List<User>> callback) {
-        // Fetch all the Followers
-        mFirebaseHandler.fetchFollowersDetails(myUid, new FirebaseCallback<List<User>>(callback));
-
-    }
+//    @Override
+//    public void fetchFollowersDetails(String myUid,final Callback<List<User>> callback) {
+//        // Fetch all the Followers
+//        mFirebaseHandler.fetchFollowersDetails(myUid, new FirebaseCallback<List<User>>(callback));
+//
+//    }
 
     @Override
     public void fetchEventById(String eventId, Callback<Events> callback) {

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import codesqills.org.techspeakup.R;
-import codesqills.org.techspeakup.data.models.User;
+import codesqills.org.techspeakup.data.models.Followers;
 
 
 /**
@@ -25,7 +25,7 @@ import codesqills.org.techspeakup.data.models.User;
 
 public class FollowersAdapter extends RecyclerView.Adapter<FollowersAdapter.FollowersViewHolder> {
 
-    private List<String> mFollowersList;
+    private List<Followers> mFollowersList;
     private Context context;
     private FollowersAdapter.FollowersItemListener mFollowersItemListener;
 
@@ -36,7 +36,7 @@ public class FollowersAdapter extends RecyclerView.Adapter<FollowersAdapter.Foll
      */
     FollowersAdapter(@NonNull FollowersAdapter.FollowersItemListener followersItemListener, Context context) {
         mFollowersList = new ArrayList<>();
-        this.context=context;
+        this.context = context;
         this.mFollowersItemListener = followersItemListener;
     }
 
@@ -58,12 +58,13 @@ public class FollowersAdapter extends RecyclerView.Adapter<FollowersAdapter.Foll
         return mFollowersList.size();
     }
 
-    /**fo
+    /**
+     * fo
      * Clears current Events list and displays the new list
      *
      * @param followersList a {@link List} of {@link String}es to be displayed.
      */
-    void loadFollowers(@NonNull List<String> followersList) {
+    void loadFollowers(@NonNull List<Followers> followersList) {
         this.mFollowersList.clear();
         this.mFollowersList.addAll(followersList);
         notifyDataSetChanged();
@@ -75,7 +76,7 @@ public class FollowersAdapter extends RecyclerView.Adapter<FollowersAdapter.Foll
      * @param followersList a {@link List} of {@link String}es to be added to current list
      */
     @SuppressWarnings("unused")
-    void addFollowers(@NonNull List<String> followersList) {
+    void addFollowers(@NonNull List<Followers> followersList) {
         // Removing the events before adding, this ensure no duplication of events
         this.mFollowersList.removeAll(followersList);
         this.mFollowersList.addAll(followersList);
@@ -87,13 +88,15 @@ public class FollowersAdapter extends RecyclerView.Adapter<FollowersAdapter.Foll
      */
     class FollowersViewHolder extends RecyclerView.ViewHolder {
 
+        private TextView tvFollowerJob;
         private TextView tvFollowerName;
-        private ImageView imFollowerPic;
+        private ImageView tvFollowerPic;
 
         FollowersViewHolder(View itemView) {
             super(itemView);
             tvFollowerName = itemView.findViewById(R.id.tv_follower_name);
-            imFollowerPic = itemView.findViewById(R.id.img_follower_pic);
+            tvFollowerJob = itemView.findViewById(R.id.tv_follower_job);
+            tvFollowerPic = itemView.findViewById(R.id.img_follower_pic);
 
         }
 
@@ -101,10 +104,11 @@ public class FollowersAdapter extends RecyclerView.Adapter<FollowersAdapter.Foll
 
             final Context context = itemView.getContext();
 
-            final String currentEvents = mFollowersList.get(position);
+            final Followers currentEvents = mFollowersList.get(position);
             // Binding the data
-            tvFollowerName.setText(currentEvents);
-            //Glide.with(context).load(currentEvents.getImage()).apply(RequestOptions.circleCropTransform()).into(imFollowerPic);
+            tvFollowerName.setText(currentEvents.getmFollowersName());
+            tvFollowerJob.setText(currentEvents.getmFollowersJob());
+            Glide.with(context).load(currentEvents.getmFollowersPic()).apply(RequestOptions.circleCropTransform()).into(tvFollowerPic);
             // Attaching click listener to each quiz item
         }
     }
