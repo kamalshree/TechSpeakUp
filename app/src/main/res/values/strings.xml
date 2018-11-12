@@ -2,6 +2,7 @@
     <string name="app_name">Tech SpeakUp</string>
     <string name="app_title">TechSpeakUp</string>
     <string name="google_id" translatable="false">36669457617-98hkugcdatagk6c37hi3tji5pgcbupsl.apps.googleusercontent.com</string>
+    <string name="home_back_btn_msg">Press back again to exit.</string>
 
     <!-- Sign -->
     <string name="signin_text_logo">TechSpeakUp</string>

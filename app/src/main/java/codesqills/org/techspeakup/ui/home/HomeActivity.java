@@ -3,9 +3,13 @@ package codesqills.org.techspeakup.ui.home;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
@@ -13,9 +17,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,7 +28,6 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
-import codesqills.org.techspeakup.data.DataHandlerProvider;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfileActivity;
 import codesqills.org.techspeakup.ui.events.EventsActivity;
@@ -42,6 +45,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     private HomeContract.Presenter mPresenter;
     private TextView myUsername;
     private Toolbar myToolbar;
+    private static final int BACK_PRESS_DURATION = 3000;
 
 
     @BindView(R.id.navigation_home_speaker)
@@ -52,6 +56,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     ImageView details_page_toolbar_menu;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+
+    boolean mTwiceClicked = false;
+    Snackbar mSnackbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -198,8 +206,27 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.anim_nothing, R.anim.slide_out_right);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            if (mTwiceClicked) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                startActivity(intent);
+                mSnackbar.dismiss();
+            } else {
+                mTwiceClicked = true;
+                showSnackBar(R.string.home_back_btn_msg);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mTwiceClicked = false;
+                    }
+                }, BACK_PRESS_DURATION);
+            }
+
+        }
     }
 
     private void showSignOutAlert() {
@@ -213,7 +240,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                             if (currentUser != null) {
                                 FirebaseAuth.getInstance().signOut();
-                               // DataHandlerProvider.provide().destroy();
+                                // DataHandlerProvider.provide().destroy();
                                 Intent signInIntent = new Intent(HomeActivity.this, SignInActivity.class);
                                 HomeActivity.this.startActivity(signInIntent);
                                 //this.finishAffinity();
@@ -230,5 +257,23 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                     }
                 })
                 .create().show();
+    }
+
+    private void showSnackBar(int string) {
+        String msg = getResources().getString(string);
+        mSnackbar = Snackbar.make(findViewById(R.id.drawer_layout), msg, Snackbar.LENGTH_LONG);
+        final View snackbarView = mSnackbar.getView();
+        TextView tvSnackbar = snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+        tvSnackbar.setTextColor(getResources().getColor(R.color.colorAccent));
+        snackbarView.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark));
+        mSnackbar.show();
+
+        snackbarView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                snackbarView.getViewTreeObserver().removeOnPreDrawListener(this);
+                return true;
+            }
+        });
     }
 }
