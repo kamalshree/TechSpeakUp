@@ -132,6 +132,35 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
     }
 
 
+    //Fetch Followers by ID
+    @Override
+    public void fetchFollowersById(String followersId, final Callback<User> callback) {
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    User singleEvent = snapshot.getValue(User.class);
+                    if (singleEvent != null) {
+                        singleEvent.setKey(snapshot.getKey());
+                        callback.onReponse(singleEvent);
+                    } else {
+                        callback.onError();
+                    }
+                } else {
+                    callback.onError();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+        mUsersRef.child(followersId).addValueEventListener(listener);
+        mValueListeners.add(listener);
+    }
+
     //Fetch all followers
     @Override
     public void fetchFollowers(final Callback<List<Followers>> callback) {

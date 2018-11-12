@@ -7,6 +7,7 @@ import java.util.List;
 
 import codesqills.org.techspeakup.data.DataHandler;
 import codesqills.org.techspeakup.data.DataHandlerProvider;
+import codesqills.org.techspeakup.data.models.Events;
 import codesqills.org.techspeakup.data.models.Followers;
 
 /**
@@ -45,5 +46,10 @@ public class FollowersPresenter implements FollowersContract.Presenter {
     public void destroy() {
         this.mView = null;
         this.mDataHandler = null;
+    }
+
+    @Override
+    public void onFollowersClicked(Followers followers) {
+        mView.navigateToFollowersProfile(followers);
     }
 }

@@ -110,6 +110,13 @@ public class FollowersAdapter extends RecyclerView.Adapter<FollowersAdapter.Foll
             tvFollowerJob.setText(currentEvents.getmFollowersJob());
             Glide.with(context).load(currentEvents.getmFollowersPic()).apply(RequestOptions.circleCropTransform()).into(tvFollowerPic);
             // Attaching click listener to each quiz item
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mFollowersItemListener.onFollowersClicked(currentEvents);
+                }
+            });
         }
     }
 
@@ -120,9 +127,9 @@ public class FollowersAdapter extends RecyclerView.Adapter<FollowersAdapter.Foll
         /**
          * Called when events is clicked
          *
-         * @param events the events that was clicked
+         * @param followers the events that was clicked
          */
-        //  void onFollowersClicked(Events events);
+         void onFollowersClicked(Followers followers);
     }
 
 }

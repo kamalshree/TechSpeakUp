@@ -2,6 +2,7 @@ package codesqills.org.techspeakup.ui.followers;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -23,6 +24,10 @@ import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.data.models.Followers;
 import codesqills.org.techspeakup.ui.PresenterInjector;
+import codesqills.org.techspeakup.ui.eventsdetails.EventsDetailsActivity;
+import codesqills.org.techspeakup.ui.eventsdetails.EventsDetailsContract;
+import codesqills.org.techspeakup.ui.followersdetails.FollowersDetailsActivity;
+import codesqills.org.techspeakup.ui.followersdetails.FollowersDetailsContract;
 import codesqills.org.techspeakup.utils.NetworkUtils;
 
 /**
@@ -127,6 +132,14 @@ public class FollowersActivity extends AppCompatActivity implements FollowersAda
     }
 
     @Override
+    public void navigateToFollowersProfile(Followers followers) {
+        Intent followersDetailsIntent = new Intent(this, FollowersDetailsActivity.class);
+        followersDetailsIntent.putExtra(FollowersDetailsContract.KEY_FOLLOWERS_ID, followers.getmKey());
+        startActivity(followersDetailsIntent);
+        overridePendingTransition(R.anim.slide_in_up, R.anim.anim_nothing);
+    }
+
+    @Override
     public void setPresenter(FollowersContract.Presenter presenter) {
         this.mPresenter = presenter;
     }
@@ -198,4 +211,8 @@ public class FollowersActivity extends AppCompatActivity implements FollowersAda
         overridePendingTransition(R.anim.anim_nothing, R.anim.slide_out_right);
     }
 
+    @Override
+    public void onFollowersClicked(Followers followers) {
+        mPresenter.onFollowersClicked(followers);
+    }
 }

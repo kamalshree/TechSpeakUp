@@ -8,6 +8,8 @@ import codesqills.org.techspeakup.ui.eventsdetails.EventsDetailsContract;
 import codesqills.org.techspeakup.ui.eventsdetails.EventsDetailsPresenter;
 import codesqills.org.techspeakup.ui.followers.FollowersContract;
 import codesqills.org.techspeakup.ui.followers.FollowersPresenter;
+import codesqills.org.techspeakup.ui.followersdetails.FollowersDetailsContract;
+import codesqills.org.techspeakup.ui.followersdetails.FollowersDetailsPresenter;
 import codesqills.org.techspeakup.ui.home.HomeContract;
 import codesqills.org.techspeakup.ui.home.HomePresenter;
 import codesqills.org.techspeakup.ui.profile.ProfileContract;
@@ -53,5 +55,9 @@ public class PresenterInjector {
 
     public static void injectFollowersPresenter(FollowersContract.View FollowersProfileView) {
         new FollowersPresenter(FollowersProfileView);
+    }
+
+    public static void injectFollowersDetailsPresenter(FollowersDetailsContract.View FollowersDetailsProfileView) {
+        new FollowersDetailsPresenter(FollowersDetailsProfileView);
     }
 }

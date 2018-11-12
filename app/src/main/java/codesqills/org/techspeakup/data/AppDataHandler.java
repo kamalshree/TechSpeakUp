@@ -54,6 +54,11 @@ class AppDataHandler implements DataHandler {
         mFirebaseHandler.fetchFollowers(new FirebaseCallback<List<Followers>>(callback));
 
     }
+
+    @Override
+    public void fetchFollowersById(String followerId, Callback<User> callback) {
+        mFirebaseHandler.fetchFollowersById(followerId, new FirebaseCallback<User>(callback));
+    }
 //    @Override
 //    public void fetchFollowersDetails(String myUid,final Callback<List<User>> callback) {
 //        // Fetch all the Followers

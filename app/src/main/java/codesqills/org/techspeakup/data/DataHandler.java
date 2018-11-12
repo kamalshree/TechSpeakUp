@@ -4,6 +4,7 @@ import java.util.List;
 
 import codesqills.org.techspeakup.data.models.Events;
 import codesqills.org.techspeakup.data.models.Followers;
+import codesqills.org.techspeakup.data.models.User;
 
 /**
  * Created by kamalshree on 10/25/2018.
@@ -54,7 +55,8 @@ public interface DataHandler {
 
     //Followers
     void fetchFollowers(Callback<List<Followers>> callback);
-   // void fetchFollowersDetails(String myUid, Callback<List<User>> callback);
+    void fetchFollowersById(String followerId, Callback<User> callback);
+
     boolean isLoggedIn();
     void destroy();
 
