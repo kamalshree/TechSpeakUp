@@ -57,6 +57,10 @@ public interface DataHandler {
     void fetchFollowers(Callback<List<Followers>> callback);
     void fetchFollowersById(String followerId, Callback<User> callback);
 
+
+    //Notification
+    void fetchAllUsers(int limitToFirst, Callback<List<User>> callback);
+
     boolean isLoggedIn();
     void destroy();
 

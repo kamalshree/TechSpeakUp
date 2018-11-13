@@ -32,6 +32,8 @@
         <activity android:name=".ui.eventsdetails.EventsDetailsActivity"/>
         <activity android:name=".ui.followers.FollowersActivity"/>
         <activity android:name=".ui.followersdetails.FollowersDetailsActivity"/>
+        <activity android:name=".ui.newnotification.NewNotificationActivity"/>
+        <activity android:name=".ui.notificationFollowers.NotificationFollowersActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

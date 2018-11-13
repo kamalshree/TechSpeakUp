@@ -140,5 +140,13 @@
     <string name="tv_follower_name">Rahul Kumar</string>
 
 
+    <!-- Notification -->
+    <string name="new_notification_profile">Notification</string>
+    <string name="tv_notification_follower_name">Rahul Kumar</string>
+    <string name="tv_notification_follower_designation">Android Developer</string>
+    <string name="tv_notification_follower_location">Bangalore,India</string>
+    <string name="tv_notification_follower_arrow">Next Page</string>
+
+
 
 </resources>

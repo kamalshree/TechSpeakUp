@@ -62,7 +62,7 @@ dependencies {
     implementation "com.google.android.gms:play-services-auth:$rootProject.googlePlayVersion"
     implementation group: 'com.google.code.gson', name: 'gson', version: "$rootProject.gsonVersion"
 
-    implementation "com.github.ittianyu:BottomNavigationViewEx:1.2.4"
+    implementation "com.github.ittianyu:BottomNavigationViewEx:$rootProject.bottomNavVersion"
 
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation "com.android.support.test:runner:1.0.2"

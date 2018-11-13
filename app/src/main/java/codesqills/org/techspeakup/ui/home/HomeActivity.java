@@ -32,6 +32,7 @@ import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfileActivity;
 import codesqills.org.techspeakup.ui.events.EventsActivity;
 import codesqills.org.techspeakup.ui.followers.FollowersActivity;
+import codesqills.org.techspeakup.ui.newnotification.NewNotificationActivity;
 import codesqills.org.techspeakup.ui.signin.SignInActivity;
 import codesqills.org.techspeakup.ui.speakerprofile.SpeakerProfileActivity;
 
@@ -182,6 +183,12 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         startActivity(eventIntent);
     }
 
+    @Override
+    public void displayNotification() {
+        Intent eventIntent = new Intent(this, NewNotificationActivity.class);
+        startActivity(eventIntent);
+    }
+
     //Bottom Navigation bar Click items
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -195,6 +202,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 mPresenter.handleUserFollowers();
                 break;
             case R.id.navigation_speaker_notification:
+                mPresenter.handleNotification();
                 break;
             case R.id.navigation_speaker_event:
                 mPresenter.handleUserEvent();

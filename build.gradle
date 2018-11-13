@@ -49,4 +49,5 @@ ext {
     firebaseVersion='16.0.1'
     gsonVersion = '2.8.0'
     googlePlayVersion='15.0.1'
+    bottomNavVersion='1.2.4'
 }

@@ -12,6 +12,10 @@ import codesqills.org.techspeakup.ui.followersdetails.FollowersDetailsContract;
 import codesqills.org.techspeakup.ui.followersdetails.FollowersDetailsPresenter;
 import codesqills.org.techspeakup.ui.home.HomeContract;
 import codesqills.org.techspeakup.ui.home.HomePresenter;
+import codesqills.org.techspeakup.ui.newnotification.NewNotificationContract;
+import codesqills.org.techspeakup.ui.newnotification.NewNotificationPresenter;
+import codesqills.org.techspeakup.ui.notificationFollowers.NotificationFollowersContract;
+import codesqills.org.techspeakup.ui.notificationFollowers.NotificationFollowersPresenter;
 import codesqills.org.techspeakup.ui.profile.ProfileContract;
 import codesqills.org.techspeakup.ui.profile.ProfilePresenter;
 import codesqills.org.techspeakup.ui.signin.SignInContract;
@@ -59,5 +63,12 @@ public class PresenterInjector {
 
     public static void injectFollowersDetailsPresenter(FollowersDetailsContract.View FollowersDetailsProfileView) {
         new FollowersDetailsPresenter(FollowersDetailsProfileView);
+    }
+
+    public static void injectNewNotificationPresenter(NewNotificationContract.View NewNotificationProfileView) {
+        new NewNotificationPresenter(NewNotificationProfileView);
+
+    } public static void injectNotificationFollowersPresenter(NotificationFollowersContract.View NotificationFollowerProfileView) {
+        new NotificationFollowersPresenter(NotificationFollowerProfileView);
     }
 }

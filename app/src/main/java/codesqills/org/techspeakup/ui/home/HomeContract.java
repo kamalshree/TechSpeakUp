@@ -16,6 +16,7 @@ public interface HomeContract {
         void displayEditProfile();
         void displayFollowers();
         void displayEvent();
+        void displayNotification();
     }
     interface Presenter extends BasePresenter{
         void getProfileDetails();
@@ -23,5 +24,6 @@ public interface HomeContract {
         void handleUserFollowers();
         void handleEditProfile();
         void handleUserEvent();
+        void handleNotification();
     }
 }

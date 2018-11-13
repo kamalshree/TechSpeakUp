@@ -49,6 +49,13 @@ class AppDataHandler implements DataHandler {
     }
 
     @Override
+    public void fetchAllUsers(int limitToFirst, final Callback<List<User>> callback) {
+        // Fetch all the events
+        mFirebaseHandler.fetchAllUsers(limitToFirst, new FirebaseCallback<List<User>>(callback));
+
+    }
+
+    @Override
     public void fetchFollowers(final Callback<List<Followers>> callback) {
         // Fetch all the Followers
         mFirebaseHandler.fetchFollowers(new FirebaseCallback<List<Followers>>(callback));

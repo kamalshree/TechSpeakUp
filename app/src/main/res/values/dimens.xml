@@ -74,6 +74,8 @@
 
     <!-- Followers-->
     <dimen name="followers_layout_marginTop">108dp</dimen>
+    <dimen name="followers_layout_marginBottom">52dp</dimen>
+    <dimen name="followers_layout_marginEnd">29dp</dimen>
 
 
 </resources>

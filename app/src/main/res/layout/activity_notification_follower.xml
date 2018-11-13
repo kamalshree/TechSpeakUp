@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/viewcolor"
+        android:orientation="vertical"
+        tools:context=".ui.notificationFollowers.NotificationFollowersActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradientbackground">
+
+
+            <!-- ToolBar -->
+            <include
+                android:id="@+id/toolbar_speakerprofile"
+                layout="@layout/toolbar_speakerprofile" />
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/speaker_profile_cardviewone"
+                android:layout_width="@dimen/navigation_drawer_menu_height"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toolbar_speakerprofile"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/margin_larges"
+                android:layout_marginRight="@dimen/margin_larges"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/colorText">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:baselineAligned="false"
+                    android:orientation="vertical">
+
+                    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/refresh_followerscreen"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="4dp">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recyclerview_notification_followers"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="4dp"
+                            android:background="@color/colorText"
+                            android:focusableInTouchMode="true"
+                            android:textAlignment="center"
+                            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:itemCount="20"
+                            tools:listitem="@layout/list_item_notification_followers" />
+                    </android.support.v4.widget.SwipeRefreshLayout>
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/home_screen_pb"
+                        android:layout_width="@dimen/loading_dots_width"
+                        android:layout_height="@dimen/loading_dots_height"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:visibility="gone"
+                        app:lottie_autoPlay="true"
+                        app:lottie_fileName="loading.json"
+                        app:lottie_loop="true" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+            <!-- No Internet Connection layout -->
+            <include
+                android:id="@+id/layout_internet"
+                android:visibility="invisible"
+                layout="@layout/activity_no_internet"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
