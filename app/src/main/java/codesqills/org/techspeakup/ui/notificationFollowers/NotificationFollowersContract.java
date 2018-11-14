@@ -14,11 +14,11 @@ public interface NotificationFollowersContract {
 
     interface View extends BaseView<Presenter> {
         void loadFollowers(List<User> events);
-
+        void navigateToNotificationDetails(User users);
         void loadFollowersError();
     }
 
     interface Presenter extends BasePresenter {
-
+        void onFollowersClicked(User user);
     }
 }

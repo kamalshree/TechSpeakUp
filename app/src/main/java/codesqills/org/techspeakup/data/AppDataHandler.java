@@ -92,6 +92,7 @@ class AppDataHandler implements DataHandler {
         currentUser.setLinkedin(mPreferences.getUserLinkedin());
         currentUser.setWebsite(mPreferences.getUserWebsite());
         currentUser.setAbout(mPreferences.getUserAbout());
+        currentUser.setDeviceID(mPreferences.getDeviceID());
 
         mFirebaseHandler.setUserInfo(currentUser, new FirebaseCallback<>(callback));
     }
@@ -210,6 +211,16 @@ class AppDataHandler implements DataHandler {
     @Override
     public String getEditAboutMe() {
         return mPreferences.getUserAbout();
+    }
+
+    @Override
+    public void saveDeviceID(String deviceID) {
+        mPreferences.setDeviceID(deviceID);
+    }
+
+    @Override
+    public String getDeviceID() {
+        return mPreferences.getDeviceID();
     }
 
     @Override

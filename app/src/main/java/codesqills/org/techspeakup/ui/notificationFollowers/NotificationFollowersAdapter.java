@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import codesqills.org.techspeakup.R;
+import codesqills.org.techspeakup.data.models.Followers;
 import codesqills.org.techspeakup.data.models.User;
 
 /**
@@ -92,7 +93,12 @@ public class NotificationFollowersAdapter extends RecyclerView.Adapter<Notificat
             tvFollowerDesignation.setText(currentEvents.getJob());
             tvFollowerLocation.setText(currentEvents.getLocation());
             // Attaching click listener to each quiz item
-
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mNotificationItemListener.onFollowersClicked(currentEvents);
+                }
+            });
         }
     }
 
@@ -103,9 +109,9 @@ public class NotificationFollowersAdapter extends RecyclerView.Adapter<Notificat
         /**
          * Called when events is clicked
          *
-         * @param events the events that was clicked
+         * @param followers the events that was clicked
          */
-        // void onEventsClicked(Events events);
+         void onFollowersClicked(User followers);
     }
 
 }

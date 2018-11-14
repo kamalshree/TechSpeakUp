@@ -20,6 +20,7 @@ public interface SpeakerEditProfileContract {
         void setEditLinkedin(String linkedin);
         void setEditWebsite(String website);
         void setEditAbout(String about);
+        void setDeviceID(String deviceid);
 
         void onProfileSaved();
         void onSaveError();
@@ -32,6 +33,7 @@ public interface SpeakerEditProfileContract {
         void getEditLinkedin();
         void getEditWebsite();
         void getEditAbout();
-        void saveEditProfile(@Nullable String editName,String editLocation,String editJob,String editTwitter,String editLinkedin,String editWebsite,String editAboutMe);
+        void getDeviceID();
+        void saveEditProfile(@Nullable String editName,String editLocation,String editJob,String editTwitter,String editLinkedin,String editWebsite,String editAboutMe,String devicceID);
     }
 }

@@ -3,6 +3,7 @@ package codesqills.org.techspeakup.ui.editprofile;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -54,7 +55,7 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
     @BindView(R.id.speaker_profile_page_toolbar_settings)
     TextView editProfile;
 
-
+    String deviceid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +68,7 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
     }
 
     private void intialiseUI() {
+        deviceid = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         editProfile.setText(getResources().getString(R.string.speaker_editprofile_profile));
         mBack.setOnClickListener(this);
         editSubmit.setOnClickListener(this);
@@ -144,6 +146,11 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
     }
 
     @Override
+    public void setDeviceID(String deviceid) {
+        //Toast.makeText(this, "my Device id" +deviceid, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.speaker_editprofile_submit:
@@ -158,7 +165,8 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
                             editTwitter.getText().toString(),
                             editLinkedin.getText().toString(),
                             editWebsite.getText().toString(),
-                            editAboutMe.getText().toString());
+                            editAboutMe.getText().toString(),
+                            deviceid);
                 }
 
                 break;

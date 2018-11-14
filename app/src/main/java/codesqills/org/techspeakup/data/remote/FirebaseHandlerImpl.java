@@ -43,6 +43,7 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
     private static final String KEY_USER_LINKEDIN = "linkedin";
     private static final String KEY_USER_WEBSITE = "website";
     private static final String KEY_USER_ABOUT = "about";
+    private static final String KEY_DEVICE_ID = "deviceid";
 
     private static final String KEY_LAST_MODIFIED = "eventdate";
 
@@ -295,6 +296,7 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
         userData.put(KEY_USER_LINKEDIN, currentUser.getLinkedin());
         userData.put(KEY_USER_WEBSITE, currentUser.getWebsite());
         userData.put(KEY_USER_ABOUT, currentUser.getAbout());
+        userData.put(KEY_DEVICE_ID, currentUser.getDeviceId());
 
         if (mCurrentUser == null) {
             mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();

@@ -12,8 +12,6 @@ import codesqills.org.techspeakup.ui.BaseView;
 
 public interface ProfileContract {
 
-
-
     interface View extends BaseView<Presenter>{
         void loadUserPic(String picUrl);
 

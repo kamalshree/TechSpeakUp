@@ -55,6 +55,10 @@ public class User {
     @SerializedName("about")
     private String mAbout;
 
+    @Expose
+    @SerializedName("deviceid")
+    private String mDeviceId;
+
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
@@ -165,6 +169,16 @@ public class User {
     @PropertyName("about")
     public void setAbout(String about) {
         mAbout = about;
+    }
+
+    @PropertyName("deviceid")
+    public String getDeviceId() {
+        return mDeviceId;
+    }
+
+    @PropertyName("deviceid")
+    public void setDeviceID(String deviceid) {
+        mDeviceId = deviceid;
     }
 
     @Exclude

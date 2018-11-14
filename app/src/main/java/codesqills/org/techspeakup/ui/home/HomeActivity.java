@@ -33,6 +33,7 @@ import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfileActivity;
 import codesqills.org.techspeakup.ui.events.EventsActivity;
 import codesqills.org.techspeakup.ui.followers.FollowersActivity;
 import codesqills.org.techspeakup.ui.newnotification.NewNotificationActivity;
+import codesqills.org.techspeakup.ui.notificationsend.NotificationSendContract;
 import codesqills.org.techspeakup.ui.signin.SignInActivity;
 import codesqills.org.techspeakup.ui.speakerprofile.SpeakerProfileActivity;
 

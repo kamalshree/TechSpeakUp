@@ -31,6 +31,7 @@ public class SpeakerEditProfilePresenter implements SpeakerEditProfileContract.P
         getEditLinkedin();
         getEditWebsite();
         getEditAbout();
+        getDeviceID();
 
     }
 
@@ -74,9 +75,14 @@ public class SpeakerEditProfilePresenter implements SpeakerEditProfileContract.P
         mView.setEditAbout(mDataHandler.getEditAboutMe());
     }
 
+    @Override
+    public void getDeviceID() {
+        mView.setDeviceID(mDataHandler.getDeviceID());
+    }
+
 
     @Override
-    public void saveEditProfile(@Nullable String editName, String editLocation,String editJob, String editTwitter, String editLinkedin, String editWebsite, String editAboutMe) {
+    public void saveEditProfile(@Nullable String editName, String editLocation,String editJob, String editTwitter, String editLinkedin, String editWebsite, String editAboutMe,String deviceID) {
 
         mDataHandler.saveEditName(editName);
         mDataHandler.saveEditLocation(editLocation);
@@ -85,6 +91,7 @@ public class SpeakerEditProfilePresenter implements SpeakerEditProfileContract.P
         mDataHandler.saveEditLinkedin(editLinkedin);
         mDataHandler.saveEditWebsite(editWebsite);
         mDataHandler.saveEditAboutMe(editAboutMe);
+        mDataHandler.saveDeviceID(deviceID);
 
         mDataHandler.setUserInfo(new DataHandler.Callback<Void>() {
             @Override

@@ -57,6 +57,8 @@ import android.content.SharedPreferences;
     private String mUserWebsite;
     private static final String KEY_USER_ABOUT = "key_user_about";
     private String mUserAbout;
+    private static final String KEY_USER_DEVICE_ID = "key_device_id";
+    private String mDeviceID;
 
 
 
@@ -193,6 +195,18 @@ import android.content.SharedPreferences;
             mUserAbout = mPrefs.getString(KEY_USER_ABOUT, null);
         }
         return mUserAbout;
+    }
+
+    public void setDeviceID(String deviceID) {
+        this.mDeviceID = deviceID;
+        mPrefs.edit().putString(KEY_USER_DEVICE_ID, deviceID).apply();
+    }
+
+    public String getDeviceID() {
+        if (mDeviceID == null) {
+            mDeviceID = mPrefs.getString(KEY_USER_DEVICE_ID, null);
+        }
+        return mDeviceID;
     }
 
 

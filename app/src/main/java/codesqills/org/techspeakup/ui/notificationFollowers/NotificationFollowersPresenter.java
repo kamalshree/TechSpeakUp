@@ -55,4 +55,8 @@ public class NotificationFollowersPresenter implements NotificationFollowersCont
         this.mDataHandler = null;
     }
 
+    @Override
+    public void onFollowersClicked(User user) {
+        mview.navigateToNotificationDetails(user);
+    }
 }
