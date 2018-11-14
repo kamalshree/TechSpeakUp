@@ -4,18 +4,25 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
+import codesqills.org.techspeakup.data.models.Message;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.notificationFollowers.NotificationFollowersActivity;
 import codesqills.org.techspeakup.utils.NetworkUtils;
@@ -24,9 +31,12 @@ import codesqills.org.techspeakup.utils.NetworkUtils;
  * Created by kamalshree on 11/12/2018.
  */
 
-public class NewNotificationActivity extends AppCompatActivity implements NewNotificationContract.View, View.OnClickListener {
+public class NewNotificationActivity extends AppCompatActivity implements NewNotificationAdapter.NotificationsItemListener, NewNotificationContract.View, View.OnClickListener {
     private NewNotificationContract.Presenter mPresenter;
     private Bundle extras;
+
+    private RecyclerView mNotificationRecyclerView;
+    private NewNotificationAdapter mNotificationAdapter;
 
     @BindView(R.id.speaker_profile_page_toolbar_settings)
     TextView editProfile;
@@ -46,6 +56,9 @@ public class NewNotificationActivity extends AppCompatActivity implements NewNot
     @BindView(R.id.layout_internet)
     View layout_internet;
 
+    private Context mContext;
+    SwipeRefreshLayout swipeRefreshLayout;
+    private static final int BACK_PRESS_DURATION = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +76,9 @@ public class NewNotificationActivity extends AppCompatActivity implements NewNot
         PresenterInjector.injectNewNotificationPresenter(this);
         extras = getIntent().getExtras();
         mPresenter.start(extras);
+
+        setUpSwipeRefresh();
+
     }
 
     private void intialiseUI() {
@@ -70,6 +86,47 @@ public class NewNotificationActivity extends AppCompatActivity implements NewNot
         mBack.setOnClickListener(this);
         fab_notification.setOnClickListener(this);
 
+        //RecyclerView
+        mNotificationRecyclerView = findViewById(R.id.recyclerview_notification);
+        mNotificationRecyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mNotificationRecyclerView.setLayoutManager(linearLayoutManager);
+
+        mNotificationAdapter = new NewNotificationAdapter(this, this);
+        mNotificationRecyclerView.setAdapter(mNotificationAdapter);
+
+    }
+
+    private void setUpSwipeRefresh() {
+        swipeRefreshLayout = findViewById(R.id.refresh_notificationscreen);
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorAccent,
+                R.color.colorAccent, R.color.colorAccent);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                mPresenter.start(NewNotificationActivity.this.getIntent().getExtras());
+
+                swipeRefreshLayout.setRefreshing(true);
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (mNotificationAdapter != null) {
+                            mNotificationAdapter.notifyDataSetChanged();
+                        }
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }, BACK_PRESS_DURATION);
+            }
+        });
+    }
+
+    @Override
+    public void loadNotifications(List<Message> messages) {
+        mNotificationRecyclerView.setVisibility(View.VISIBLE);
+        mNotificationAdapter.loadFollowers(messages);
     }
 
     @Override

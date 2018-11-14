@@ -16,12 +16,14 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import codesqills.org.techspeakup.data.models.Events;
 import codesqills.org.techspeakup.data.models.Followers;
+import codesqills.org.techspeakup.data.models.Message;
 import codesqills.org.techspeakup.data.models.User;
 
 /**
@@ -53,6 +55,7 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
     private DatabaseReference mUsersRef;
     private DatabaseReference mEventsRef;
     private DatabaseReference mFollowersRef;
+    private DatabaseReference mNotificationsRef;
 
     private List<ValueEventListener> mValueListeners;
 
@@ -67,6 +70,7 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
         mUsersRef = rootRef.child(REF_USERS_NODE);
         mEventsRef = rootRef.child(REF_EVENTS_NODE);
         mFollowersRef = rootRef.child(REF_FOLLOWERS_NODE);
+        mNotificationsRef = rootRef.child(REF_NOTIFICATIONS_NODE);
 
 
     }
@@ -195,6 +199,43 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
 
 
         mFollowersRef.child(mCurrentUser.getUid())
+                .addValueEventListener(listener);
+    }
+
+
+    //Fetch all Notifications
+    @Override
+    public void fetchNotifications(final Callback<List<Message>> callback) {
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    List<Message> notificationsList = new ArrayList<>();
+                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                        try {
+                            Message singleNotifications = childSnapshot.getValue(Message.class);
+                            //singleNotifications.setmKey(childSnapshot.getKey());
+                            notificationsList.add(singleNotifications);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                        callback.onReponse(notificationsList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+
+            mNotificationsRef.child(mCurrentUser.getUid())
                 .addValueEventListener(listener);
     }
 

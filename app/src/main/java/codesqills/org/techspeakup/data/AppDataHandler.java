@@ -9,6 +9,7 @@ import java.util.List;
 import codesqills.org.techspeakup.application.AppClass;
 import codesqills.org.techspeakup.data.models.Events;
 import codesqills.org.techspeakup.data.models.Followers;
+import codesqills.org.techspeakup.data.models.Message;
 import codesqills.org.techspeakup.data.models.User;
 import codesqills.org.techspeakup.data.remote.FirebaseHandler;
 import codesqills.org.techspeakup.data.remote.FirebaseProvider;
@@ -59,6 +60,13 @@ class AppDataHandler implements DataHandler {
     public void fetchFollowers(final Callback<List<Followers>> callback) {
         // Fetch all the Followers
         mFirebaseHandler.fetchFollowers(new FirebaseCallback<List<Followers>>(callback));
+
+    }
+
+    @Override
+    public void fetchNotifications(final Callback<List<Message>> callback) {
+        // Fetch all the Followers
+        mFirebaseHandler.fetchNotifications(new FirebaseCallback<List<Message>>(callback));
 
     }
 

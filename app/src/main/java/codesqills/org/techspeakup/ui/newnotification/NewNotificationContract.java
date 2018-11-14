@@ -1,5 +1,8 @@
 package codesqills.org.techspeakup.ui.newnotification;
 
+import java.util.List;
+
+import codesqills.org.techspeakup.data.models.Message;
 import codesqills.org.techspeakup.ui.BasePresenter;
 import codesqills.org.techspeakup.ui.BaseView;
 
@@ -9,11 +12,14 @@ import codesqills.org.techspeakup.ui.BaseView;
 
 public interface NewNotificationContract {
 
-    interface View extends BaseView<Presenter>{
+    interface View extends BaseView<Presenter> {
         void navigateToNotificationFollowers();
+
+        void loadNotifications(List<Message> messages);
+
     }
 
-    interface Presenter extends BasePresenter{
+    interface Presenter extends BasePresenter {
         void openNewNotification();
     }
 }

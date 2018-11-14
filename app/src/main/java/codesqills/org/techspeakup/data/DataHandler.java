@@ -4,6 +4,7 @@ import java.util.List;
 
 import codesqills.org.techspeakup.data.models.Events;
 import codesqills.org.techspeakup.data.models.Followers;
+import codesqills.org.techspeakup.data.models.Message;
 import codesqills.org.techspeakup.data.models.User;
 
 /**
@@ -61,6 +62,7 @@ public interface DataHandler {
 
     //Notification
     void fetchAllUsers(int limitToFirst, Callback<List<User>> callback);
+    void fetchNotifications(Callback<List<Message>> callback);
 
     boolean isLoggedIn();
     void destroy();

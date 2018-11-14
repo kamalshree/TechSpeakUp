@@ -95,7 +95,7 @@ public class MessageDialog  extends DialogFragment {
      * @return
      */
     private String getTimestamp(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US);
         sdf.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"));
         return sdf.format(new Date());
     }
