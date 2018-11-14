@@ -16,8 +16,6 @@ import codesqills.org.techspeakup.ui.newnotification.NewNotificationContract;
 import codesqills.org.techspeakup.ui.newnotification.NewNotificationPresenter;
 import codesqills.org.techspeakup.ui.notificationFollowers.NotificationFollowersContract;
 import codesqills.org.techspeakup.ui.notificationFollowers.NotificationFollowersPresenter;
-import codesqills.org.techspeakup.ui.notificationsend.NotificationSendContract;
-import codesqills.org.techspeakup.ui.notificationsend.NotificationSendPresenter;
 import codesqills.org.techspeakup.ui.profile.ProfileContract;
 import codesqills.org.techspeakup.ui.profile.ProfilePresenter;
 import codesqills.org.techspeakup.ui.signin.SignInContract;
@@ -75,7 +73,4 @@ public class PresenterInjector {
         new NotificationFollowersPresenter(NotificationFollowerProfileView);
     }
 
-    public static void injectNotificationSendPresenter(NotificationSendContract.View NotificationSendProfileView) {
-        new NotificationSendPresenter(NotificationSendProfileView);
-    }
 }

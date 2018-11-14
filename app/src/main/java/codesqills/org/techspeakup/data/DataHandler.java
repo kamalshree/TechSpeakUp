@@ -49,8 +49,6 @@ public interface DataHandler {
     void saveEditAboutMe(String editAboutMe);
     String getEditAboutMe();
 
-    void saveDeviceID(String deviceID);
-    String getDeviceID();
 
     //Event Details
     void fetchEvents(int limitToFirst, Callback<List<Events>> callback);

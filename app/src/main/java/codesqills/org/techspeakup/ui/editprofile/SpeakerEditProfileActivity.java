@@ -55,7 +55,7 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
     @BindView(R.id.speaker_profile_page_toolbar_settings)
     TextView editProfile;
 
-    String deviceid;
+    //String deviceid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +68,7 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
     }
 
     private void intialiseUI() {
-        deviceid = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        //deviceid = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         editProfile.setText(getResources().getString(R.string.speaker_editprofile_profile));
         mBack.setOnClickListener(this);
         editSubmit.setOnClickListener(this);
@@ -145,10 +145,6 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
         editAboutMe.setText(about);
     }
 
-    @Override
-    public void setDeviceID(String deviceid) {
-        //Toast.makeText(this, "my Device id" +deviceid, Toast.LENGTH_SHORT).show();
-    }
 
     @Override
     public void onClick(View v) {
@@ -165,8 +161,8 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
                             editTwitter.getText().toString(),
                             editLinkedin.getText().toString(),
                             editWebsite.getText().toString(),
-                            editAboutMe.getText().toString(),
-                            deviceid);
+                            editAboutMe.getText().toString()
+                            );
                 }
 
                 break;

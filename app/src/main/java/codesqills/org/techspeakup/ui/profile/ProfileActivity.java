@@ -2,7 +2,6 @@ package codesqills.org.techspeakup.ui.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -15,15 +14,12 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.home.HomeActivity;
-import codesqills.org.techspeakup.ui.home.HomeContract;
-import codesqills.org.techspeakup.ui.notificationsend.NotificationSendContract;
 
 /**
  * Created by kamalshree on 10/29/2018.

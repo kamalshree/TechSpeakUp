@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -15,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -23,6 +23,9 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import butterknife.BindView;
@@ -33,7 +36,6 @@ import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfileActivity;
 import codesqills.org.techspeakup.ui.events.EventsActivity;
 import codesqills.org.techspeakup.ui.followers.FollowersActivity;
 import codesqills.org.techspeakup.ui.newnotification.NewNotificationActivity;
-import codesqills.org.techspeakup.ui.notificationsend.NotificationSendContract;
 import codesqills.org.techspeakup.ui.signin.SignInActivity;
 import codesqills.org.techspeakup.ui.speakerprofile.SpeakerProfileActivity;
 
@@ -42,6 +44,7 @@ import codesqills.org.techspeakup.ui.speakerprofile.SpeakerProfileActivity;
  */
 
 public class HomeActivity extends AppCompatActivity implements HomeContract.View, BottomNavigationView.OnNavigationItemSelectedListener {
+    private static final String TAG = "HomeActivity";
 
     private Bundle extras;
     private HomeContract.Presenter mPresenter;
@@ -69,6 +72,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         setContentView(R.layout.activity_home_speaker);
         ButterKnife.bind(this);
         intializeUI();
+        initFCM();
 
         PresenterInjector.injectHomePresenter(this);
         extras = getIntent().getExtras();
@@ -284,5 +288,22 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 return true;
             }
         });
+    }
+
+    private void sendRegistrationToServer(String token) {
+        Log.d(TAG, "sendRegistrationToServer: sending token to server: " + token);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        reference.child("users")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child("messaging_token")
+                .setValue(token);
+    }
+
+
+    private void initFCM(){
+        String token = FirebaseInstanceId.getInstance().getToken();
+        Log.d(TAG, "initFCM: token: " + token);
+        sendRegistrationToServer(token);
+
     }
 }

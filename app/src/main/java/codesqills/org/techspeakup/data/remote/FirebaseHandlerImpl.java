@@ -296,7 +296,6 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
         userData.put(KEY_USER_LINKEDIN, currentUser.getLinkedin());
         userData.put(KEY_USER_WEBSITE, currentUser.getWebsite());
         userData.put(KEY_USER_ABOUT, currentUser.getAbout());
-        userData.put(KEY_DEVICE_ID, currentUser.getDeviceId());
 
         if (mCurrentUser == null) {
             mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();

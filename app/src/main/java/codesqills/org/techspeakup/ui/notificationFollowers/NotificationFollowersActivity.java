@@ -2,7 +2,6 @@ package codesqills.org.techspeakup.ui.notificationFollowers;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -23,8 +22,7 @@ import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.data.models.User;
 import codesqills.org.techspeakup.ui.PresenterInjector;
-import codesqills.org.techspeakup.ui.notificationsend.NotificationSendActivity;
-import codesqills.org.techspeakup.ui.notificationsend.NotificationSendContract;
+import codesqills.org.techspeakup.ui.message.MessageDialog;
 import codesqills.org.techspeakup.utils.NetworkUtils;
 
 /**
@@ -199,13 +197,14 @@ public class NotificationFollowersActivity extends AppCompatActivity implements 
         mFollowersAdapter.loadFollowers(followers);
     }
 
+    /* Open Notificiation Dialog */
     @Override
     public void navigateToNotificationDetails(User users) {
-        Intent notificationDraftIntent = new Intent(this, NotificationSendActivity.class);
-        notificationDraftIntent.putExtra(NotificationSendContract.KEY_FOLLOWER_SEND_ID, users.getKey());
-        notificationDraftIntent.putExtra(NotificationSendContract.KEY_FOLLOWER_SEND_NAME, users.getName());
-        startActivity(notificationDraftIntent);
-        overridePendingTransition(R.anim.slide_in_up, R.anim.anim_nothing);
+        MessageDialog dialog = new MessageDialog();
+        Bundle bundle = new Bundle();
+        bundle.putString(getString(R.string.intent_user_id), users.getKey());
+        dialog.setArguments(bundle);
+        dialog.show(getSupportFragmentManager(), getString(R.string.dialog_message));
     }
 
     @Override

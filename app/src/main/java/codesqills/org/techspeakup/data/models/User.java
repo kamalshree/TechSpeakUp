@@ -55,9 +55,6 @@ public class User {
     @SerializedName("about")
     private String mAbout;
 
-    @Expose
-    @SerializedName("deviceid")
-    private String mDeviceId;
 
 
     /**
@@ -171,15 +168,6 @@ public class User {
         mAbout = about;
     }
 
-    @PropertyName("deviceid")
-    public String getDeviceId() {
-        return mDeviceId;
-    }
-
-    @PropertyName("deviceid")
-    public void setDeviceID(String deviceid) {
-        mDeviceId = deviceid;
-    }
 
     @Exclude
     public String getKey() {
