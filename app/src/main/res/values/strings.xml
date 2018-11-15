@@ -153,6 +153,10 @@
 
     <string name="tv_notification_msg">Hello, this is a message</string>
     <string name="tv_notification_timestamp">2018-11-13T17:47:48Z</string>
+    <string name="send_notification_btn">Send</string>
+    <string name="send_notification_sent_message">message sent</string>
+    <string name="send_notification_message_enter">enter a message</string>
+    <string name="send_notification_new_message">new message...</string>
 
     <!-- FCM -->
 

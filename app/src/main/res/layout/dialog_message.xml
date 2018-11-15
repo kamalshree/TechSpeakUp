@@ -9,18 +9,21 @@
         android:minLines="3"
         android:maxLines="5"
         android:id="@+id/message"
-        android:hint="new message..."
-        android:padding="10dp"/>
+        android:hint="@string/send_notification_new_message"
+        android:padding="@dimen/padding_10"
+        />
 
 
     <Button
+        android:id="@+id/send_notification_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="send"
+        android:layout_alignParentEnd="true"
         android:layout_below="@+id/message"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/colorAccent"
-        android:id="@+id/send"/>
+        android:layout_marginEnd="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_large"
+        android:padding="@dimen/padding_10"
+        android:background="@drawable/buttonborder"
+        android:text="@string/send_notification_btn"
+        android:textColor="@color/colorAccent" />
 </RelativeLayout>

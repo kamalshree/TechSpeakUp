@@ -13,25 +13,28 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import android.support.v4.app.DialogFragment;
 
 import java.util.Locale;
 
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.data.models.Message;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
+
 /**
  * Created by kamalshree on 11/14/2018.
  */
 
-public class MessageDialog  extends DialogFragment {
+public class MessageDialog extends DialogFragment {
 
     private static final String TAG = "MessageDialog";
 
     //create a new bundle and set the arguments to avoid a null pointer
-    public MessageDialog(){
+    public MessageDialog() {
         super();
         setArguments(new Bundle());
     }
@@ -57,14 +60,12 @@ public class MessageDialog  extends DialogFragment {
         View view = inflater.inflate(R.layout.dialog_message, container, false);
         mMessage = (EditText) view.findViewById(R.id.message);
 
-        Button send = (Button) view.findViewById(R.id.send);
+        Button send = (Button) view.findViewById(R.id.send_notification_btn);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: sending a new message");
-
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-                if(!mMessage.getText().toString().equals("")){
+                if (!mMessage.getText().toString().equals("")) {
 
                     //create the new message
                     Message message = new Message();
@@ -79,9 +80,9 @@ public class MessageDialog  extends DialogFragment {
                             .child(reference.push().getKey())
                             .setValue(message);
                     getDialog().dismiss();
-                    Toast.makeText(getActivity(), "message sent", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getActivity(), "enter a message", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getResources().getString(R.string.send_notification_sent_message), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), getResources().getString(R.string.send_notification_message_enter), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -92,9 +93,10 @@ public class MessageDialog  extends DialogFragment {
 
     /**
      * Return the current timestamp in the form of a string
+     *
      * @return
      */
-    private String getTimestamp(){
+    private String getTimestamp() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US);
         sdf.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"));
         return sdf.format(new Date());

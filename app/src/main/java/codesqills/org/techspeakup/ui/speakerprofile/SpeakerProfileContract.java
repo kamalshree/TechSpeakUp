@@ -29,6 +29,5 @@ public interface SpeakerProfileContract {
         void getUserLinkedin();
         void getUserWebsite();
         void getUserAbout();
-
     }
 }

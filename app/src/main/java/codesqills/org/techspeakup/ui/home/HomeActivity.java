@@ -297,6 +297,12 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .child("messaging_token")
                 .setValue(token);
+
+        //setting follower count val to 0
+        reference.child("users")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child("followers_count")
+                .setValue("0");
     }
 
 
@@ -304,6 +310,5 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         String token = FirebaseInstanceId.getInstance().getToken();
         Log.d(TAG, "initFCM: token: " + token);
         sendRegistrationToServer(token);
-
     }
 }

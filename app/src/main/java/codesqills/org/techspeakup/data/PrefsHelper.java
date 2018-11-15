@@ -57,6 +57,8 @@ import android.content.SharedPreferences;
     private String mUserWebsite;
     private static final String KEY_USER_ABOUT = "key_user_about";
     private String mUserAbout;
+    private static final String KEY_USER_FOLLOWER_COUNT = "key_user_followercount";
+    private String mUserFollowerCount;
 
 
 
@@ -196,6 +198,19 @@ import android.content.SharedPreferences;
     }
 
 
+    public void setUserFollowerCount(String userFollowerCount) {
+        this.mUserFollowerCount = userFollowerCount;
+        mPrefs.edit().putString(KEY_USER_FOLLOWER_COUNT, userFollowerCount).apply();
+    }
+
+    public String getUserFollowerCount() {
+        if (mUserFollowerCount == null) {
+            mUserFollowerCount = mPrefs.getString(KEY_USER_FOLLOWER_COUNT, null);
+        }
+        return mUserFollowerCount;
+    }
+
+
 
 
     public void destroy() {
@@ -210,7 +225,7 @@ import android.content.SharedPreferences;
         mUserLinkedin=null;
         mUserWebsite=null;
         mUserAbout=null;
-
+        mUserFollowerCount=null;
 
     }
 

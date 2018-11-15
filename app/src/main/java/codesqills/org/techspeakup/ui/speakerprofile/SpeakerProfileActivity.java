@@ -3,8 +3,10 @@ package codesqills.org.techspeakup.ui.speakerprofile;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,6 +16,13 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.firebase.FirebaseError;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,6 +58,9 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
 
     @BindView(R.id.tv_about_val)
     TextView mUserabout;
+
+    @BindView(R.id.speaker_profile_tv_followers_val)
+    TextView mFollowerCount;
 
     @BindView(R.id.speaker_profile_iv)
     ImageView mProfileImage;
@@ -91,7 +103,10 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
     private void intialiseUI() {
         mBack.setOnClickListener(this);
         refreshBtn.setOnClickListener(this);
+        loadFollowerCount();
+        getFollowerCount();
     }
+
     @Override
     public void setPresenter(SpeakerProfileContract.Presenter presenter) {
         this.mPresenter = presenter;
@@ -150,6 +165,42 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
     @Override
     public void loadUserAbout(String about) {
         mUserabout.setText(about);
+    }
+
+    public void loadFollowerCount() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        reference.child("users")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child("followers_count")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        mFollowerCount.setText(snapshot.getValue().toString());
+                        // mFollowerCount.setText(getFollowerCount());
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+    }
+
+    public void getFollowerCount() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        reference.child("followers")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // get total available quest
+                        int size = (int) dataSnapshot.getChildrenCount();
+                        mFollowerCount.setText(""+size);
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
     }
 
     @Override

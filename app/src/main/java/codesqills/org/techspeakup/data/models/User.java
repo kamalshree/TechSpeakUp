@@ -55,7 +55,9 @@ public class User {
     @SerializedName("about")
     private String mAbout;
 
-
+    @Expose
+    @SerializedName("followers_count")
+    private String mFollowersCount;
 
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
@@ -166,6 +168,16 @@ public class User {
     @PropertyName("about")
     public void setAbout(String about) {
         mAbout = about;
+    }
+
+    @PropertyName("followers_count")
+    public String getFollowersCount() {
+        return mFollowersCount;
+    }
+
+    @PropertyName("followers_count")
+    public void setFollowersCount(String followers_count) {
+        mFollowersCount = followers_count;
     }
 
 

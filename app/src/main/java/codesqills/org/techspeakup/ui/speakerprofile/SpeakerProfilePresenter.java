@@ -76,4 +76,5 @@ public class SpeakerProfilePresenter implements SpeakerProfileContract.Presenter
     public void getUserAbout() {
         mView.loadUserAbout(mDataHandler.getEditAboutMe());
     }
+
 }

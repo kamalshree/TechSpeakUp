@@ -16,7 +16,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +45,7 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
     private static final String KEY_USER_WEBSITE = "website";
     private static final String KEY_USER_ABOUT = "about";
     private static final String KEY_DEVICE_ID = "deviceid";
+    private static final String KEY_FOLLOWERS_COUNT = "followers_count";
 
     private static final String KEY_LAST_MODIFIED = "eventdate";
 
@@ -75,38 +75,6 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
 
     }
 
-    /*
-        @Override
-        public void fetchFollowersDetails(String myUid, final Callback<List<User>> callback) {
-            ValueEventListener listener = new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot snapshot) {
-                    if (snapshot != null) {
-                        List<User> eventsList = new ArrayList<>();
-                        User singleEvent = snapshot.getValue(User.class);
-                        if (singleEvent != null) {
-                            singleEvent.setKey(snapshot.getKey());
-                            eventsList.add(singleEvent);
-                            callback.onReponse(eventsList);
-                        } else {
-                            callback.onError();
-                        }
-                    } else {
-                        callback.onError();
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    callback.onError();
-                }
-            };
-
-            mUsersRef.child(myUid).addValueEventListener(listener);
-            mValueListeners.add(listener);
-        }
-
-    */
     //Fetch Events by ID
     @Override
     public void fetchEventById(String eventId, final Callback<Events> callback) {
@@ -337,6 +305,7 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
         userData.put(KEY_USER_LINKEDIN, currentUser.getLinkedin());
         userData.put(KEY_USER_WEBSITE, currentUser.getWebsite());
         userData.put(KEY_USER_ABOUT, currentUser.getAbout());
+        userData.put(KEY_FOLLOWERS_COUNT, currentUser.getFollowersCount());
 
         if (mCurrentUser == null) {
             mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();

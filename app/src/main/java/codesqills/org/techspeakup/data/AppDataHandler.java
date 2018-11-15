@@ -3,7 +3,6 @@ package codesqills.org.techspeakup.data;
 
 import android.content.Context;
 
-import java.util.HashSet;
 import java.util.List;
 
 import codesqills.org.techspeakup.application.AppClass;
@@ -100,6 +99,7 @@ class AppDataHandler implements DataHandler {
         currentUser.setLinkedin(mPreferences.getUserLinkedin());
         currentUser.setWebsite(mPreferences.getUserWebsite());
         currentUser.setAbout(mPreferences.getUserAbout());
+        currentUser.setFollowersCount(mPreferences.getUserFollowerCount());
 
         mFirebaseHandler.setUserInfo(currentUser, new FirebaseCallback<>(callback));
     }
@@ -218,6 +218,16 @@ class AppDataHandler implements DataHandler {
     @Override
     public String getEditAboutMe() {
         return mPreferences.getUserAbout();
+    }
+
+    @Override
+    public void saveFollowerCount(String followerCount) {
+        mPreferences.setUserFollowerCount(followerCount);
+    }
+
+    @Override
+    public String getFollowerCount() {
+        return mPreferences.getUserFollowerCount();
     }
 
 
