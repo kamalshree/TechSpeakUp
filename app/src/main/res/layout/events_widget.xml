@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color">
+
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/tv_widget_eventname"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/app_name"
+        android:layout_marginEnd="26dp"
+        android:src="@drawable/ic_widget_icon" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:padding="4dp"
+        android:text="@string/app_name"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/font_20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_widget_eventname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView"
+        android:padding="@dimen/margin_medium"
+        android:text="@string/tv_eventdetail_eventname"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/font_18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_widget_eventlocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv_widget_eventname"
+        android:padding="@dimen/margin_medium"
+        android:text="@string/event_details_eventlocation"
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_widget_eventdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_widget_eventname"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_toEndOf="@+id/tv_widget_eventlocation"
+        android:padding="@dimen/margin_medium"
+        android:text="@string/event_details_eventdate"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/font_14sp" />
+</RelativeLayout>

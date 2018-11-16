@@ -174,6 +174,9 @@ public class EventsActivity extends AppCompatActivity implements EventAdapter.Ev
     public void navigateToEventsDesc(Events events) {
         Intent eventsDetailsIntent = new Intent(this, EventsDetailsActivity.class);
         eventsDetailsIntent.putExtra(EventsDetailsContract.KEY_EVENTS_ID, events.getKey());
+        eventsDetailsIntent.putExtra(EventsDetailsContract.KEY_EVENTS_NAME, events.getEventName());
+        eventsDetailsIntent.putExtra(EventsDetailsContract.KEY_EVENTS_LOCATION, events.getEventLocation());
+        eventsDetailsIntent.putExtra(EventsDetailsContract.KEY_EVENTS_DATE, events.getEventDate());
         startActivity(eventsDetailsIntent);
         overridePendingTransition(R.anim.slide_in_up, R.anim.anim_nothing);
     }
@@ -194,15 +197,15 @@ public class EventsActivity extends AppCompatActivity implements EventAdapter.Ev
     }
 
 
-    private void checkInternet(){
+    private void checkInternet() {
         if (NetworkUtils.connectionStatus(this)) {
             mCard.setVisibility(View.VISIBLE);
             toolbar_event.setVisibility(View.VISIBLE);
-        }
-        else{
+        } else {
             ShowNoInternetMessage();
         }
     }
+
     /*Action when internet not available */
     private void ShowNoInternetMessage() {
         mCard.setVisibility(View.INVISIBLE);

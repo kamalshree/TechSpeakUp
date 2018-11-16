@@ -10,6 +10,9 @@ import codesqills.org.techspeakup.ui.BaseView;
 public interface EventsDetailsContract {
 
     String KEY_EVENTS_ID = "events_id";
+    String KEY_EVENTS_NAME = "events_name";
+    String KEY_EVENTS_LOCATION = "events_location";
+    String KEY_EVENTS_DATE = "events_date";
 
 
     interface View extends BaseView<Presenter> {
