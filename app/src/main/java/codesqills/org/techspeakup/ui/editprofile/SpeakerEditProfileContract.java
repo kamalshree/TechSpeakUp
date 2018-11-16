@@ -4,7 +4,6 @@ import android.support.annotation.Nullable;
 
 import codesqills.org.techspeakup.ui.BasePresenter;
 import codesqills.org.techspeakup.ui.BaseView;
-import codesqills.org.techspeakup.ui.profile.ProfileContract;
 
 /**
  * Created by kamalshree on 11/5/2018.
@@ -31,6 +30,6 @@ public interface SpeakerEditProfileContract {
         void getEditLinkedin();
         void getEditWebsite();
         void getEditAbout();
-        void saveEditProfile(@Nullable String editName,String editLocation,String editJob,String editTwitter,String editLinkedin,String editWebsite,String editAboutMe);
+        void saveEditProfile(@Nullable String editName,String editLocation,String editJob,String editTwitter,String editLinkedin,String editWebsite,String editAboutMe,String followerCount);
     }
 }

@@ -185,7 +185,7 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
                     for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                         try {
                             Message singleNotifications = childSnapshot.getValue(Message.class);
-                            //singleNotifications.setmKey(childSnapshot.getKey());
+                            singleNotifications.setKey(childSnapshot.getKey());
                             notificationsList.add(singleNotifications);
 
                         } catch (Exception e) {

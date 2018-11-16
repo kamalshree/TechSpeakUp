@@ -6,12 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import codesqills.org.techspeakup.R;
+import codesqills.org.techspeakup.data.models.Followers;
 import codesqills.org.techspeakup.data.models.Message;
 
 
@@ -86,11 +88,13 @@ public class NewNotificationAdapter extends RecyclerView.Adapter<NewNotification
 
         private TextView tvFollowerMessage;
         private TextView tvFollowerTimestamp;
+        private ImageView deleteNotificationIcon;
 
         NotificationViewHolder(View itemView) {
             super(itemView);
             tvFollowerMessage = itemView.findViewById(R.id.tv_notifiation_message);
             tvFollowerTimestamp = itemView.findViewById(R.id.tv_notifiation_timestamp);
+            deleteNotificationIcon = itemView.findViewById(R.id.iv_delete_notification);
 
         }
 
@@ -103,6 +107,12 @@ public class NewNotificationAdapter extends RecyclerView.Adapter<NewNotification
             tvFollowerMessage.setText(currentNotifications.getMessage());
             tvFollowerTimestamp.setText(currentNotifications.getTimestamp());
             // Attaching click listener to each quiz item
+            deleteNotificationIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mNotificationsItemListener.onNotificationClicked(currentNotifications);
+                }
+            });
 
         }
     }
@@ -114,9 +124,9 @@ public class NewNotificationAdapter extends RecyclerView.Adapter<NewNotification
         /**
          * Called when Messages is clicked
          *
-         * @param notifications the Messages that was clicked
+         * @param messages the Messages that was clicked
          */
-        // void onFollowersClicked(Followers followers);
+        void onNotificationClicked(Message messages);
     }
 
 }

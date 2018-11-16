@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -24,7 +25,10 @@ import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.data.models.Message;
 import codesqills.org.techspeakup.ui.PresenterInjector;
+import codesqills.org.techspeakup.ui.message.DeleteMessageDialog;
+import codesqills.org.techspeakup.ui.message.MessageDialog;
 import codesqills.org.techspeakup.ui.notificationFollowers.NotificationFollowersActivity;
+import codesqills.org.techspeakup.ui.notificationFollowers.NotificationFollowersAdapter;
 import codesqills.org.techspeakup.utils.NetworkUtils;
 
 /**
@@ -208,5 +212,21 @@ public class NewNotificationActivity extends AppCompatActivity implements NewNot
         Intent notifctaionFollowersIntent = new Intent(this, NotificationFollowersActivity.class);
         startActivity(notifctaionFollowersIntent);
         overridePendingTransition(R.anim.slide_in_up, R.anim.anim_nothing);
+    }
+
+    @Override
+    public void onNotificationClicked(Message messages) {
+
+        mPresenter.onNotificationClicked(messages);
+
+    }
+
+    public void deleteNotifications(Message messages) {
+        DeleteMessageDialog dialog = new DeleteMessageDialog();
+        Bundle bundle = new Bundle();
+        bundle.putString(getString(R.string.intent_message_id), messages.getKey());
+        dialog.setArguments(bundle);
+        dialog.show(getSupportFragmentManager(), getString(R.string.dialog_message));
+
     }
 }

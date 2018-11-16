@@ -1,5 +1,7 @@
 package codesqills.org.techspeakup.data.models;
 
+import com.google.firebase.database.Exclude;
+
 /**
  * Created by kamalshree on 11/13/2018.
  */
@@ -9,6 +11,7 @@ public class Message {
     private String message;
     private String user_id;
     private String timestamp;
+    private String key;
 
     public Message(String message, String user_id, String timestamp) {
         this.message = message;
@@ -42,6 +45,14 @@ public class Message {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     @Override

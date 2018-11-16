@@ -3,20 +3,16 @@ package codesqills.org.techspeakup.ui.speakerprofile;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -176,7 +172,7 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
                         mFollowerCount.setText(snapshot.getValue().toString());
-                        // mFollowerCount.setText(getFollowerCount());
+
                     }
 
                     @Override
@@ -194,8 +190,9 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         // get total available quest
                         int size = (int) dataSnapshot.getChildrenCount();
-                        mFollowerCount.setText(""+size);
+                        mFollowerCount.setText("" + size);
                     }
+
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 

@@ -1,9 +1,7 @@
 package codesqills.org.techspeakup.ui.editprofile;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,14 +12,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.ui.PresenterInjector;
-import codesqills.org.techspeakup.ui.home.HomeActivity;
-import codesqills.org.techspeakup.ui.signin.SignInActivity;
 
 /**
  * Created by kamalshree on 11/5/2018.
@@ -55,6 +55,9 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
     @BindView(R.id.speaker_profile_page_toolbar_settings)
     TextView editProfile;
 
+    @BindView(R.id.speaker_editprofile_follower)
+    TextView mFollowerCount;
+
     //String deviceid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,7 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
         editProfile.setText(getResources().getString(R.string.speaker_editprofile_profile));
         mBack.setOnClickListener(this);
         editSubmit.setOnClickListener(this);
+        getFollowerCount();
     }
 
     @Override
@@ -161,7 +165,8 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
                             editTwitter.getText().toString(),
                             editLinkedin.getText().toString(),
                             editWebsite.getText().toString(),
-                            editAboutMe.getText().toString()
+                            editAboutMe.getText().toString(),
+                            mFollowerCount.getText().toString()
                             );
                 }
 
@@ -173,6 +178,25 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
                 break;
         }
     }
+
+    public void getFollowerCount() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        reference.child("followers")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // get total available quest
+                        int size = (int) dataSnapshot.getChildrenCount();
+                        mFollowerCount.setText(""+size);
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+    }
+
 
     @Override
     public void onProfileSaved() {

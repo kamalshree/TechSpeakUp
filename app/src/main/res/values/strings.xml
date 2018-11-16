@@ -157,6 +157,8 @@
     <string name="send_notification_sent_message">message sent</string>
     <string name="send_notification_message_enter">enter a message</string>
     <string name="send_notification_new_message">new message...</string>
+    <string name="iv_delete_notification">Delete</string>
+    <string name="tv_delete_message">Do you want to delete the message?</string>
 
     <!-- FCM -->
 
@@ -170,6 +172,7 @@
 
     <!-- Bundle Extras -->
     <string name="intent_user_id">intent_user_id</string>
+    <string name="intent_message_id">intent_message_id</string>
 
     <!-- Dialog Names -->
     <string name="dialog_message">dialog_message</string>

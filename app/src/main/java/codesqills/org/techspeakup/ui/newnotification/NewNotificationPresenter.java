@@ -51,4 +51,9 @@ public class NewNotificationPresenter implements NewNotificationContract.Present
     public void openNewNotification() {
         mView.navigateToNotificationFollowers();
     }
+
+    @Override
+    public void onNotificationClicked(Message message) {
+        mView.deleteNotifications(message);
+    }
 }

@@ -36,7 +36,7 @@
 
         <TextView
             android:id="@+id/tv_notifiation_timestamp"
-            android:layout_width="0dp"
+            android:layout_width="235dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_medium"
             android:textAlignment="center"
@@ -47,6 +47,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_notifiation_message"
             tools:text="@string/tv_notification_timestamp" />
+
+        <ImageView
+            android:id="@+id/iv_delete_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:contentDescription="@string/iv_delete_notification"
+            android:src="@drawable/ic_recycle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_notifiation_timestamp"
+            app:layout_constraintStart_toEndOf="@+id/tv_notifiation_timestamp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_notifiation_message" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>
