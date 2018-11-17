@@ -76,7 +76,6 @@
     <string name="speaker_profile_followers_val">1205</string>
 
 
-
     <string name="speaker_profile_wiliam_snoe">Wiliam Snoe</string>
     <string name="speaker_profile_android_developer">Android developer</string>
     <string name="speaker_profile_peru">Peru</string>
@@ -182,5 +181,8 @@
     <string name="notification_tab_speaker">Speaker</string>
     <string name="notification_tab_search">Search</string>
     <string name="notification_tab_event">Event</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="user_location_title">User Location Details</string>
+    <string name="user_permission_denied">Permission Denied...</string>
 
 </resources>

@@ -34,7 +34,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.ui.PresenterInjector;
-import codesqills.org.techspeakup.ui.Search.SearchFragment;
+import codesqills.org.techspeakup.ui.search.SearchFragment;
 import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfileActivity;
 import codesqills.org.techspeakup.ui.events.EventsActivity;
 import codesqills.org.techspeakup.ui.followers.FollowersActivity;
