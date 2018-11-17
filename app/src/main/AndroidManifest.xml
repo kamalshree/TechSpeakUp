@@ -56,6 +56,7 @@
                 android:resource="@xml/events_widget_info" />
         </receiver>
 
+        <activity android:name=".ui.userdashboard.UserDashboardActivity"/>
     </application>
 
 </manifest>

@@ -33,7 +33,7 @@ public class ProfilePresenter implements ProfileContract.Presenter {
     public void start(@Nullable Bundle extras) {
         if (mDataHandler.isLoggedIn()) {
             // If user is logged in directly navigate to home
-            mView.onProfileSaved();
+            mView.onProfileSaved(mDataHandler.getUserType());
             return;
         }
 
@@ -56,7 +56,7 @@ public class ProfilePresenter implements ProfileContract.Presenter {
     }
 
     @Override
-    public void saveProfile(@Nullable String pictureUrl, String username, String userType) {
+    public void saveProfile(@Nullable String pictureUrl, String username, final String userType) {
         if (pictureUrl != null && !pictureUrl.isEmpty()) {
             mDataHandler.saveUserPic(pictureUrl);
         }
@@ -67,7 +67,7 @@ public class ProfilePresenter implements ProfileContract.Presenter {
             mDataHandler.setUserInfo(new DataHandler.Callback<Void>() {
                 @Override
                 public void onResponse(Void result) {
-                    mView.onProfileSaved();
+                    mView.onProfileSaved(userType);
                 }
 
                 @Override

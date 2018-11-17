@@ -22,6 +22,8 @@ import codesqills.org.techspeakup.ui.signin.SignInContract;
 import codesqills.org.techspeakup.ui.signin.SignInPresenter;
 import codesqills.org.techspeakup.ui.speakerprofile.SpeakerProfileContract;
 import codesqills.org.techspeakup.ui.speakerprofile.SpeakerProfilePresenter;
+import codesqills.org.techspeakup.ui.userdashboard.UserDashboardContract;
+import codesqills.org.techspeakup.ui.userdashboard.UserDashboardPresenter;
 
 /**
  * Created by kamalshree on 10/25/2018.
@@ -71,6 +73,10 @@ public class PresenterInjector {
     }
     public static void injectNotificationFollowersPresenter(NotificationFollowersContract.View NotificationFollowerProfileView) {
         new NotificationFollowersPresenter(NotificationFollowerProfileView);
+    }
+
+    public static void injectUserDashboardPresenter(UserDashboardContract.View UserDashboardProfileView) {
+        new UserDashboardPresenter(UserDashboardProfileView);
     }
 
 }

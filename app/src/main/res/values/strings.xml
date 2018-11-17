@@ -177,4 +177,10 @@
     <!-- Dialog Names -->
     <string name="dialog_message">dialog_message</string>
 
+    <!-- User Dashbaord -->
+
+    <string name="notification_tab_speaker">Speaker</string>
+    <string name="notification_tab_search">Search</string>
+    <string name="notification_tab_event">Event</string>
+
 </resources>

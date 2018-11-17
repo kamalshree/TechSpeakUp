@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.home.HomeActivity;
+import codesqills.org.techspeakup.ui.userdashboard.UserDashboardActivity;
 
 /**
  * Created by kamalshree on 10/29/2018.
@@ -111,15 +112,26 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
     }
 
     @Override
-    public void onProfileSaved() {
-       // Toast.makeText(this, getString(R.string.profile_saved_successfully), Toast.LENGTH_SHORT).show();
-        // Navigate to home activity
-        Intent homeIntent = new Intent(this, HomeActivity.class);
-        if (extras != null) {
-            homeIntent.putExtras(extras);
+    public void onProfileSaved(String userType) {
+       //If "Speaker" type route to speaker dashboard else User dashboard
+    Toast.makeText(this,userType,Toast.LENGTH_LONG).show();
+        if(userType.equals("Speaker")){
+            Intent homeIntent = new Intent(this, HomeActivity.class);
+            if (extras != null) {
+                homeIntent.putExtras(extras);
+            }
+            startActivity(homeIntent);
+            this.finish();
         }
-        startActivity(homeIntent);
-        this.finish();
+        else{
+            Intent userIntent = new Intent(this, UserDashboardActivity.class);
+            if (extras != null) {
+                userIntent.putExtras(extras);
+            }
+            startActivity(userIntent);
+            this.finish();
+        }
+
     }
 
 

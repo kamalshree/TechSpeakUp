@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/relLayoutParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- top toolbar -->
+
+        <include
+            android:id="@+id/toolbar_home_page"
+            layout="@layout/toolbar_home_page" />
+
+
+        <RelativeLayout
+            android:id="@+id/relLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar_home_page">
+
+            <!-- Top Tabs -->
+            <include
+                android:id="@+id/layout_top_tabs"
+                layout="@layout/layout_top_tabs" />
+
+            <!-- Middle section (body) -->
+            <android.support.v4.view.ViewPager
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_top_tabs"
+                android:layout_marginBottom="@dimen/userdashboard_bottom_margin"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+            <!-- bottom navigation -->
+            <include
+                layout="@layout/navigation_home_speaker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+    <!-- Navigation Menu with header -->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/user_navigationview_home"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/navigation_drawer_menu_height"
+        android:layout_gravity="start"
+        android:visibility="visible"
+        app:headerLayout="@layout/navigation_drawer_header"
+        app:menu="@menu/navigation_drawer_home_speaker_menu">
+
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>

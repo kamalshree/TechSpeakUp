@@ -25,7 +25,7 @@ public interface ProfileContract {
 
         void onSaveError();
 
-        void onProfileSaved();
+        void onProfileSaved(String userType);
     }
 
     interface Presenter extends BasePresenter{

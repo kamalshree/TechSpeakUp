@@ -80,4 +80,8 @@
     <dimen name="followers_layout_marginEnd">29dp</dimen>
 
 
+    <!-- UserDashboard -->
+
+    <dimen name="userdashboard_bottom_margin">45dp</dimen>
+
 </resources>
