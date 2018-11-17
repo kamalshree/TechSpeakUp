@@ -2,6 +2,7 @@ package codesqills.org.techspeakup.ui.userdashboard;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -9,6 +10,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -34,6 +36,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.ui.PresenterInjector;
+import codesqills.org.techspeakup.ui.home.HomeActivity;
 import codesqills.org.techspeakup.ui.search.SearchFragment;
 import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfileActivity;
 import codesqills.org.techspeakup.ui.events.EventsActivity;
@@ -43,6 +46,7 @@ import codesqills.org.techspeakup.ui.settings.SettingsFragment;
 import codesqills.org.techspeakup.ui.signin.SignInActivity;
 import codesqills.org.techspeakup.ui.speaker.SpeakerFragment;
 import codesqills.org.techspeakup.ui.speakerprofile.SpeakerProfileActivity;
+import codesqills.org.techspeakup.utils.GpsTracker;
 import codesqills.org.techspeakup.utils.SectionsPagerAdapter;
 
 /**
@@ -55,6 +59,7 @@ public class UserDashboardActivity extends AppCompatActivity implements UserDash
     private UserDashboardContract.Presenter mPresenter;
 
     private ViewPager mViewPager;
+    private GpsTracker gpsTracker;
 
 
     @BindView(R.id.navigation_home_speaker)
@@ -86,6 +91,7 @@ public class UserDashboardActivity extends AppCompatActivity implements UserDash
         intializeUI();
         initFCM();
         setupViewPager();
+        getLatLong();
 
         // Injecting Presenter here
         PresenterInjector.injectUserDashboardPresenter(this);
@@ -341,5 +347,44 @@ public class UserDashboardActivity extends AppCompatActivity implements UserDash
                 return true;
             }
         });
+    }
+
+
+    /* get Users Latitude and Longitude */
+    private void getLatLong() {
+        try {
+            if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
+            }
+            getLocation();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public void getLocation(){
+        gpsTracker = new GpsTracker(UserDashboardActivity.this);
+        if(gpsTracker.canGetLocation()){
+            double latitude = gpsTracker.getLatitude();
+            double longitude = gpsTracker.getLongitude();
+            sendUserLocationDetails(latitude,longitude);
+        }else{
+            gpsTracker.showSettingsAlert();
+        }
+    }
+
+    private void sendUserLocationDetails(double latitude, double longitude) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        reference.child("users")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child("user_latitude")
+                .setValue(latitude);
+
+        reference.child("users")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child("user_longitude")
+                .setValue(longitude);
     }
 }

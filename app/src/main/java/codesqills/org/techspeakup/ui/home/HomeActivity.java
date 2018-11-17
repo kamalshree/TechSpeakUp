@@ -1,13 +1,19 @@
 package codesqills.org.techspeakup.ui.home;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -38,6 +44,7 @@ import codesqills.org.techspeakup.ui.followers.FollowersActivity;
 import codesqills.org.techspeakup.ui.newnotification.NewNotificationActivity;
 import codesqills.org.techspeakup.ui.signin.SignInActivity;
 import codesqills.org.techspeakup.ui.speakerprofile.SpeakerProfileActivity;
+import codesqills.org.techspeakup.utils.GpsTracker;
 
 /**
  * Created by kamalshree on 10/29/2018.
@@ -51,7 +58,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     private TextView myUsername;
     private Toolbar myToolbar;
     private static final int BACK_PRESS_DURATION = 3000;
-
+    private GpsTracker gpsTracker;
 
     @BindView(R.id.navigation_home_speaker)
     BottomNavigationViewEx bnve;
@@ -73,6 +80,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         ButterKnife.bind(this);
         intializeUI();
         initFCM();
+        getLatLong();
 
         PresenterInjector.injectHomePresenter(this);
         extras = getIntent().getExtras();
@@ -305,10 +313,45 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 .setValue("0");
     }
 
+    private void sendUserLocationDetails(double latitude, double longitude) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        reference.child("users")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child("user_latitude")
+                .setValue(latitude);
+
+        reference.child("users")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child("user_longitude")
+                .setValue(longitude);
+    }
+
+    private void getLatLong() {
+        try {
+            if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
+            }
+            getLocation();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 
     private void initFCM(){
         String token = FirebaseInstanceId.getInstance().getToken();
         Log.d(TAG, "initFCM: token: " + token);
         sendRegistrationToServer(token);
+    }
+
+    public void getLocation(){
+        gpsTracker = new GpsTracker(HomeActivity.this);
+        if(gpsTracker.canGetLocation()){
+            double latitude = gpsTracker.getLatitude();
+            double longitude = gpsTracker.getLongitude();
+            sendUserLocationDetails(latitude,longitude);
+        }else{
+            gpsTracker.showSettingsAlert();
+        }
     }
 }
