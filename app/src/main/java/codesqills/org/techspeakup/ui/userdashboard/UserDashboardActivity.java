@@ -369,7 +369,9 @@ public class UserDashboardActivity extends AppCompatActivity implements UserDash
         if(gpsTracker.canGetLocation()){
             double latitude = gpsTracker.getLatitude();
             double longitude = gpsTracker.getLongitude();
-            sendUserLocationDetails(latitude,longitude);
+            if(latitude!=0 && longitude!=0){
+                sendUserLocationDetails(latitude, longitude);
+            }
         }else{
             gpsTracker.showSettingsAlert();
         }
@@ -386,5 +388,11 @@ public class UserDashboardActivity extends AppCompatActivity implements UserDash
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .child("user_longitude")
                 .setValue(longitude);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        getLocation();
     }
 }
