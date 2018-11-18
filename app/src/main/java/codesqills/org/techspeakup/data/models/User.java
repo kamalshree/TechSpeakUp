@@ -59,6 +59,14 @@ public class User {
     @SerializedName("followers_count")
     private String mFollowersCount;
 
+    @Expose
+    @SerializedName("user_latitude")
+    private double mLatitude;
+
+    @Expose
+    @SerializedName("user_longitude")
+    private double mLongitude;
+
     /**
      * This field should be used for storing key of realtime database snapshot, otherwise ignore it
      */
@@ -178,6 +186,27 @@ public class User {
     @PropertyName("followers_count")
     public void setFollowersCount(String followers_count) {
         mFollowersCount = followers_count;
+    }
+
+
+    @PropertyName("user_latitude")
+    public double getLatitude() {
+        return mLatitude;
+    }
+
+    @PropertyName("user_latitude")
+    public void setLatitude(double user_latitude) {
+        mLatitude = user_latitude;
+    }
+
+    @PropertyName("user_longitude")
+    public double getLongitude() {
+        return mLongitude;
+    }
+
+    @PropertyName("user_longitude")
+    public void setLongitude(double user_longitude) {
+        mLongitude = user_longitude;
     }
 
 

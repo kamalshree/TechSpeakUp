@@ -182,7 +182,7 @@
     <string name="notification_tab_search">Search</string>
     <string name="notification_tab_event">Event</string>
     <string name="title_activity_maps">Map</string>
-    <string name="user_location_title">User Location Details</string>
+    <string name="user_location_title">My Location</string>
     <string name="user_permission_denied">Permission Denied...</string>
     <string name="gps_message">GPS is settings</string>
     <string name="gps_enabled_message">GPS is not enabled. Do you want to go to settings menu?</string>
