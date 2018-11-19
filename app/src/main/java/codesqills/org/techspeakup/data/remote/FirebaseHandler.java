@@ -18,6 +18,7 @@ public interface FirebaseHandler {
     void fetchEventById(String eventId, Callback<Events> callback);
 
     void fetchFollowers(Callback<List<Followers>> callback);
+    void fetchSpeakers(Callback<List<User>> callback);
     void fetchFollowersById(String followerId, Callback<User> callback);
 
     void fetchAllUsers(int limitToFirst, Callback<List<User>> callback);

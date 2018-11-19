@@ -233,9 +233,9 @@ public class UserDashboardActivity extends AppCompatActivity implements UserDash
     }
 
     @Override
-    public void displayFollowers() {
-        Intent followersIntent = new Intent(this, FollowersActivity.class);
-        startActivity(followersIntent);
+    public void displaySpeakers() {
+       // Intent SpeakersIntent = new Intent(this, SpeakersFollowingActivity.class);
+       // startActivity(SpeakersIntent);
     }
 
     @Override
@@ -259,8 +259,8 @@ public class UserDashboardActivity extends AppCompatActivity implements UserDash
             case R.id.navigation_speaker_profile:
                 mPresenter.handleUserProfile();
                 break;
-            case R.id.navigation_speaker_follower:
-                mPresenter.handleUserFollowers();
+            case R.id.navigation_speaker_user:
+                mPresenter.handleSpeakers();
                 break;
             case R.id.navigation_speaker_notification:
                 mPresenter.handleNotification();

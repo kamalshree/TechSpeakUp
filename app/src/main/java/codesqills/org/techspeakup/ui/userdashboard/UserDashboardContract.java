@@ -17,7 +17,7 @@ public interface UserDashboardContract {
 
         void displayEditProfile();
 
-        void displayFollowers();
+        void displaySpeakers();
 
         void displayEvent();
 
@@ -30,7 +30,7 @@ public interface UserDashboardContract {
 
         void handleUserProfile();
 
-        void handleUserFollowers();
+        void handleSpeakers();
 
         void handleEditProfile();
 

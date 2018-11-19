@@ -63,6 +63,13 @@ class AppDataHandler implements DataHandler {
     }
 
     @Override
+    public void fetchSpeakers(final Callback<List<User>> callback) {
+        // Fetch all the Followers
+        mFirebaseHandler.fetchSpeakers(new FirebaseCallback<List<User>>(callback));
+
+    }
+
+    @Override
     public void fetchNotifications(final Callback<List<Message>> callback) {
         // Fetch all the Followers
         mFirebaseHandler.fetchNotifications(new FirebaseCallback<List<Message>>(callback));

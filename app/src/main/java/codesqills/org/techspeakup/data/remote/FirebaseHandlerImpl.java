@@ -171,6 +171,43 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
     }
 
 
+    //Fetch all followers
+    @Override
+    public void fetchSpeakers(final Callback<List<User>> callback) {
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    List<User> speakersList = new ArrayList<>();
+                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                        try {
+                            User singleSpeaker = childSnapshot.getValue(User.class);
+                            singleSpeaker.setKey(childSnapshot.getKey());
+                            if(singleSpeaker.getType().equals("Speaker")){
+                                speakersList.add(singleSpeaker);
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    callback.onReponse(speakersList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+
+        mUsersRef.addValueEventListener(listener);
+    }
+
     //Fetch all Notifications
     @Override
     public void fetchNotifications(final Callback<List<Message>> callback) {

@@ -74,6 +74,9 @@ public interface DataHandler {
     //Followers
     void fetchFollowers(Callback<List<Followers>> callback);
 
+    //Speaker
+    void fetchSpeakers(Callback<List<User>> callback);
+
     void fetchFollowersById(String followerId, Callback<User> callback);
 
 

@@ -22,6 +22,8 @@ import codesqills.org.techspeakup.ui.search.SearchContract;
 import codesqills.org.techspeakup.ui.search.SearchPresenter;
 import codesqills.org.techspeakup.ui.signin.SignInContract;
 import codesqills.org.techspeakup.ui.signin.SignInPresenter;
+import codesqills.org.techspeakup.ui.speaker.SpeakerContract;
+import codesqills.org.techspeakup.ui.speaker.SpeakerPresenter;
 import codesqills.org.techspeakup.ui.speakerprofile.SpeakerProfileContract;
 import codesqills.org.techspeakup.ui.speakerprofile.SpeakerProfilePresenter;
 import codesqills.org.techspeakup.ui.userdashboard.UserDashboardContract;
@@ -83,6 +85,9 @@ public class PresenterInjector {
 
     public static void injectSearchPresenter(SearchContract.View SearchProfileView) {
         new SearchPresenter(SearchProfileView);
+    }
+    public static void injectSpeakerPresenter(SpeakerContract.View SpeakerProfileView) {
+        new SpeakerPresenter(SpeakerProfileView);
     }
 
 }

@@ -50,6 +50,7 @@
 
     <string name="navigation_speaker_profile">Profile</string>
     <string name="navigation_speaker_follower">Follower</string>
+    <string name="navigation_user">Speaker</string>
     <string name="navigation_speaker_notification">Notification</string>
     <string name="navigation_speaker_event">Event</string>
     <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
@@ -186,5 +187,11 @@
     <string name="user_permission_denied">Permission Denied...</string>
     <string name="gps_message">GPS is settings</string>
     <string name="gps_enabled_message">GPS is not enabled. Do you want to go to settings menu?</string>
+
+
+    <!-- Speaker -->
+    <string name="speaker_title">Speakers</string>
+    <string name="tv_speaker_name">Rahul_Sharma</string>
+    <string name="tv_speaker_job">Anroid Developer</string>
 
 </resources>

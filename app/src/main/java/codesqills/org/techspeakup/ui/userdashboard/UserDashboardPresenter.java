@@ -61,8 +61,8 @@ public class UserDashboardPresenter implements UserDashboardContract.Presenter {
     }
 
     @Override
-    public void handleUserFollowers() {
-        mView.displayFollowers();
+    public void handleSpeakers() {
+        mView.displaySpeakers();
     }
 
     @Override
