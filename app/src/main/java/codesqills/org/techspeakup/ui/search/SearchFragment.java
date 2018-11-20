@@ -83,7 +83,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Goog
     @Override
     public void onResume() {
         super.onResume();
-        mapFragment.getMapAsync(this);
+        buildGoogleApiClient();
     }
 
     @Override

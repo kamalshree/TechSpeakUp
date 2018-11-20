@@ -15,8 +15,13 @@ public interface SpeakerContract {
 
     interface View extends BaseView<Presenter> {
         void loadSpeakerDetails(List<User> speakers);
+        void showRateDialog(User user);
+        void showFollowerDialog(User user);
     }
 
     interface Presenter extends BasePresenter {
+        void onSpeakerClicked(User user);
+        void onSpeakerFollowerClicked(User user);
+
     }
 }

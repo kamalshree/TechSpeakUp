@@ -51,4 +51,16 @@ public class SpeakerPresenter implements SpeakerContract.Presenter {
         this.mView = null;
         this.mDataHandler = null;
     }
+
+    @Override
+    public void onSpeakerClicked(User user) {
+        mView.showRateDialog(user);
+
+    }
+
+    @Override
+    public void onSpeakerFollowerClicked(User user) {
+        mView.showFollowerDialog(user);
+
+    }
 }

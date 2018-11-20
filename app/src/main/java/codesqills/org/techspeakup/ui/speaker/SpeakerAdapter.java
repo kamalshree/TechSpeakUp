@@ -19,6 +19,7 @@ import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.data.models.Followers;
 import codesqills.org.techspeakup.data.models.User;
 import codesqills.org.techspeakup.ui.followers.FollowersAdapter;
+import codesqills.org.techspeakup.ui.newnotification.NewNotificationAdapter;
 
 /**
  * Created by kamalshree on 11/18/2018.
@@ -28,10 +29,13 @@ public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.Speakers
 
     private List<User> mSpeakersList;
     private Context context;
+    private SpeakerAdapter.SpeakerItemListener mSpeakerItemListener;
 
-    SpeakerAdapter( Context context) {
+
+    SpeakerAdapter(@NonNull SpeakerAdapter.SpeakerItemListener speakersItemListener, Context context) {
         mSpeakersList = new ArrayList<>();
         this.context = context;
+        this.mSpeakerItemListener=speakersItemListener;
     }
 
     @NonNull
@@ -84,12 +88,16 @@ public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.Speakers
 
         private TextView tvFollowerJob;
         private TextView tvFollowerName;
+        private ImageView ivStar;
+        private ImageView ivfollow;
 
 
         SpeakersViewHolder(View itemView) {
             super(itemView);
             tvFollowerName = itemView.findViewById(R.id.tv_speaker_name);
             tvFollowerJob = itemView.findViewById(R.id.tv_speaker_job);
+            ivStar = itemView.findViewById(R.id.iv_star);
+            ivfollow = itemView.findViewById(R.id.iv_follow);
 
         }
 
@@ -102,9 +110,33 @@ public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.Speakers
             tvFollowerName.setText(currentEvents.getName());
             tvFollowerJob.setText(currentEvents.getJob());
             // Attaching click listener to each quiz item
+            ivStar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mSpeakerItemListener.onSpeakerClicked(currentEvents);
+                }
+            });
 
+            ivfollow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mSpeakerItemListener.onSpeakerFollowerClicked(currentEvents);
+                }
+            });
         }
     }
 
+    /**
+     * Callback interface for listening to click Messages on Messages items
+     */
+    interface SpeakerItemListener {
+        /**
+         * Called when Messages is clicked
+         *
+         * @param user the Messages that was clicked
+         */
+        void onSpeakerClicked(User user);
+        void onSpeakerFollowerClicked(User user);
+    }
 
 }

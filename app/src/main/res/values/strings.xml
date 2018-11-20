@@ -193,5 +193,6 @@
     <string name="speaker_title">Speakers</string>
     <string name="tv_speaker_name">Rahul_Sharma</string>
     <string name="tv_speaker_job">Anroid Developer</string>
+    <string name="speaker_rate_success">Rating submitted successfully</string>
 
 </resources>

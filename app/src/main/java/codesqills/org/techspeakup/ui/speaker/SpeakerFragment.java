@@ -21,12 +21,15 @@ import codesqills.org.techspeakup.data.models.User;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.followers.FollowersActivity;
 import codesqills.org.techspeakup.ui.followers.FollowersAdapter;
+import codesqills.org.techspeakup.ui.message.MessageDialog;
+import codesqills.org.techspeakup.ui.message.SpeakerFollowerDialog;
+import codesqills.org.techspeakup.ui.message.SpeakerMessageDialog;
 
 /**
  * Created by kamalshree on 11/16/2018.
  */
 
-public class SpeakerFragment extends Fragment implements SpeakerContract.View {
+public class SpeakerFragment extends Fragment implements SpeakerContract.View,SpeakerAdapter.SpeakerItemListener {
 
     private SpeakerContract.Presenter mPresenter;
     private static final String TAG = "SpeakerFragment";
@@ -52,7 +55,7 @@ public class SpeakerFragment extends Fragment implements SpeakerContract.View {
          LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL, false);
         mSpeakersRecyclerView.setLayoutManager(linearLayoutManager);
 
-        mSpeakerAdapter = new SpeakerAdapter(getActivity());
+        mSpeakerAdapter = new SpeakerAdapter(this,getActivity());
         mSpeakersRecyclerView.setAdapter(mSpeakerAdapter);
 
         swipeRefreshLayout = view.findViewById(R.id.showfeedback_swipe);
@@ -101,5 +104,33 @@ public class SpeakerFragment extends Fragment implements SpeakerContract.View {
     public void loadSpeakerDetails(List<User> speakers) {
         mSpeakersRecyclerView.setVisibility(View.VISIBLE);
         mSpeakerAdapter.loadSpeakers(speakers);
+    }
+
+    @Override
+    public void showRateDialog(User user) {
+        SpeakerMessageDialog dialog = new SpeakerMessageDialog();
+        Bundle bundle = new Bundle();
+        bundle.putString(getString(R.string.intent_user_id), user.getKey());
+        dialog.setArguments(bundle);
+        dialog.show(getActivity().getSupportFragmentManager(), getString(R.string.dialog_message));
+    }
+
+@Override
+    public void showFollowerDialog(User user) {
+        SpeakerFollowerDialog dialog = new SpeakerFollowerDialog();
+        Bundle bundle = new Bundle();
+        bundle.putString(getString(R.string.intent_user_id), user.getKey());
+        dialog.setArguments(bundle);
+        dialog.show(getActivity().getSupportFragmentManager(), getString(R.string.dialog_message));
+    }
+
+    @Override
+    public void onSpeakerClicked(User user) {
+        mPresenter.onSpeakerClicked(user);
+    }
+
+ @Override
+    public void onSpeakerFollowerClicked(User user) {
+        mPresenter.onSpeakerFollowerClicked(user);
     }
 }
