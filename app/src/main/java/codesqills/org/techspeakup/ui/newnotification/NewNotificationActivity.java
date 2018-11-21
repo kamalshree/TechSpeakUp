@@ -13,6 +13,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -129,8 +130,16 @@ public class NewNotificationActivity extends AppCompatActivity implements NewNot
 
     @Override
     public void loadNotifications(List<Message> messages) {
-        mNotificationRecyclerView.setVisibility(View.VISIBLE);
-        mNotificationAdapter.loadFollowers(messages);
+        if (messages.size() == 0) {
+            try {
+                noNotificationsDialog(this).show();
+            } catch (WindowManager.BadTokenException e) {
+                //use a log message
+            }
+        } else {
+            mNotificationRecyclerView.setVisibility(View.VISIBLE);
+            mNotificationAdapter.loadFollowers(messages);
+        }
     }
 
     @Override
@@ -228,5 +237,24 @@ public class NewNotificationActivity extends AppCompatActivity implements NewNot
         dialog.setArguments(bundle);
         dialog.show(getSupportFragmentManager(), getString(R.string.dialog_message));
 
+    }
+
+    /* No Notification Dialog */
+    private AlertDialog.Builder noNotificationsDialog(Context c) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle(getResources().getString(R.string.notification_dialog_title));
+        builder.setMessage(getResources().getString(R.string.notification_dialog_message));
+
+        builder.setPositiveButton(getString(R.string.no_interent_okbutton), new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+
+        });
+
+        return builder;
     }
 }

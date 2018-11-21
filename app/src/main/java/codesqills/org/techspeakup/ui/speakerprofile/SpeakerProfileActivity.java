@@ -2,6 +2,7 @@ package codesqills.org.techspeakup.ui.speakerprofile;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -24,6 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.ui.PresenterInjector;
+import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfileActivity;
 import codesqills.org.techspeakup.utils.NetworkUtils;
 
 /**
@@ -94,6 +97,8 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
 
         extras = getIntent().getExtras();
         mPresenter.start(extras);
+
+        checkNewProfile();
     }
 
     private void intialiseUI() {
@@ -101,6 +106,14 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
         refreshBtn.setOnClickListener(this);
         loadFollowerCount();
         getFollowerCount();
+
+
+    }
+
+    private void checkNewProfile() {
+        if(mUserlocation.getText().toString().matches("") && mUsertwitter.getText().toString().matches("") && mUserlinkedin.getText().toString().matches("") && mUserlink.getText().toString().matches("") && mUserabout.getText().toString().matches("")){
+            buildDialog(this).show();
+        }
     }
 
     @Override
@@ -236,23 +249,27 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
         refreshBtn.setVisibility(View.VISIBLE);
     }
 
-    /* No Internet Dialog */
+    /* Profile not updated Dialog */
     private AlertDialog.Builder buildDialog(Context c) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(c);
-        builder.setTitle(getString(R.string.no_internet_title));
-        builder.setMessage(getString(R.string.no_internet_message));
+        builder.setTitle(getResources().getString(R.string.speaker_profile_dialog_title));
+        builder.setMessage(getResources().getString(R.string.speaker_profile_dialog_message));
 
         builder.setPositiveButton(getString(R.string.no_interent_okbutton), new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
+                Intent editprofile=new Intent(getApplication(), SpeakerEditProfileActivity.class);
+                startActivity(editprofile);
             }
 
         });
 
         return builder;
     }
+
+
 
 }

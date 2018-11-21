@@ -13,6 +13,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.data.models.Followers;
 import codesqills.org.techspeakup.ui.PresenterInjector;
+import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfileActivity;
 import codesqills.org.techspeakup.ui.eventsdetails.EventsDetailsActivity;
 import codesqills.org.techspeakup.ui.eventsdetails.EventsDetailsContract;
 import codesqills.org.techspeakup.ui.followersdetails.FollowersDetailsActivity;
@@ -80,6 +82,7 @@ public class FollowersActivity extends AppCompatActivity implements FollowersAda
         extras = getIntent().getExtras();
         mPresenter.start(extras);
         setUpSwipeRefresh();
+
     }
 
     private void intialiseUI() {
@@ -97,6 +100,8 @@ public class FollowersActivity extends AppCompatActivity implements FollowersAda
 
         mFollowersAdapter = new FollowersAdapter(this, this);
         mFollowersRecyclerView.setAdapter(mFollowersAdapter);
+
+
     }
 
     private void setUpSwipeRefresh() {
@@ -127,8 +132,16 @@ public class FollowersActivity extends AppCompatActivity implements FollowersAda
 
     @Override
     public void loadFollowers(List<Followers> followers) {
-        mFollowersRecyclerView.setVisibility(View.VISIBLE);
-        mFollowersAdapter.loadFollowers(followers);
+        if (followers.size() == 0) {
+            try {
+                noFollowersDialog(this).show();
+            } catch (WindowManager.BadTokenException e) {
+                //use a log message
+            }
+        }else {
+            mFollowersRecyclerView.setVisibility(View.VISIBLE);
+            mFollowersAdapter.loadFollowers(followers);
+        }
     }
 
     @Override
@@ -215,4 +228,24 @@ public class FollowersActivity extends AppCompatActivity implements FollowersAda
     public void onFollowersClicked(Followers followers) {
         mPresenter.onFollowersClicked(followers);
     }
+
+    /* No Followers Dialog */
+    private AlertDialog.Builder noFollowersDialog(Context c) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle(getResources().getString(R.string.follower_dialog_title));
+        builder.setMessage(getResources().getString(R.string.follower_dialog_message));
+
+        builder.setPositiveButton(getString(R.string.no_interent_okbutton), new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+
+        });
+
+        return builder;
+    }
+
 }
