@@ -171,7 +171,7 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
     }
 
 
-    //Fetch all followers
+    //Fetch all speakers
     @Override
     public void fetchSpeakers(final Callback<List<User>> callback) {
         if (mCurrentUser == null) {

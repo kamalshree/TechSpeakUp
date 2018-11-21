@@ -4,14 +4,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
-import android.widget.TextView;
 
 
 import java.util.List;
@@ -19,11 +17,8 @@ import java.util.List;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.data.models.User;
 import codesqills.org.techspeakup.ui.PresenterInjector;
-import codesqills.org.techspeakup.ui.followers.FollowersActivity;
-import codesqills.org.techspeakup.ui.followers.FollowersAdapter;
-import codesqills.org.techspeakup.ui.message.MessageDialog;
 import codesqills.org.techspeakup.ui.message.SpeakerFollowerDialog;
-import codesqills.org.techspeakup.ui.message.SpeakerMessageDialog;
+import codesqills.org.techspeakup.ui.message.SpeakerRateDialog;
 
 /**
  * Created by kamalshree on 11/16/2018.
@@ -108,7 +103,7 @@ public class SpeakerFragment extends Fragment implements SpeakerContract.View,Sp
 
     @Override
     public void showRateDialog(User user) {
-        SpeakerMessageDialog dialog = new SpeakerMessageDialog();
+        SpeakerRateDialog dialog = new SpeakerRateDialog();
         Bundle bundle = new Bundle();
         bundle.putString(getString(R.string.intent_user_id), user.getKey());
         dialog.setArguments(bundle);

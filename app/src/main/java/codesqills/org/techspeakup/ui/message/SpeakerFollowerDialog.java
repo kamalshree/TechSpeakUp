@@ -69,9 +69,7 @@ public class SpeakerFollowerDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 reference = FirebaseDatabase.getInstance().getReference();
-
-                DatabaseReference referenceUser = FirebaseDatabase.getInstance().getReference();
-                referenceUser.child("users").child(mUserId).addValueEventListener(new ValueEventListener() {
+                reference.child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         User userVal=dataSnapshot.getValue(User.class);
@@ -83,8 +81,9 @@ public class SpeakerFollowerDialog extends DialogFragment {
                         reference
                                 .child("followers")
                                 .child(mUserId)
+                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                 .setValue(follow);
-                        getDialog().dismiss();
+
                     }
 
                     @Override
@@ -93,23 +92,12 @@ public class SpeakerFollowerDialog extends DialogFragment {
                     }
                 });
 
-
+                getDialog().dismiss();
 
             }
         });
 
         return view;
-    }
-
-    /**
-     * Return the current timestamp in the form of a string
-     *
-     * @return
-     */
-    private String getTimestamp() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US);
-        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"));
-        return sdf.format(new Date());
     }
 
 

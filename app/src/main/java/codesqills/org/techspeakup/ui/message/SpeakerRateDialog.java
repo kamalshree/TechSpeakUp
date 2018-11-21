@@ -31,12 +31,12 @@ import android.widget.RatingBar.OnRatingBarChangeListener;
  * Created by kamalshree on 11/14/2018.
  */
 
-public class SpeakerMessageDialog extends DialogFragment {
+public class SpeakerRateDialog extends DialogFragment {
 
-    private static final String TAG = "SpeakerMessageDialog";
+    private static final String TAG = "SpeakerRateDialog";
     TextView my_rate_val;
     //create a new bundle and set the arguments to avoid a null pointer
-    public SpeakerMessageDialog() {
+    public SpeakerRateDialog() {
         super();
         setArguments(new Bundle());
     }
@@ -81,6 +81,7 @@ public class SpeakerMessageDialog extends DialogFragment {
                         reference
                                 .child("rate")
                                 .child(mUserId)
+                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                 .setValue(rate);
                         getDialog().dismiss();
                         Toast.makeText(getActivity(), getResources().getString(R.string.speaker_rate_success), Toast.LENGTH_SHORT).show();
