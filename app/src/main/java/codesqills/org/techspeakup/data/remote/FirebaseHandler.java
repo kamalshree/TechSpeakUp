@@ -22,6 +22,9 @@ public interface FirebaseHandler {
     void fetchFollowersById(String followerId, Callback<User> callback);
 
     void fetchAllUsers(int limitToFirst, Callback<List<User>> callback);
+    //User Map
+    void fetchAllUsersMap(int limitToFirst, Callback<List<User>> callback);
+
     void fetchNotifications(Callback<List<Message>> callback);
 
 

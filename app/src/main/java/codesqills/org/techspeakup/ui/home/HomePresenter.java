@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 
 import codesqills.org.techspeakup.data.DataHandler;
 import codesqills.org.techspeakup.data.DataHandlerProvider;
-import codesqills.org.techspeakup.ui.profile.ProfileContract;
 
 /**
  * Created by kamalshree on 11/3/2018.
@@ -16,7 +15,6 @@ public class HomePresenter implements HomeContract.Presenter{
     private HomeContract.View mView;
     private DataHandler mDataHandler;
 
-
     public HomePresenter(HomeContract.View view) {
         this.mView = view;
         this.mDataHandler = DataHandlerProvider.provide();
@@ -26,6 +24,7 @@ public class HomePresenter implements HomeContract.Presenter{
     @Override
     public void start(@Nullable Bundle extras) {
         getProfileDetails();
+
     }
 
     @Override
@@ -61,5 +60,9 @@ public class HomePresenter implements HomeContract.Presenter{
     @Override
     public void handleNotification() {
         mView.displayNotification();
+    }
+
+    public void handleUserSpeakers() {
+        mView.displaySpeaker();
     }
 }

@@ -287,6 +287,47 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
         mValueListeners.add(listener);
     }
 
+    //Fetch users for map
+    @Override
+    public void fetchAllUsersMap(int limitToFirst, final Callback<List<User>> callback) {
+
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    List<User> userList = new ArrayList<>();
+                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                        try {
+                            User singleEvents = childSnapshot.getValue(User.class);
+                           if (singleEvents != null && singleEvents.getName() != null) {
+                                singleEvents.setKey(childSnapshot.getKey());
+                                userList.add(singleEvents);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    callback.onReponse(userList);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+        Query userRefQuery = mUsersRef.orderByChild(KEY_LAST_MODIFIED);
+
+        // TODO: Implement pagination here.
+        if (limitToFirst > 0) {
+            userRefQuery.limitToFirst(limitToFirst);
+        }
+        mUsersRef.addValueEventListener(listener);
+        mValueListeners.add(listener);
+    }
+
+
 
     //Fetch all events
     @Override

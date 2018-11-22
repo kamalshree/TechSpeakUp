@@ -4,6 +4,10 @@
     <string name="google_id" translatable="false">36669457617-98hkugcdatagk6c37hi3tji5pgcbupsl.apps.googleusercontent.com</string>
     <string name="home_back_btn_msg">Press back again to exit.</string>
 
+
+    <!-- Home User-->
+    <string name="home_user_display_text">Welcome to TechSpeakUp, Vision of TechSpeakUp is to providde a easy way for students,Professors, Event organizers, Developers to connect.</string>
+
     <!-- Sign -->
     <string name="signin_text_logo">TechSpeakUp</string>
     <string name="signin_btn">SignIn</string>

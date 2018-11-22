@@ -1,5 +1,8 @@
 package codesqills.org.techspeakup.ui.home;
 
+import java.util.List;
+
+import codesqills.org.techspeakup.data.models.User;
 import codesqills.org.techspeakup.ui.BasePresenter;
 import codesqills.org.techspeakup.ui.BaseView;
 
@@ -17,6 +20,8 @@ public interface HomeContract {
         void displayFollowers();
         void displayEvent();
         void displayNotification();
+        void displaySpeaker();
+
     }
     interface Presenter extends BasePresenter{
         void getProfileDetails();
@@ -25,5 +30,6 @@ public interface HomeContract {
         void handleEditProfile();
         void handleUserEvent();
         void handleNotification();
+        void handleUserSpeakers();
     }
 }

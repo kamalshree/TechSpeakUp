@@ -1,16 +1,11 @@
 package codesqills.org.techspeakup.ui.home;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -35,23 +30,26 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
+import codesqills.org.techspeakup.data.models.User;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfileActivity;
 import codesqills.org.techspeakup.ui.events.EventsActivity;
 import codesqills.org.techspeakup.ui.followers.FollowersActivity;
+import codesqills.org.techspeakup.ui.map.MapActivity;
 import codesqills.org.techspeakup.ui.newnotification.NewNotificationActivity;
 import codesqills.org.techspeakup.ui.signin.SignInActivity;
 import codesqills.org.techspeakup.ui.speakerprofile.SpeakerProfileActivity;
 import codesqills.org.techspeakup.utils.GpsTracker;
-
 /**
  * Created by kamalshree on 10/29/2018.
  */
 
-public class HomeActivity extends AppCompatActivity implements HomeContract.View, BottomNavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements HomeContract.View, BottomNavigationView.OnNavigationItemSelectedListener{
     private static final String TAG = "HomeActivity";
 
     private Bundle extras;
@@ -72,6 +70,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     boolean mTwiceClicked = false;
     Snackbar mSnackbar;
+
 
 
     @Override
@@ -108,8 +107,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
 
         // Handle menu item clicks here.
-
-
         details_page_toolbar_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,6 +117,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         //BottomNavigationClick
         bnve.setOnNavigationItemSelectedListener(this);
     }
+
+
+
 
     //Click on hamburger icon
     @Override
@@ -203,6 +203,13 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         startActivity(eventIntent);
     }
 
+    @Override
+    public void displaySpeaker() {
+        Intent mapIntent = new Intent(this, MapActivity.class);
+        startActivity(mapIntent);
+    }
+
+
     //Bottom Navigation bar Click items
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -214,6 +221,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 break;
             case R.id.navigation_speaker_follower:
                 mPresenter.handleUserFollowers();
+                break;
+            case R.id.navigation_speaker_speakers:
+                mPresenter.handleUserSpeakers();
                 break;
             case R.id.navigation_speaker_notification:
                 mPresenter.handleNotification();
@@ -339,11 +349,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        getLocation();
-    }
+
 
     private void initFCM(){
         String token = FirebaseInstanceId.getInstance().getToken();

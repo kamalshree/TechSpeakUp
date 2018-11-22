@@ -82,6 +82,8 @@ public interface DataHandler {
 
     //Notification
     void fetchAllUsers(int limitToFirst, Callback<List<User>> callback);
+    //fetch users for User map
+    void fetchAllUsersMap(int limitToFirst, Callback<List<User>> callback);
 
     void fetchNotifications(Callback<List<Message>> callback);
 

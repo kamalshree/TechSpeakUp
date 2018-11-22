@@ -12,6 +12,8 @@ import codesqills.org.techspeakup.ui.followersdetails.FollowersDetailsContract;
 import codesqills.org.techspeakup.ui.followersdetails.FollowersDetailsPresenter;
 import codesqills.org.techspeakup.ui.home.HomeContract;
 import codesqills.org.techspeakup.ui.home.HomePresenter;
+import codesqills.org.techspeakup.ui.map.MapContract;
+import codesqills.org.techspeakup.ui.map.MapPresenter;
 import codesqills.org.techspeakup.ui.newnotification.NewNotificationContract;
 import codesqills.org.techspeakup.ui.newnotification.NewNotificationPresenter;
 import codesqills.org.techspeakup.ui.notificationFollowers.NotificationFollowersContract;
@@ -75,6 +77,7 @@ public class PresenterInjector {
         new NewNotificationPresenter(NewNotificationProfileView);
 
     }
+
     public static void injectNotificationFollowersPresenter(NotificationFollowersContract.View NotificationFollowerProfileView) {
         new NotificationFollowersPresenter(NotificationFollowerProfileView);
     }
@@ -86,8 +89,13 @@ public class PresenterInjector {
     public static void injectSearchPresenter(SearchContract.View SearchProfileView) {
         new SearchPresenter(SearchProfileView);
     }
+
     public static void injectSpeakerPresenter(SpeakerContract.View SpeakerProfileView) {
         new SpeakerPresenter(SpeakerProfileView);
+    }
+
+    public static void injectMapPresenter(MapContract.View MapProfileView) {
+        new MapPresenter(MapProfileView);
     }
 
 }

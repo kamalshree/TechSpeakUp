@@ -12,6 +12,11 @@
         android:id="@+id/navigation_speaker_follower"
         android:icon="@drawable/menu_follower"
         android:title="@string/navigation_speaker_follower" />
+
+    <item
+        android:id="@+id/navigation_speaker_speakers"
+        android:icon="@drawable/menu_speaker"
+        android:title="@string/navigation_user" />
     <item
         android:id="@+id/navigation_speaker_notification"
         android:icon="@drawable/menu_notification"

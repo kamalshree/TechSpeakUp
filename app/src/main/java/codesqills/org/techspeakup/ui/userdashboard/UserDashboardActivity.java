@@ -391,8 +391,8 @@ public class UserDashboardActivity extends AppCompatActivity implements UserDash
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onResume() {
+        super.onResume();
         getLocation();
     }
 }

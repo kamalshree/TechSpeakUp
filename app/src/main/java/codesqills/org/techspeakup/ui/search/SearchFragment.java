@@ -49,7 +49,7 @@ import codesqills.org.techspeakup.ui.followersdetails.FollowersDetailsContract;
 
 public class SearchFragment extends Fragment implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener, SearchContract.View, GoogleMap.OnInfoWindowClickListener {
     private GoogleMap mMap;
-    private GoogleApiClient googleApiClient;
+    private static GoogleApiClient googleApiClient;
     private LocationRequest locationRequest;
     private Location lastLocation;
     private Bundle extras;
