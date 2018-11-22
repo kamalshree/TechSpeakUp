@@ -114,6 +114,7 @@ class AppDataHandler implements DataHandler {
         currentUser.setWebsite(mPreferences.getUserWebsite());
         currentUser.setAbout(mPreferences.getUserAbout());
         currentUser.setFollowersCount(mPreferences.getUserFollowerCount());
+        currentUser.setRateCount(mPreferences.getUserRateCount());
 
         mFirebaseHandler.setUserInfo(currentUser, new FirebaseCallback<>(callback));
     }
@@ -242,6 +243,16 @@ class AppDataHandler implements DataHandler {
     @Override
     public String getFollowerCount() {
         return mPreferences.getUserFollowerCount();
+    }
+
+    @Override
+    public void saveRateCount(String rateCount) {
+        mPreferences.setUserRateCount(rateCount);
+    }
+
+    @Override
+    public String getRateCount() {
+        return mPreferences.getUserRateCount();
     }
 
 

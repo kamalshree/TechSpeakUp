@@ -46,6 +46,7 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
     private static final String KEY_USER_ABOUT = "about";
     private static final String KEY_DEVICE_ID = "deviceid";
     private static final String KEY_FOLLOWERS_COUNT = "followers_count";
+    private static final String KEY_RATE_COUNT = "rate_count";
 
     private static final String KEY_LAST_MODIFIED = "eventdate";
 
@@ -384,6 +385,7 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
         userData.put(KEY_USER_WEBSITE, currentUser.getWebsite());
         userData.put(KEY_USER_ABOUT, currentUser.getAbout());
         userData.put(KEY_FOLLOWERS_COUNT, currentUser.getFollowersCount());
+        userData.put(KEY_RATE_COUNT, currentUser.getRateCount());
 
         if (mCurrentUser == null) {
             mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();

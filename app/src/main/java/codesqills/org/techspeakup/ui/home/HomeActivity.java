@@ -322,6 +322,12 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .child("followers_count")
                 .setValue("0");
+
+        //setting rate count val to 0
+        reference.child("users")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child("rate_count")
+                .setValue("0");
     }
 
     private void sendUserLocationDetails(double latitude, double longitude) {

@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
+import codesqills.org.techspeakup.data.models.User;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 
 /**
@@ -58,6 +59,9 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
     @BindView(R.id.speaker_editprofile_follower)
     TextView mFollowerCount;
 
+    @BindView(R.id.speaker_editprofile_rate)
+    TextView mRateCount;
+
     //String deviceid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +80,7 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
         mBack.setOnClickListener(this);
         editSubmit.setOnClickListener(this);
         getFollowerCount();
+        getRateCount();
     }
 
     @Override
@@ -166,7 +171,8 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
                             editLinkedin.getText().toString(),
                             editWebsite.getText().toString(),
                             editAboutMe.getText().toString(),
-                            mFollowerCount.getText().toString()
+                            mFollowerCount.getText().toString(),
+                            mRateCount.getText().toString()
                             );
                 }
 
@@ -190,6 +196,36 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
                         int size = (int) dataSnapshot.getChildrenCount();
                         mFollowerCount.setText(""+size);
                     }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+    }
+    public void getRateCount() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        reference.child("rate")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // get total available quest
+                        double rateval=0;
+                        int size = (int) dataSnapshot.getChildrenCount();
+                        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                            try {
+                                User singleEvents = childSnapshot.getValue(User.class);
+                                rateval += Double.parseDouble(singleEvents.getRateCount());
+                            }
+                            catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        double speakerRateVal=rateval/size;
+                        String stringdouble= Double.toString(speakerRateVal);
+                        mRateCount.setText(stringdouble);
+                    }
+
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 

@@ -77,7 +77,7 @@ public class SpeakerEditProfilePresenter implements SpeakerEditProfileContract.P
 
 
     @Override
-    public void saveEditProfile(@Nullable String editName, String editLocation,String editJob, String editTwitter, String editLinkedin, String editWebsite, String editAboutMe,String FollowerCount) {
+    public void saveEditProfile(@Nullable String editName, String editLocation,String editJob, String editTwitter, String editLinkedin, String editWebsite, String editAboutMe,String FollowerCount,String RateCount) {
 
         mDataHandler.saveEditName(editName);
         mDataHandler.saveEditLocation(editLocation);
@@ -86,7 +86,8 @@ public class SpeakerEditProfilePresenter implements SpeakerEditProfileContract.P
         mDataHandler.saveEditLinkedin(editLinkedin);
         mDataHandler.saveEditWebsite(editWebsite);
         mDataHandler.saveEditAboutMe(editAboutMe);
-        mDataHandler.saveFollowerCount(editAboutMe);
+        mDataHandler.saveFollowerCount(FollowerCount);
+        mDataHandler.saveRateCount(RateCount);
 
         mDataHandler.setUserInfo(new DataHandler.Callback<Void>() {
             @Override

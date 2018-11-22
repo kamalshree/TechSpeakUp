@@ -59,6 +59,8 @@ import android.content.SharedPreferences;
     private String mUserAbout;
     private static final String KEY_USER_FOLLOWER_COUNT = "key_user_followercount";
     private String mUserFollowerCount;
+    private static final String KEY_USER_RATE_COUNT = "key_user_ratecount";
+    private String mUserRateCount;
 
 
 
@@ -210,6 +212,18 @@ import android.content.SharedPreferences;
         return mUserFollowerCount;
     }
 
+    public void setUserRateCount(String userRateCount) {
+        this.mUserRateCount = userRateCount;
+        mPrefs.edit().putString(KEY_USER_RATE_COUNT, userRateCount).apply();
+    }
+
+    public String getUserRateCount() {
+        if (mUserRateCount == null) {
+            mUserRateCount = mPrefs.getString(KEY_USER_RATE_COUNT, null);
+        }
+        return mUserRateCount;
+    }
+
 
 
 
@@ -226,6 +240,7 @@ import android.content.SharedPreferences;
         mUserWebsite=null;
         mUserAbout=null;
         mUserFollowerCount=null;
+        mUserRateCount=null;
 
     }
 

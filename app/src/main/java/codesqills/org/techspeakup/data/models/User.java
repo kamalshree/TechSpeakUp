@@ -60,6 +60,10 @@ public class User {
     private String mFollowersCount;
 
     @Expose
+    @SerializedName("rate_count")
+    private String mRateCount;
+
+    @Expose
     @SerializedName("user_latitude")
     private double mLatitude;
 
@@ -188,6 +192,15 @@ public class User {
         mFollowersCount = followers_count;
     }
 
+    @PropertyName("rate_count")
+    public String getRateCount() {
+        return mRateCount;
+    }
+
+    @PropertyName("rate_count")
+    public void setRateCount(String rate_count) {
+        mRateCount = rate_count;
+    }
 
     @PropertyName("user_latitude")
     public double getLatitude() {

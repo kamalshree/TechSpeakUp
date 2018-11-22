@@ -30,6 +30,6 @@ public interface SpeakerEditProfileContract {
         void getEditLinkedin();
         void getEditWebsite();
         void getEditAbout();
-        void saveEditProfile(@Nullable String editName,String editLocation,String editJob,String editTwitter,String editLinkedin,String editWebsite,String editAboutMe,String followerCount);
+        void saveEditProfile(@Nullable String editName,String editLocation,String editJob,String editTwitter,String editLinkedin,String editWebsite,String editAboutMe,String followerCount,String rateCount);
     }
 }

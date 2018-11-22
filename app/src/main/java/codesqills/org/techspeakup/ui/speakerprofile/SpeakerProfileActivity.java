@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,6 +26,8 @@ import com.google.firebase.database.ValueEventListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
+import codesqills.org.techspeakup.data.models.Rate;
+import codesqills.org.techspeakup.data.models.User;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfileActivity;
 import codesqills.org.techspeakup.utils.NetworkUtils;
@@ -60,6 +63,9 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
 
     @BindView(R.id.speaker_profile_tv_followers_val)
     TextView mFollowerCount;
+
+    @BindView(R.id.speaker_profile_tv_rate_val)
+    TextView mRateCount;
 
     @BindView(R.id.speaker_profile_iv)
     ImageView mProfileImage;
@@ -106,6 +112,8 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
         refreshBtn.setOnClickListener(this);
         loadFollowerCount();
         getFollowerCount();
+        loadRateCount();
+        getRateCount();
 
 
     }
@@ -204,6 +212,59 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
                         // get total available quest
                         int size = (int) dataSnapshot.getChildrenCount();
                         mFollowerCount.setText("" + size);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+    }
+
+
+    //Set Rate count in USER node
+
+    public void loadRateCount() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        reference.child("users")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child("rate_count")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        mRateCount.setText(snapshot.getValue().toString());
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+    }
+
+
+    public void getRateCount() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        reference.child("rate")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // get total available quest
+                        double rateval=0;
+                        int size = (int) dataSnapshot.getChildrenCount();
+                        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                            try {
+                                Rate singleEvents = childSnapshot.getValue(Rate.class);
+                                rateval += Double.parseDouble(singleEvents.getRate());
+                            }
+                            catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        double speakerRateVal=rateval/size;
+                        String stringdouble= Double.toString(speakerRateVal);
+                        mRateCount.setText(stringdouble);
                     }
 
                     @Override

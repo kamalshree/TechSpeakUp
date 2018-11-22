@@ -65,6 +65,10 @@ public interface DataHandler {
 
     String getFollowerCount();
 
+    void saveRateCount(String rateCount);
+
+    String getRateCount();
+
 
     //Event Details
     void fetchEvents(int limitToFirst, Callback<List<Events>> callback);
