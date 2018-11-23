@@ -15,12 +15,6 @@
             android:text="@string/notification_tab_speaker" />
 
         <android.support.design.widget.TabItem
-            android:id="@+id/notification_tab_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/notification_tab_search" />
-
-        <android.support.design.widget.TabItem
             android:id="@+id/notification_tab_event"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

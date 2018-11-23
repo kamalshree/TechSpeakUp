@@ -28,6 +28,14 @@ public class FollowersDetailsPresenter implements FollowersDetailsContract.Prese
 
     @Override
     public void start(@Nullable Bundle extras) {
+
+        getUserLocation();
+        getUserJob();
+        getUserTwitter();
+        getUserLinkedin();
+        getUserWebsite();
+        getUserAbout();
+
         String followerId = extras.getString(FollowersDetailsContract.KEY_FOLLOWERS_ID);
         this.mFollowerID = followerId;
 
@@ -51,6 +59,37 @@ public class FollowersDetailsPresenter implements FollowersDetailsContract.Prese
                 mView.hideLoading();
             }
         });
+
+
+    }
+
+    @Override
+    public void getUserLocation() {mView.loadFollowertLocation(mDataHandler.getEditLocation());
+    }
+
+    @Override
+    public void getUserJob() {
+        mView.loadFollowertJob(mDataHandler.getEditJob());
+    }
+
+    @Override
+    public void getUserTwitter() {
+        mView.loadFollowertTwitter(mDataHandler.getEditTwitter());
+    }
+
+    @Override
+    public void getUserLinkedin() {
+        mView.loadFollowertLinkedin(mDataHandler.getEditLinkedin());
+    }
+
+    @Override
+    public void getUserWebsite() {
+        mView.loadFollowertLink(mDataHandler.getEditWebsite());
+    }
+
+    @Override
+    public void getUserAbout() {
+        mView.loadFollowertAbout(mDataHandler.getEditAboutMe());
     }
 
     @Override

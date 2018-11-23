@@ -7,15 +7,16 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="260dp"
-        android:layout_marginEnd="182dp"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="289dp"
-        android:text="settings"
-        android:textSize="@dimen/font_20sp"
+        android:layout_marginBottom="182dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="210dp"
+        android:layout_weight="2"
+        android:text="@string/home_user_display_text"
         android:textColor="@color/colorAccent"
+        android:textSize="@dimen/font_24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

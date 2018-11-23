@@ -36,7 +36,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.ui.PresenterInjector;
+import codesqills.org.techspeakup.ui.followersdetails.FollowersDetailsActivity;
+import codesqills.org.techspeakup.ui.followersdetails.FollowersDetailsContract;
 import codesqills.org.techspeakup.ui.home.HomeActivity;
+import codesqills.org.techspeakup.ui.map.MapActivity;
 import codesqills.org.techspeakup.ui.search.SearchFragment;
 import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfileActivity;
 import codesqills.org.techspeakup.ui.events.EventsActivity;
@@ -135,17 +138,16 @@ public class UserDashboardActivity extends AppCompatActivity implements UserDash
      */
     private void setupViewPager() {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        mSectionsPagerAdapter.addFragment(new SpeakerFragment()); //index 0
-        mSectionsPagerAdapter.addFragment(new SearchFragment()); //index 1
-        mSectionsPagerAdapter.addFragment(new SettingsFragment()); //index 2
+        mSectionsPagerAdapter.addFragment(new SettingsFragment()); //index 0
+        mSectionsPagerAdapter.addFragment(new SpeakerFragment()); //index 2
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        tabLayout.getTabAt(0).setIcon(R.drawable.menu_speaker_highlight);
-        tabLayout.getTabAt(1).setIcon(R.drawable.search_pin);
-        tabLayout.getTabAt(2).setIcon(R.drawable.ic_settings_highlight);
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
+        tabLayout.getTabAt(1).setIcon(R.drawable.menu_speaker_highlight);
+
     }
 
 
@@ -222,7 +224,9 @@ public class UserDashboardActivity extends AppCompatActivity implements UserDash
 
     @Override
     public void displayUserProfile() {
-        Intent userProfileIntent = new Intent(this, SpeakerProfileActivity.class);
+        String userKey =FirebaseAuth.getInstance().getCurrentUser().getUid();
+        Intent userProfileIntent = new Intent(this, FollowersDetailsActivity.class);
+        userProfileIntent.putExtra(FollowersDetailsContract.KEY_FOLLOWERS_ID, userKey);
         startActivity(userProfileIntent);
     }
 
@@ -234,8 +238,8 @@ public class UserDashboardActivity extends AppCompatActivity implements UserDash
 
     @Override
     public void displaySpeakers() {
-       // Intent SpeakersIntent = new Intent(this, SpeakersFollowingActivity.class);
-       // startActivity(SpeakersIntent);
+        Intent SpeakersIntent = new Intent(this, MapActivity.class);
+        startActivity(SpeakersIntent);
     }
 
     @Override

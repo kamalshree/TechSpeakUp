@@ -105,7 +105,7 @@
                             android:paddingLeft="@dimen/padding_20"
                             android:paddingRight="@dimen/padding_20"
                             android:paddingStart="@dimen/padding_20"
-                            android:text="@string/speaker_profile_peru"
+                            android:text=""
                             android:textSize="@dimen/font_20sp" />
 
 
@@ -134,7 +134,7 @@
                             android:paddingLeft="@dimen/padding_20"
                             android:paddingRight="@dimen/padding_20"
                             android:paddingStart="@dimen/padding_20"
-                            android:text="@string/details_page_image_twitter_text"
+                            android:text=""
                             android:textSize="@dimen/font_20sp" />
 
 
@@ -163,7 +163,7 @@
                             android:paddingLeft="@dimen/padding_20"
                             android:paddingRight="@dimen/padding_20"
                             android:paddingStart="@dimen/padding_20"
-                            android:text="@string/speaker_profile_website_text"
+                            android:text=""
                             android:textSize="@dimen/font_20sp" />
 
                     </LinearLayout>
@@ -191,7 +191,7 @@
                             android:paddingLeft="@dimen/padding_20"
                             android:paddingRight="@dimen/padding_20"
                             android:paddingStart="@dimen/padding_20"
-                            android:text="@string/speaker_profile_website_text"
+                            android:text=""
                             android:textSize="@dimen/font_20sp" />
 
                     </LinearLayout>
@@ -232,7 +232,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:padding="@dimen/padding_5"
-                        android:text="@string/speaker_profile_about_me_text"
+                        android:text=""
                         android:textSize="@dimen/font_20sp" />
 
                 </LinearLayout>

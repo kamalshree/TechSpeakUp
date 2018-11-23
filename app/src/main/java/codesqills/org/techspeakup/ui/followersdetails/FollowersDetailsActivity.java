@@ -2,6 +2,7 @@ package codesqills.org.techspeakup.ui.followersdetails;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.ui.PresenterInjector;
+import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfileActivity;
 import codesqills.org.techspeakup.utils.NetworkUtils;
 
 /**
@@ -84,6 +86,7 @@ public class FollowersDetailsActivity extends AppCompatActivity implements Follo
         PresenterInjector.injectFollowersDetailsPresenter(this);
         extras = getIntent().getExtras();
         mPresenter.start(extras);
+        checkNewProfile();
     }
 
     private void intialiseUI() {
@@ -91,6 +94,14 @@ public class FollowersDetailsActivity extends AppCompatActivity implements Follo
         mBack.setOnClickListener(this);
     }
 
+
+    private void checkNewProfile() {
+        if (followerdetails_tv_map_val.getText().toString().matches("") && followerdetails_twitter_val.getText().toString().matches("") && followerdetails_linkedin_val.getText().toString().matches("") &&
+                followerdetails_link_val.getText().toString().matches("") && followerdetails_about_val.getText().toString().matches("")) {
+            buildEmptyDialog(this).show();
+        }
+
+    }
 
     @Override
     public void setPresenter(FollowersDetailsContract.Presenter presenter) {
@@ -227,4 +238,28 @@ public class FollowersDetailsActivity extends AppCompatActivity implements Follo
         }
         followerdetails_about_val.setText(followerAbout);
     }
+
+
+    /* Profile not updated Dialog */
+    private AlertDialog.Builder buildEmptyDialog(Context c) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle(getResources().getString(R.string.speaker_profile_dialog_title));
+        builder.setMessage(getResources().getString(R.string.speaker_profile_dialog_message));
+
+        builder.setPositiveButton(getString(R.string.no_interent_okbutton), new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+                Intent editprofile = new Intent(getApplication(), SpeakerEditProfileActivity.class);
+                startActivity(editprofile);
+            }
+
+        });
+
+        return builder;
+    }
+
+
 }

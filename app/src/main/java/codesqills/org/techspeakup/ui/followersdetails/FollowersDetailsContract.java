@@ -22,7 +22,12 @@ public interface FollowersDetailsContract {
     }
 
     interface Presenter extends BasePresenter{
-
+        void getUserLocation();
+        void getUserJob();
+        void getUserTwitter();
+        void getUserLinkedin();
+        void getUserWebsite();
+        void getUserAbout();
 
     }
 }
