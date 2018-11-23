@@ -30,7 +30,7 @@ public class SearchPresenter implements SearchContract.Presenter {
 
     @Override
     public void start(@Nullable Bundle extras) {
-        mDataHandler.fetchAllUsers(0, new DataHandler.Callback<List<User>>() {
+        mDataHandler.fetchAllUsersMap(0, new DataHandler.Callback<List<User>>() {
             @Override
             public void onResponse(List<User> result) {
                 mUsers.clear();
