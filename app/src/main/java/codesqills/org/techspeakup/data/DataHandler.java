@@ -61,6 +61,15 @@ public interface DataHandler {
 
     String getEditAboutMe();
 
+    void saveEditEventCount(String editEventCount);
+
+    String getEditEventCount();
+
+
+    void saveEditEventDetails(String editEventDetails);
+
+    String getEditEventDetails();
+
     void saveFollowerCount(String followerCount);
 
     String getFollowerCount();

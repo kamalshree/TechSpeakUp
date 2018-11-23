@@ -47,6 +47,10 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
     EditText editWebsite;
     @BindView(R.id.speaker_editprofile_aboutme)
     EditText editAboutMe;
+    @BindView(R.id.speaker_editprofile_eventcount)
+    EditText editEventCount;
+    @BindView(R.id.speaker_editprofile_eventdetails)
+    EditText editEventDetails;
     @BindView(R.id.speaker_editprofile_submit)
     Button editSubmit;
 
@@ -155,6 +159,25 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
     }
 
 
+
+    @Override
+    public void setEditEventCount(String eventCount) {
+        if (eventCount == null) {
+            return;
+        }
+        editEventCount.setText(eventCount);
+    }
+
+
+    @Override
+    public void setEditEventDetails(String eventDetails) {
+        if (eventDetails == null) {
+            return;
+        }
+        editEventDetails.setText(eventDetails);
+    }
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -172,7 +195,9 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
                             editWebsite.getText().toString(),
                             editAboutMe.getText().toString(),
                             mFollowerCount.getText().toString(),
-                            mRateCount.getText().toString()
+                            mRateCount.getText().toString(),
+                            editEventCount.getText().toString(),
+                            editEventDetails.getText().toString()
                             );
                 }
 

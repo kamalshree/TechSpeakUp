@@ -31,6 +31,8 @@ public class SpeakerEditProfilePresenter implements SpeakerEditProfileContract.P
         getEditLinkedin();
         getEditWebsite();
         getEditAbout();
+        getEditEventCount();
+        getEditEventDetails();
 
     }
 
@@ -74,10 +76,20 @@ public class SpeakerEditProfilePresenter implements SpeakerEditProfileContract.P
         mView.setEditAbout(mDataHandler.getEditAboutMe());
     }
 
+    @Override
+    public void getEditEventCount() {
+        mView.setEditEventCount(mDataHandler.getEditEventCount());
+    }
+
+    @Override
+    public void getEditEventDetails() {
+        mView.setEditEventDetails(mDataHandler.getEditEventDetails());
+    }
+
 
 
     @Override
-    public void saveEditProfile(@Nullable String editName, String editLocation,String editJob, String editTwitter, String editLinkedin, String editWebsite, String editAboutMe,String FollowerCount,String RateCount) {
+    public void saveEditProfile(@Nullable String editName, String editLocation,String editJob, String editTwitter, String editLinkedin, String editWebsite, String editAboutMe,String FollowerCount,String RateCount,String editEventCount,String editEventDetails) {
 
         mDataHandler.saveEditName(editName);
         mDataHandler.saveEditLocation(editLocation);
@@ -88,6 +100,8 @@ public class SpeakerEditProfilePresenter implements SpeakerEditProfileContract.P
         mDataHandler.saveEditAboutMe(editAboutMe);
         mDataHandler.saveFollowerCount(FollowerCount);
         mDataHandler.saveRateCount(RateCount);
+        mDataHandler.saveEditEventCount(editEventCount);
+        mDataHandler.saveEditEventDetails(editEventDetails);
 
         mDataHandler.setUserInfo(new DataHandler.Callback<Void>() {
             @Override

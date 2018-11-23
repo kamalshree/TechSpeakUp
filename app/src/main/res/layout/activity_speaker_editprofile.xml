@@ -101,6 +101,26 @@
                         android:hint="@string/speaker_editprofile_aboutme"
                         android:inputType="textMultiLine" />
 
+                    <EditText
+                        android:id="@+id/speaker_editprofile_eventcount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_larges"
+                        android:layout_marginRight="@dimen/margin_larges"
+                        android:hint="@string/speaker_editprofile_eventcount"
+                        android:inputType="textMultiLine" />
+
+                    <EditText
+                        android:id="@+id/speaker_editprofile_eventdetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginLeft="@dimen/margin_larges"
+                        android:layout_marginRight="@dimen/margin_larges"
+                        android:ems="10"
+                        android:hint="@string/speaker_editprofile_eventdetails"
+                        android:inputType="textMultiLine" />
+
+
                     <Button
                         android:id="@+id/speaker_editprofile_submit"
                         android:layout_width="wrap_content"

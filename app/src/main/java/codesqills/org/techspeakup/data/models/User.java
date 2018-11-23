@@ -56,6 +56,14 @@ public class User {
     private String mAbout;
 
     @Expose
+    @SerializedName("event_count")
+    private String mEventCount;
+
+    @Expose
+    @SerializedName("event_details")
+    private String mEvent_details;
+
+    @Expose
     @SerializedName("followers_count")
     private String mFollowersCount;
 
@@ -180,6 +188,26 @@ public class User {
     @PropertyName("about")
     public void setAbout(String about) {
         mAbout = about;
+    }
+
+    @PropertyName("event_count")
+    public String getEventCount() {
+        return mEventCount;
+    }
+
+    @PropertyName("event_count")
+    public void setEventCount(String event_count) {
+        mEventCount = event_count;
+    }
+
+    @PropertyName("event_details")
+    public String getEventDetails() {
+        return mEvent_details;
+    }
+
+    @PropertyName("event_details")
+    public void setEventDetails(String event_details) {
+        mEvent_details = event_details;
     }
 
     @PropertyName("followers_count")

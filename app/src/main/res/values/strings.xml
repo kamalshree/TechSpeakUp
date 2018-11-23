@@ -74,7 +74,7 @@
 
     <string name="speaker_profile_profiletext">Profile</string>
     <string name="speaker_profile_events">Events</string>
-    <string name="speaker_profile_events_val">360</string>
+    <string name="speaker_profile_events_val">0</string>
     <string name="speaker_profile_rate">Rate</string>
     <string name="speaker_profile_rate_val">9.5</string>
     <string name="speaker_profile_followers">Followers</string>
@@ -86,6 +86,7 @@
     <string name="speaker_profile_peru">Peru</string>
     <string name="speaker_profile_website_text">www.speakup.com</string>
     <string name="speaker_profile_about_me">About Me</string>
+    <string name="speaker_profile_event_details">EventDetails</string>
     <string name="speaker_profile_about_me_text">Lorem ipsum dolor sit amet, ei per eirmod aliquam scriptorem, quaestio perpetua his in, sed ea suas aliquam adolescens. Tale putent at nec, his graecis eleifend ex. Eu eam eligendi repudiare, mutat sensibus mnesarchum per te. Quo altera semper aliquando ea.</string>
     <string name="speaker_profile_profileimage">profileimage</string>
 
@@ -106,6 +107,8 @@
     <string name="speaker_editprofile_linkedin">Linkedin</string>
     <string name="speaker_editprofile_website">Website</string>
     <string name="speaker_editprofile_aboutme">About Me</string>
+    <string name="speaker_editprofile_eventcount">How many events have you attended?</string>
+    <string name="speaker_editprofile_eventdetails">Event Details</string>
     <string name="speaker_editprofile_submit">Submit</string>
     <string name="speaker_editprofile_saved_successfully">Data Saved successfully</string>
 

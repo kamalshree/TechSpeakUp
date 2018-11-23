@@ -57,10 +57,15 @@ import android.content.SharedPreferences;
     private String mUserWebsite;
     private static final String KEY_USER_ABOUT = "key_user_about";
     private String mUserAbout;
+    private static final String KEY_USER_EVENTCOUNT = "key_user_eventcount";
+    private String mUserEventCount;
+    private static final String KEY_USER_EVENTDETAILS = "key_user_eventdetails";
+    private String mUserEventDetails;
     private static final String KEY_USER_FOLLOWER_COUNT = "key_user_followercount";
     private String mUserFollowerCount;
     private static final String KEY_USER_RATE_COUNT = "key_user_ratecount";
     private String mUserRateCount;
+
 
 
 
@@ -197,6 +202,30 @@ import android.content.SharedPreferences;
             mUserAbout = mPrefs.getString(KEY_USER_ABOUT, null);
         }
         return mUserAbout;
+    }
+
+    public void setUserEventCount(String userEventCount) {
+        this.mUserEventCount = userEventCount;
+        mPrefs.edit().putString(KEY_USER_EVENTCOUNT, userEventCount).apply();
+    }
+
+    public String getUserEventCount() {
+        if (mUserEventCount == null) {
+            mUserEventCount = mPrefs.getString(KEY_USER_EVENTCOUNT, null);
+        }
+        return mUserEventCount;
+    }
+
+    public void setUserEventDetails(String userEventDetails) {
+        this.mUserEventDetails = userEventDetails;
+        mPrefs.edit().putString(KEY_USER_EVENTDETAILS, userEventDetails).apply();
+    }
+
+    public String getUserEventDetails() {
+        if (mUserEventDetails == null) {
+            mUserEventDetails = mPrefs.getString(KEY_USER_EVENTDETAILS, null);
+        }
+        return mUserEventDetails;
     }
 
 

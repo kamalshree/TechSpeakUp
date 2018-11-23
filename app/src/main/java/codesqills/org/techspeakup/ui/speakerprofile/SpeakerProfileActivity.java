@@ -64,6 +64,12 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
     @BindView(R.id.speaker_profile_tv_followers_val)
     TextView mFollowerCount;
 
+    @BindView(R.id.speaker_profile_tv_event_val)
+    TextView mEventCount;
+
+    @BindView(R.id.tv_event_details_val)
+    TextView mEventDetails;
+
     @BindView(R.id.speaker_profile_tv_rate_val)
     TextView mRateCount;
 
@@ -119,7 +125,7 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
     }
 
     private void checkNewProfile() {
-        if(mUserlocation.getText().toString().matches("") && mUsertwitter.getText().toString().matches("") && mUserlinkedin.getText().toString().matches("") && mUserlink.getText().toString().matches("") && mUserabout.getText().toString().matches("")){
+        if (mUserlocation.getText().toString().matches("") && mUsertwitter.getText().toString().matches("") && mUserlinkedin.getText().toString().matches("") && mUserlink.getText().toString().matches("") && mUserabout.getText().toString().matches("")) {
             buildDialog(this).show();
         }
     }
@@ -182,6 +188,17 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
     @Override
     public void loadUserAbout(String about) {
         mUserabout.setText(about);
+    }
+
+    @Override
+    public void loadUserEventCount(String eventCount) {
+
+        mEventCount.setText(eventCount);
+    }
+
+    @Override
+    public void loadUserEventDetails(String eventDetails) {
+        mEventDetails.setText(eventDetails);
     }
 
     public void loadFollowerCount() {
@@ -251,19 +268,18 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         // get total available quest
-                        double rateval=0;
+                        double rateval = 0;
                         int size = (int) dataSnapshot.getChildrenCount();
                         for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                             try {
                                 Rate singleEvents = childSnapshot.getValue(Rate.class);
                                 rateval += Double.parseDouble(singleEvents.getRate());
-                            }
-                            catch (Exception e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
-                        double speakerRateVal=rateval/size;
-                        String stringdouble= Double.toString(speakerRateVal);
+                        double speakerRateVal = rateval / size;
+                        String stringdouble = Double.toString(speakerRateVal);
                         mRateCount.setText(stringdouble);
                     }
 
@@ -322,7 +338,7 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
-                Intent editprofile=new Intent(getApplication(), SpeakerEditProfileActivity.class);
+                Intent editprofile = new Intent(getApplication(), SpeakerEditProfileActivity.class);
                 startActivity(editprofile);
             }
 
@@ -330,7 +346,6 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
 
         return builder;
     }
-
 
 
 }

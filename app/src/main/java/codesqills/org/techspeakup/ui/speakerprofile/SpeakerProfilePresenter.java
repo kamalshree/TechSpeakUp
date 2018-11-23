@@ -31,6 +31,8 @@ public class SpeakerProfilePresenter implements SpeakerProfileContract.Presenter
         getUserWebsite();
         getUserAbout();
         getProfileImage();
+        getEventCount();
+        getEventDetails();
     }
 
     @Override
@@ -75,6 +77,16 @@ public class SpeakerProfilePresenter implements SpeakerProfileContract.Presenter
     @Override
     public void getUserAbout() {
         mView.loadUserAbout(mDataHandler.getEditAboutMe());
+    }
+
+    @Override
+    public void getEventCount() {
+        mView.loadUserEventCount(mDataHandler.getEditEventCount());
+    }
+
+    @Override
+    public void getEventDetails() {
+        mView.loadUserEventDetails(mDataHandler.getEditEventDetails());
     }
 
 }

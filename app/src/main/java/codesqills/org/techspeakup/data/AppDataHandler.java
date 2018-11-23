@@ -113,6 +113,8 @@ class AppDataHandler implements DataHandler {
         currentUser.setLinkedin(mPreferences.getUserLinkedin());
         currentUser.setWebsite(mPreferences.getUserWebsite());
         currentUser.setAbout(mPreferences.getUserAbout());
+        currentUser.setEventCount(mPreferences.getUserEventCount());
+        currentUser.setEventDetails(mPreferences.getUserEventDetails());
         currentUser.setFollowersCount(mPreferences.getUserFollowerCount());
         currentUser.setRateCount(mPreferences.getUserRateCount());
 
@@ -233,6 +235,25 @@ class AppDataHandler implements DataHandler {
     @Override
     public String getEditAboutMe() {
         return mPreferences.getUserAbout();
+    }
+
+
+    @Override
+    public void saveEditEventCount(String userEventCount) {mPreferences.setUserEventCount(userEventCount);
+    }
+
+    @Override
+    public String getEditEventCount() {
+        return mPreferences.getUserEventCount();
+    }
+
+    @Override
+    public void saveEditEventDetails(String userEventDetails) {mPreferences.setUserEventDetails(userEventDetails);
+    }
+
+    @Override
+    public String getEditEventDetails() {
+        return mPreferences.getUserEventDetails();
     }
 
     @Override

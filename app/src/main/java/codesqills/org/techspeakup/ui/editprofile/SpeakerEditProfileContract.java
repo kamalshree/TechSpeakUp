@@ -19,6 +19,8 @@ public interface SpeakerEditProfileContract {
         void setEditLinkedin(String linkedin);
         void setEditWebsite(String website);
         void setEditAbout(String about);
+        void setEditEventCount(String eventCount);
+        void setEditEventDetails(String eventDetails);
         void onProfileSaved();
         void onSaveError();
     }
@@ -29,7 +31,7 @@ public interface SpeakerEditProfileContract {
         void getEditTwitter();
         void getEditLinkedin();
         void getEditWebsite();
-        void getEditAbout();
-        void saveEditProfile(@Nullable String editName,String editLocation,String editJob,String editTwitter,String editLinkedin,String editWebsite,String editAboutMe,String followerCount,String rateCount);
+        void getEditAbout(); void getEditEventCount(); void getEditEventDetails();
+        void saveEditProfile(@Nullable String editName,String editLocation,String editJob,String editTwitter,String editLinkedin,String editWebsite,String editAboutMe,String followerCount,String rateCount,String editEventCount,String editEventDetails);
     }
 }

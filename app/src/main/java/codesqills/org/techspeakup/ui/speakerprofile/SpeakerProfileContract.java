@@ -18,6 +18,8 @@ public interface SpeakerProfileContract {
         void loadUserLinkedin(String linkedin);
         void loadUserWebsite(String website);
         void loadUserAbout(String about);
+        void loadUserEventCount(String eventcount);
+        void loadUserEventDetails(String eventdetails);
     }
 
     interface Presenter extends BasePresenter{
@@ -29,5 +31,7 @@ public interface SpeakerProfileContract {
         void getUserLinkedin();
         void getUserWebsite();
         void getUserAbout();
+        void getEventCount();
+        void getEventDetails();
     }
 }
