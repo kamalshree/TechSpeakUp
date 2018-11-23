@@ -1,13 +1,16 @@
 package codesqills.org.techspeakup.ui.editprofile;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +26,7 @@ import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.data.models.User;
 import codesqills.org.techspeakup.ui.PresenterInjector;
+import codesqills.org.techspeakup.utils.NetworkUtils;
 
 /**
  * Created by kamalshree on 11/5/2018.
@@ -66,12 +70,32 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
     @BindView(R.id.speaker_editprofile_rate)
     TextView mRateCount;
 
+
+    @BindView(R.id.tv_no_internet)
+    TextView noInternet;
+
+    @BindView(R.id.refresh)
+    Button refreshBtn;
+    @BindView(R.id.toolbar_speakerprofile)
+    View toolbar_event;
+    @BindView(R.id.layout_internet)
+    View layout_internet;
+
+    @BindView(R.id.speaker_profile_cardviewone)
+    CardView cardView;
+
     //String deviceid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaker_editprofile);
         ButterKnife.bind(this);
+
+        if (!NetworkUtils.connectionStatus(this)) {
+            ShowNoInternetMessage();
+            buildDialog(this).show();
+        }
+
         intialiseUI();
         PresenterInjector.injectSpeakerEditProfilePresenter(this);
         extras = getIntent().getExtras();
@@ -83,6 +107,7 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
         editProfile.setText(getResources().getString(R.string.speaker_editprofile_profile));
         mBack.setOnClickListener(this);
         editSubmit.setOnClickListener(this);
+        refreshBtn.setOnClickListener(this);
         getFollowerCount();
         getRateCount();
     }
@@ -159,7 +184,6 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
     }
 
 
-
     @Override
     public void setEditEventCount(String eventCount) {
         if (eventCount == null) {
@@ -186,8 +210,8 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
                     editName.setError(getResources().getString(R.string.user_name_empty_error));
                 } else if (editAboutMe.getText().toString().trim().equals("")) {
                     editAboutMe.setError(getResources().getString(R.string.user_name_empty_error));
-                }else {
-                    mPresenter.saveEditProfile( editName.getText().toString(),
+                } else {
+                    mPresenter.saveEditProfile(editName.getText().toString(),
                             editLocation.getText().toString(),
                             editJob.getText().toString(),
                             editTwitter.getText().toString(),
@@ -198,12 +222,16 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
                             mRateCount.getText().toString(),
                             editEventCount.getText().toString(),
                             editEventDetails.getText().toString()
-                            );
+                    );
                 }
 
                 break;
             case R.id.speaker_profile_page_back:
                 onBackPressed();
+                break;
+
+            case R.id.refresh:
+                checkInternet();
                 break;
             default:
                 break;
@@ -219,14 +247,16 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         // get total available quest
                         int size = (int) dataSnapshot.getChildrenCount();
-                        mFollowerCount.setText(""+size);
+                        mFollowerCount.setText("" + size);
                     }
+
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
                 });
     }
+
     public void getRateCount() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         reference.child("rate")
@@ -235,19 +265,18 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         // get total available quest
-                        double rateval=0;
+                        double rateval = 0;
                         int size = (int) dataSnapshot.getChildrenCount();
                         for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                             try {
                                 User singleEvents = childSnapshot.getValue(User.class);
                                 rateval += Double.parseDouble(singleEvents.getRateCount());
-                            }
-                            catch (Exception e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
-                        double speakerRateVal=rateval/size;
-                        String stringdouble= Double.toString(speakerRateVal);
+                        double speakerRateVal = rateval / size;
+                        String stringdouble = Double.toString(speakerRateVal);
                         mRateCount.setText(stringdouble);
                     }
 
@@ -264,6 +293,7 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
         showSuccessDialog();
         //Toast.makeText(this, getString(R.string.speaker_editprofile_saved_successfully), Toast.LENGTH_SHORT).show();
     }
+
     @Override
     public void onSaveError() {
         Toast.makeText(this, getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show();
@@ -288,5 +318,41 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
                     }
                 })
                 .create().show();
+    }
+
+    private void checkInternet() {
+        if (NetworkUtils.connectionStatus(this)) {
+            cardView.setVisibility(View.VISIBLE);
+            toolbar_event.setVisibility(View.VISIBLE);
+        } else {
+            ShowNoInternetMessage();
+        }
+    }
+
+    /*Action when internet not available */
+    private void ShowNoInternetMessage() {
+        cardView.setVisibility(View.INVISIBLE);
+        layout_internet.setVisibility(View.VISIBLE);
+        noInternet.setVisibility(View.VISIBLE);
+        refreshBtn.setVisibility(View.VISIBLE);
+    }
+
+    /* No Internet Dialog */
+    private AlertDialog.Builder buildDialog(Context c) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle(getString(R.string.no_internet_title));
+        builder.setMessage(getString(R.string.no_internet_message));
+
+        builder.setPositiveButton(getString(R.string.no_interent_okbutton), new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+
+        });
+
+        return builder;
     }
 }

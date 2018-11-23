@@ -102,7 +102,7 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
 
         if (!NetworkUtils.connectionStatus(this)) {
             ShowNoInternetMessage();
-            buildDialog(this).show();
+            buildInternetDialog(this).show();
         }
         intialiseUI();
         PresenterInjector.injectSpeakerProfilePresenter(this);
@@ -128,6 +128,7 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
         if (mUserlocation.getText().toString().matches("") && mUsertwitter.getText().toString().matches("") && mUserlinkedin.getText().toString().matches("") && mUserlink.getText().toString().matches("") && mUserabout.getText().toString().matches("")) {
             buildDialog(this).show();
         }
+
     }
 
     @Override
@@ -347,5 +348,24 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
         return builder;
     }
 
+
+    /* No Internet Dialog */
+    private AlertDialog.Builder buildInternetDialog(Context c) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle(getString(R.string.no_internet_title));
+        builder.setMessage(getString(R.string.no_internet_message));
+
+        builder.setPositiveButton(getString(R.string.no_interent_okbutton), new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+
+        });
+
+        return builder;
+    }
 
 }

@@ -1,6 +1,8 @@
 package codesqills.org.techspeakup.ui.map;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
@@ -9,12 +11,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +48,7 @@ import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.followersdetails.FollowersDetailsActivity;
 import codesqills.org.techspeakup.ui.followersdetails.FollowersDetailsContract;
 import codesqills.org.techspeakup.ui.speakerprofile.SpeakerProfileActivity;
+import codesqills.org.techspeakup.utils.NetworkUtils;
 
 /**
  * Created by kamalshree on 11/21/2018.
@@ -76,17 +82,36 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
     //vars
 
 
+    @BindView(R.id.tv_no_internet)
+    TextView noInternet;
+
+    @BindView(R.id.refresh)
+    Button refreshBtn;
+    @BindView(R.id.toolbar_speakerprofile)
+    View toolbar_event;
+    @BindView(R.id.layout_internet)
+    View layout_internet;
+
+    @BindView(R.id.relative_layout)
+    RelativeLayout relative_layout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_map);
         ButterKnife.bind(this);
 
+        if (!NetworkUtils.connectionStatus(this)) {
+            ShowNoInternetMessage();
+            buildDialog(this).show();
+        }
+
         PresenterInjector.injectMapPresenter(this);
         extras = getIntent().getExtras();
         mPresenter.start(extras);
         editProfile.setText("Speakers/Users Map");
         mBack.setOnClickListener(this);
+        refreshBtn.setOnClickListener(this);
 
         getLocationPermission();
     }
@@ -289,6 +314,9 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
             case R.id.speaker_profile_page_back:
                 onBackPressed();
                 break;
+            case R.id.refresh:
+                checkInternet();
+                break;
             default:
                 break;
         }
@@ -299,4 +327,41 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
         super.onBackPressed();
         overridePendingTransition(R.anim.anim_nothing, R.anim.slide_out_right);
     }
+
+    private void checkInternet() {
+        if (NetworkUtils.connectionStatus(this)) {
+            relative_layout.setVisibility(View.VISIBLE);
+            toolbar_event.setVisibility(View.VISIBLE);
+        } else {
+            ShowNoInternetMessage();
+        }
+    }
+
+    /*Action when internet not available */
+    private void ShowNoInternetMessage() {
+        relative_layout.setVisibility(View.INVISIBLE);
+        layout_internet.setVisibility(View.VISIBLE);
+        noInternet.setVisibility(View.VISIBLE);
+        refreshBtn.setVisibility(View.VISIBLE);
+    }
+
+    /* No Internet Dialog */
+    private AlertDialog.Builder buildDialog(Context c) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle(getString(R.string.no_internet_title));
+        builder.setMessage(getString(R.string.no_internet_message));
+
+        builder.setPositiveButton(getString(R.string.no_interent_okbutton), new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+
+        });
+
+        return builder;
+    }
+
 }
