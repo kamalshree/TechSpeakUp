@@ -15,6 +15,7 @@
         tools:context=".ui.newnotification.NewNotificationActivity">
 
         <RelativeLayout
+            android:id="@+id/relative_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/gradientbackground">
@@ -107,7 +108,7 @@
             <include
                 android:id="@+id/layout_internet"
                 layout="@layout/activity_no_internet"
-                android:visibility="invisible" />
+                android:visibility="gone" />
 
         </RelativeLayout>
 

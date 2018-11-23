@@ -142,7 +142,7 @@
             <!-- No Internet Connection layout -->
             <include
                 android:id="@+id/layout_internet"
-                android:visibility="invisible"
+                android:visibility="gone"
                 layout="@layout/activity_no_internet"/>
 
         </RelativeLayout>

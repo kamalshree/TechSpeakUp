@@ -89,6 +89,7 @@ public class NewNotificationActivity extends AppCompatActivity implements NewNot
     private void intialiseUI() {
         editProfile.setText(getResources().getString(R.string.new_notification_profile));
         mBack.setOnClickListener(this);
+        refreshBtn.setOnClickListener(this);
         fab_notification.setOnClickListener(this);
 
         //RecyclerView

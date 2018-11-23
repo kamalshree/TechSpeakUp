@@ -10,6 +10,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -87,6 +88,7 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
 
     @BindView(R.id.refresh)
     Button refreshBtn;
+
     @BindView(R.id.toolbar_speakerprofile)
     View toolbar_event;
     @BindView(R.id.layout_internet)
@@ -95,11 +97,13 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
     @BindView(R.id.relative_layout)
     RelativeLayout relative_layout;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_map);
         ButterKnife.bind(this);
+        intialiseUI();
 
         if (!NetworkUtils.connectionStatus(this)) {
             ShowNoInternetMessage();
@@ -109,13 +113,13 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
         PresenterInjector.injectMapPresenter(this);
         extras = getIntent().getExtras();
         mPresenter.start(extras);
-        editProfile.setText("Speakers/Users Map");
-        mBack.setOnClickListener(this);
-        refreshBtn.setOnClickListener(this);
-
         getLocationPermission();
     }
-
+    private void intialiseUI() {
+        editProfile.setText(getResources().getString(R.string.speaker_map_toolbar_title));
+        mBack.setOnClickListener(this);
+        refreshBtn.setOnClickListener(this);
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -331,6 +335,7 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
     private void checkInternet() {
         if (NetworkUtils.connectionStatus(this)) {
             relative_layout.setVisibility(View.VISIBLE);
+
             toolbar_event.setVisibility(View.VISIBLE);
         } else {
             ShowNoInternetMessage();
