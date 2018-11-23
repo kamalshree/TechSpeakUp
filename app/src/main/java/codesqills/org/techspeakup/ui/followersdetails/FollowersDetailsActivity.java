@@ -28,7 +28,9 @@ import codesqills.org.techspeakup.utils.NetworkUtils;
  */
 
 public class FollowersDetailsActivity extends AppCompatActivity implements FollowersDetailsContract.View,View.OnClickListener {
+    @BindView(R.id.refresh)
     Button refreshBtn;
+
     @BindView(R.id.speaker_profile_page_back)
     ImageView mBack;
 
