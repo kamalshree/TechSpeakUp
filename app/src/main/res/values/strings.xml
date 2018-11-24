@@ -58,7 +58,7 @@
     <string name="navigation_speaker_notification">Notification</string>
     <string name="navigation_speaker_event">Event</string>
     <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
-
+    <string name="welcome">Welcome .......</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -192,6 +192,12 @@
 
     <!-- Dialog Names -->
     <string name="dialog_message">dialog_message</string>
+    <string name="dialog_message_speaker">Do you want to confirm.</string>
+    <string name="dialog_message_ok">ok</string>
+
+    <!-- Rate -->
+
+    <string name="rate_message">Rate</string>
 
     <!-- User Dashbaord -->
 
@@ -213,6 +219,15 @@
 
     <!-- map-->
     <string name="speaker_map_toolbar_title">Speakers/Users Map</string>
+
+    <!-- Internet -->
+    <string name="internet_no">No Interent Connection</string>
+    <string name="internet_refresh">Refresh</string>
+
+    <!-- rate -->
+    <string name="star_details">star</string>
+    <string name="follow_details">follow</string>
+
 
 
 

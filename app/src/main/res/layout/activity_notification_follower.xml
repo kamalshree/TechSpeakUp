@@ -48,13 +48,13 @@
                         android:id="@+id/refresh_followerscreen"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="4dp">
+                        android:layout_marginTop="@dimen/margin_small">
 
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/recyclerview_notification_followers"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="@dimen/margin_small"
                             android:background="@color/colorText"
                             android:focusableInTouchMode="true"
                             android:textAlignment="center"

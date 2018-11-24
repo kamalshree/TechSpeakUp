@@ -50,4 +50,5 @@ ext {
     gsonVersion = '2.8.0'
     googlePlayVersion='15.0.1'
     bottomNavVersion='1.2.4'
+    espressoVersion='3.0.2'
 }

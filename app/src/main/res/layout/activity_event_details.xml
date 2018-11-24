@@ -41,7 +41,7 @@
                     android:layout_height="match_parent"
                     android:baselineAligned="false"
                     android:orientation="vertical"
-                    android:padding="10dp">
+                    android:padding="@dimen/padding_10">
 
                     <TextView
                         android:id="@+id/tv_eventdetail_eventname"
@@ -142,8 +142,8 @@
             <!-- No Internet Connection layout -->
             <include
                 android:id="@+id/layout_internet"
-                android:visibility="gone"
-                layout="@layout/activity_no_internet"/>
+                layout="@layout/activity_no_internet"
+                android:visibility="gone" />
 
         </RelativeLayout>
 

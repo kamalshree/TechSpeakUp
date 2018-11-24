@@ -10,4 +10,5 @@
     <color name="background_color">#e1e1e1</color>
 
     <color name="viewcolor">#909090</color>
+    <color name="logo_text_color">#90ffffff</color>
 </resources>

@@ -4,51 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
+    android:layout_marginEnd="@dimen/margin_medium"
+    android:layout_marginStart="@dimen/margin_medium"
     app:cardBackgroundColor="@color/colorPrimary"
-    app:cardCornerRadius="2dp"
-    app:cardElevation="2dp"
-    app:cardMaxElevation="2dp"
+    app:cardCornerRadius="@dimen/eventdetails_corner_radis"
+    app:cardElevation="@dimen/eventdetails_corner_radis"
+    app:cardMaxElevation="@dimen/eventdetails_corner_radis"
     app:cardUseCompatPadding="true">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:padding="@dimen/padding_8">
 
         <TextView
             android:id="@+id/tv_event_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:textColor="@android:color/white"
-            android:textSize="24sp"
+            android:textSize="@dimen/font_24sp"
             app:layout_constraintEnd_toStartOf="@+id/tv_event_date"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Firebase I/O" />
+            tools:text="@string/tv_eventdetail_eventname" />
 
         <TextView
             android:id="@+id/tv_event_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/margin_medium"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/colorAccent"
             app:layout_constraintBottom_toTopOf="@+id/tv_event_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_event_name"
-            tools:text="15th Jan 2019" />
+            tools:text="@string/event_details_eventdate" />
 
         <TextView
             android:id="@+id/tv_event_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="San Jose, California"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="@string/event_details_eventlocation"
             android:textColor="@android:color/white"
             app:layout_constraintStart_toStartOf="@+id/tv_event_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_event_name" />

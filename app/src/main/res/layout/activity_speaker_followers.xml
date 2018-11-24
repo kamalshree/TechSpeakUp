@@ -48,13 +48,13 @@
                         android:id="@+id/refresh_followerscreen"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="4dp">
+                        android:layout_marginTop="@dimen/margin_small">
 
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/recyclerview_followers"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="@dimen/margin_small"
                             android:background="@color/colorText"
                             android:focusableInTouchMode="true"
                             android:textAlignment="center"
@@ -71,7 +71,6 @@
                         android:id="@+id/home_screen_pb"
                         android:layout_width="@dimen/loading_dots_width"
                         android:layout_height="@dimen/loading_dots_height"
-                        android:layout_centerInParent="true"
                         android:layout_gravity="center"
                         android:visibility="gone"
                         app:lottie_autoPlay="true"

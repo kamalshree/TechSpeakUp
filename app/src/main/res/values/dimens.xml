@@ -17,8 +17,18 @@
 
     <dimen name="padding_150">150dp</dimen>
     <dimen name="padding_10">10dp</dimen>
+    <dimen name="padding_15">15dp</dimen>
     <dimen name="padding_20">20dp</dimen>
     <dimen name="padding_5">5dp</dimen>
+    <dimen name="padding_8">8dp</dimen>
+
+    <!-- height -->
+
+    <dimen name="height_100">100dp</dimen>
+    <dimen name="height_200">200dp</dimen>
+
+    <!-- Widdth -->
+    <dimen name="width_400">400dp</dimen>
 
 
     <!--Box related-->
@@ -75,6 +85,7 @@
 
     <!-- EventDetails -->
     <dimen name="eventdetails_height">30dp</dimen>
+    <dimen name="eventdetails_corner_radis">2dp</dimen>
 
     <!-- Followers-->
     <dimen name="followers_layout_marginTop">108dp</dimen>
@@ -85,5 +96,33 @@
     <!-- UserDashboard -->
 
     <dimen name="userdashboard_bottom_margin">45dp</dimen>
+
+    <!-- Dialog -->
+    <dimen name="dilog_margin_sart">138dp</dimen>
+
+
+    <!-- Internet -->
+
+    <dimen name="interet_no_margintop">165dp</dimen>
+    <dimen name="interet_no_marginbottom">314dp</dimen>
+
+
+    <!-- Rate -->
+
+
+    <!-- Widget -->
+    <dimen name="widget_margin">26dp</dimen>
+    <dimen name="widget_width">30dp</dimen>
+    <dimen name="widget_heigt">30dp</dimen>
+    <dimen name="widget_min">150dp</dimen>
+
+    <!-- Settings -->
+    <dimen name="setting_marginbottom">182dp</dimen>
+    <dimen name="setting_margintop">210dp</dimen>
+
+    <!-- Notifiation -->
+
+    <dimen name="notification_width">235dp</dimen>
+
 
 </resources>

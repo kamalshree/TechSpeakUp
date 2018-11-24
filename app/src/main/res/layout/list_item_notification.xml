@@ -7,9 +7,9 @@
     android:layout_marginEnd="@dimen/margin_medium"
     android:layout_marginStart="@dimen/margin_medium"
     app:cardBackgroundColor="@color/background_color"
-    app:cardCornerRadius="2dp"
-    app:cardElevation="2dp"
-    app:cardMaxElevation="2dp"
+    app:cardCornerRadius="@dimen/eventdetails_corner_radis"
+    app:cardElevation="@dimen/eventdetails_corner_radis"
+    app:cardMaxElevation="@dimen/eventdetails_corner_radis"
     app:cardUseCompatPadding="true">
 
     <android.support.constraint.ConstraintLayout
@@ -25,18 +25,18 @@
             android:layout_marginEnd="@dimen/margin_medium"
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_medium"
-            tools:text="@string/tv_notification_msg"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/font_20sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_notifiation_timestamp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/tv_notification_msg" />
 
         <TextView
             android:id="@+id/tv_notifiation_timestamp"
-            android:layout_width="235dp"
+            android:layout_width="@dimen/notification_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_medium"
             android:textAlignment="center"

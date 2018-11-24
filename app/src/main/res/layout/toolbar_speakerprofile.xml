@@ -11,13 +11,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="5">
-    <ImageView
-        android:id="@+id/speaker_profile_page_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/details_page_toolbar_logo_text"
-        android:src="@drawable/ic_left"
-        android:layout_weight="0.5"/>
+
+        <ImageView
+            android:id="@+id/speaker_profile_page_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:contentDescription="@string/details_page_toolbar_logo_text"
+            android:src="@drawable/ic_left" />
 
 
         <TextView
@@ -30,12 +31,12 @@
             android:text="@string/speaker_profile_profiletext"
             android:textColor="@android:color/white" />
 
-    <ImageView
-        android:id="@+id/speaker_profile_toolbar_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/details_page_toolbar_logo_text"
-        android:src="@drawable/toolbar_logo"
-        android:layout_weight="1.5"/>
+        <ImageView
+            android:id="@+id/speaker_profile_toolbar_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:contentDescription="@string/details_page_toolbar_logo_text"
+            android:src="@drawable/toolbar_logo" />
     </LinearLayout>
 </android.support.v7.widget.Toolbar>

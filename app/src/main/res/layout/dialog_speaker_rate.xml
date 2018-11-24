@@ -8,7 +8,7 @@
         android:id="@+id/tv_rate_heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Rate"
+        android:text="@string/rate_message"
         android:textAlignment="center"
         android:padding="@dimen/padding_10"
         android:textColor="@color/colorAccent"
@@ -20,10 +20,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_rate_heading"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/margin_large"
         android:numStars="5"
         android:rating="0.0"
-        android:stepSize="1.0"
+        android:stepSize="1"
         android:textAlignment="center" />
 
     <TextView
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/speaker_ratebar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/margin_x_large"
         android:background="@drawable/buttonborder"
         android:padding="@dimen/padding_10"
         android:text="@string/send_notification_btn"

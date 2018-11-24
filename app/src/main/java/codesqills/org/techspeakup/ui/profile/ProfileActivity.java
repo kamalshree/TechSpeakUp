@@ -114,7 +114,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
     @Override
     public void onProfileSaved(String userType) {
        //If "Speaker" type route to speaker dashboard else User dashboard
-    Toast.makeText(this,userType,Toast.LENGTH_LONG).show();
         if(userType.equals("Speaker")){
             Intent homeIntent = new Intent(this, HomeActivity.class);
             if (extras != null) {
@@ -159,8 +158,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
                     mEtUserName.setError(getResources().getString(R.string.user_name_empty_error));
                 } else if (mUserType.getSelectedItem().toString().trim().equals(getResources().getString(R.string.select_your_Type))) {
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.select_your_Type), Toast.LENGTH_LONG).show();
-                } else if (mImgUserPic.getDrawable() == null) {
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.user_image_empty), Toast.LENGTH_LONG).show();
                 } else {
                     mPresenter.saveProfile("", mEtUserName.getText().toString(),
                             mUserType.getSelectedItem().toString().trim());

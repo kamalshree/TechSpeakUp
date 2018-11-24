@@ -50,6 +50,7 @@
                         android:layout_marginRight="@dimen/margin_larges"
                         android:layout_marginTop="@dimen/margin_larges"
                         android:hint="@string/speaker_editprofile_name" />
+
                     <EditText
                         android:id="@+id/speaker_editprofile_location"
                         android:layout_width="match_parent"
@@ -113,7 +114,7 @@
                     <EditText
                         android:id="@+id/speaker_editprofile_eventdetails"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="@dimen/height_200"
                         android:layout_marginLeft="@dimen/margin_larges"
                         android:layout_marginRight="@dimen/margin_larges"
                         android:ems="10"
@@ -139,8 +140,8 @@
                         android:text=""
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/font_20sp"
-                        android:visibility="gone"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/speaker_editprofile_rate"
@@ -150,8 +151,8 @@
                         android:text=""
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/font_20sp"
-                        android:visibility="gone"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:visibility="gone" />
 
 
                 </LinearLayout>
@@ -160,8 +161,8 @@
 
             <include
                 android:id="@+id/layout_internet"
-                android:visibility="invisible"
-                layout="@layout/activity_no_internet"/>
+                layout="@layout/activity_no_internet"
+                android:visibility="gone" />
 
         </RelativeLayout>
 
