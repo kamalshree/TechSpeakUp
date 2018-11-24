@@ -60,14 +60,14 @@ public class SpeakerRateDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_speaker_rate, container, false);
-        mRate = (RatingBar) view.findViewById(R.id.speaker_ratebar);
-        my_rate_val = (TextView) view.findViewById(R.id.my_rate_val);
+        mRate = view.findViewById(R.id.speaker_ratebar);
+        my_rate_val = view.findViewById(R.id.my_rate_val);
 
         addListenerOnRatingBar();
         //if rating value is changed,
         //display the current rating value in the result (textview) automatically
 
-        Button send = (Button) view.findViewById(R.id.send_notification_btn);
+        Button send = view.findViewById(R.id.send_notification_btn);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

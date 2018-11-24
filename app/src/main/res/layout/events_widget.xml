@@ -48,7 +48,7 @@
         android:padding="@dimen/margin_medium"
         android:text="@string/event_details_eventlocation"
         android:textColor="@color/colorAccent"
-        android:textSize="@dimen/rate_rating" />
+        android:textSize="@dimen/font_14sp" />
 
     <TextView
         android:id="@+id/tv_widget_eventdate"

@@ -59,7 +59,7 @@ public class DeleteMessageDialog extends DialogFragment {
         View view = inflater.inflate(R.layout.dialog_delete_message, container, false);
         mMessage = (EditText) view.findViewById(R.id.message);
 
-        Button delete = (Button) view.findViewById(R.id.delete_notification_btn);
+        Button delete = view.findViewById(R.id.delete_notification_btn);
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

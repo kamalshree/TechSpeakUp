@@ -64,7 +64,7 @@ public class SpeakerFollowerDialog extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_speaker_follower, container, false);
 
-        Button send = (Button) view.findViewById(R.id.send_notification_btn);
+        Button send = view.findViewById(R.id.send_notification_btn);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

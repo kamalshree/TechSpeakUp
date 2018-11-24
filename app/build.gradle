@@ -67,8 +67,14 @@ dependencies {
 
     implementation "com.github.ittianyu:BottomNavigationViewEx:$rootProject.bottomNavVersion"
 
+    implementation "com.google.firebase:firebase-crash:$rootProject.firebasecrashVersion"
+    implementation "com.crashlytics.sdk.android:crashlytics:$rootProject.firebasecrashlyticsVersion"
+
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation "com.android.support.test:runner:1.0.2"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
+
+
 }
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'io.fabric'

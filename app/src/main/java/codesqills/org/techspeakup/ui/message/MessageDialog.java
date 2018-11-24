@@ -58,9 +58,9 @@ public class MessageDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_message, container, false);
-        mMessage = (EditText) view.findViewById(R.id.message);
+        mMessage = view.findViewById(R.id.message);
 
-        Button send = (Button) view.findViewById(R.id.send_notification_btn);
+        Button send = view.findViewById(R.id.send_notification_btn);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

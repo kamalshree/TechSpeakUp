@@ -142,7 +142,7 @@ public class UserDashboardActivity extends AppCompatActivity implements UserDash
         mSectionsPagerAdapter.addFragment(new SpeakerFragment()); //index 2
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
@@ -164,11 +164,11 @@ public class UserDashboardActivity extends AppCompatActivity implements UserDash
 
     //Intialize UI
     private void intializeUI() {
-        myToolbar = (Toolbar) findViewById(R.id.details_page_toolbar);
+        myToolbar = findViewById(R.id.details_page_toolbar);
 
         //access the Navigation header element.
         View myheaderView = usernavigationview_home.getHeaderView(0);
-        myUsername = (TextView) myheaderView.findViewById(R.id.navigation_drawer_welcome_text);
+        myUsername = myheaderView.findViewById(R.id.navigation_drawer_welcome_text);
 
         bnve.enableAnimation(true);
         bnve.enableShiftingMode(false);

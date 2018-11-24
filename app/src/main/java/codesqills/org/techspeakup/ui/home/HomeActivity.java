@@ -134,11 +134,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     //Intialize UI
     private void intializeUI() {
-        myToolbar = (Toolbar) findViewById(R.id.details_page_toolbar);
+        myToolbar = findViewById(R.id.details_page_toolbar);
 
         //access the Navigation header element.
         View headerView = navigationview_home.getHeaderView(0);
-        myUsername = (TextView) headerView.findViewById(R.id.navigation_drawer_welcome_text);
+        myUsername = headerView.findViewById(R.id.navigation_drawer_welcome_text);
 
         bnve.enableAnimation(true);
         bnve.enableShiftingMode(false);

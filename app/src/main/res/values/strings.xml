@@ -91,7 +91,7 @@
     <string name="speaker_profile_profileimage">profileimage</string>
 
     <string name="speaker_profile_speakup">speakup</string>
-    <string name="speaker_profile_twiiter_image">twiiter_image</string>
+    <string name="speaker_profile_twiiter_image">twitter_image</string>
     <string name="speaker_profile_map_image">map_image</string>
     <string name="speaker_profile_link_map">link_map</string>
 
@@ -227,8 +227,6 @@
     <!-- rate -->
     <string name="star_details">star</string>
     <string name="follow_details">follow</string>
-
-
 
 
 </resources>
