@@ -1,6 +1,23 @@
 # TechSpeakUp
 TechSpeakUp App is designed to find all technical speakers in one place without the need to search anymore, we have them for you in 1 app, this app will help you to find speakers based on location,skill level, review and also view upcoming events.
 
+TechSpeakUp app solves one of the major issue which is “Finding all technical speaker in one
+place”.
+TechSpeakUp also includes couple of “Add on features” as listed below.
+- Map displaying speakers based on location,skills,review.
+- View Events details of the speaker.
+- Helps to connect with other speakers, network and follow up any upcoming event.
+These Add on makes the search more effective for people who are looking for speakers.
+Intended User
+- Event organizer
+- Students,Professors
+- Tech Events,IT professions, Mentors, Google Developers, Youtubers.
+Features
+List the main features of your app. For example:
+● Locate speakers.
+● Speakers Register
+● Connect with Speakers.
+
 [![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-for-android.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
