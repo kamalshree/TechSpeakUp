@@ -5,6 +5,17 @@ TechSpeakUp App is designed to find all technical speakers in one place without 
 [![forthebadge](https://forthebadge.com/images/badges/built-for-android.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
+TechSpeakup consist of two module one for speakers and one for user, while registering th app you can register by selecting the user type(which is either speaker,user)
+
+As a speaker/user you can create a profile, find nearby speakers in the map section, send notification,and look for the upcoming events.
+More details about the Speaker type and the user type can be found in the document 
+
+Please note you need gmail account to use this app.
+
+More details about the Speaker type and the user type can be found in the document https://github.com/kamalshree/TechSpeakUp/blob/master/Capstone_Stage1.pdf
+
+
+
 <h1>Speaker Module</h1>
 
 <img src="https://user-images.githubusercontent.com/3199282/48973968-96ce1a80-f011-11e8-812c-f776e6fa4893.png" width="200px" height="300px"/><img src="https://user-images.githubusercontent.com/3199282/48973969-96ce1a80-f011-11e8-96bc-aa101ac2ac70.png" width="200px" height="300px"/><img src="https://user-images.githubusercontent.com/3199282/48973967-96ce1a80-f011-11e8-94bf-4226dd39fbac.png" width="200px" height="300px"/>
