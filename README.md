@@ -11,6 +11,9 @@ TechSpeakUp App is designed to find all technical speakers in one place without 
 <img src="https://user-images.githubusercontent.com/3199282/48973966-96ce1a80-f011-11e8-8f81-cd8244b11249.png" width="200px" height="300px"/><img src="https://user-images.githubusercontent.com/3199282/48973965-96ce1a80-f011-11e8-8661-91babc895709.png" width="200px" height="300px"/><img src="https://user-images.githubusercontent.com/3199282/48973964-96ce1a80-f011-11e8-870f-f09069d01ee7.png" width="200px" height="300px"/>
 
 
+Note:
+Since the app use Google maps, API key is required and needs to be added in the AndroidManifest file.
+Firebase schema can be found at this link https://github.com/kamalshree/TechSpeakUp/wiki/Firebase-Schema
 
 
 
