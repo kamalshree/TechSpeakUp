@@ -29,7 +29,8 @@ public class HomePresenter implements HomeContract.Presenter{
 
     @Override
     public void destroy() {
-        this.mView=null;
+        this.mView = null;
+        this.mDataHandler = null;
     }
 
     @Override

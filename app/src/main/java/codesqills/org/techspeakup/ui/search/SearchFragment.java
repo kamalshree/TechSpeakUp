@@ -267,12 +267,14 @@ public class SearchFragment extends Fragment implements SearchContract.View, OnM
 
     @Override
     public void showLoading() {
-
+        //Show loading here
+        Log.d(TAG,"It is Loading");
     }
 
     @Override
     public void hideLoading() {
-
+        //Hide loading here
+        Log.d(TAG,"It Loading stopped");
     }
 
 }

@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,7 @@ import codesqills.org.techspeakup.ui.message.SpeakerRateDialog;
  * Created by kamalshree on 11/16/2018.
  */
 
-public class SpeakerFragment extends Fragment implements SpeakerContract.View,SpeakerAdapter.SpeakerItemListener {
+public class SpeakerFragment extends Fragment implements SpeakerContract.View, SpeakerAdapter.SpeakerItemListener {
 
     private SpeakerContract.Presenter mPresenter;
     private static final String TAG = "SpeakerFragment";
@@ -47,10 +48,10 @@ public class SpeakerFragment extends Fragment implements SpeakerContract.View,Sp
         //RecyclerView
         mSpeakersRecyclerView = view.findViewById(R.id.all_speaker_list);
         mSpeakersRecyclerView.setHasFixedSize(true);
-         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         mSpeakersRecyclerView.setLayoutManager(linearLayoutManager);
 
-        mSpeakerAdapter = new SpeakerAdapter(this,getActivity());
+        mSpeakerAdapter = new SpeakerAdapter(this, getActivity());
         mSpeakersRecyclerView.setAdapter(mSpeakerAdapter);
 
         swipeRefreshLayout = view.findViewById(R.id.showfeedback_swipe);
@@ -87,12 +88,14 @@ public class SpeakerFragment extends Fragment implements SpeakerContract.View,Sp
 
     @Override
     public void showLoading() {
-
+        //Show loading here
+        Log.d(TAG, "It is Loading");
     }
 
     @Override
     public void hideLoading() {
-
+        //Hide loading here
+        Log.d(TAG, "It Loading stopped");
     }
 
     @Override
@@ -110,7 +113,7 @@ public class SpeakerFragment extends Fragment implements SpeakerContract.View,Sp
         dialog.show(getActivity().getSupportFragmentManager(), getString(R.string.dialog_message));
     }
 
-@Override
+    @Override
     public void showFollowerDialog(User user) {
         SpeakerFollowerDialog dialog = new SpeakerFollowerDialog();
         Bundle bundle = new Bundle();
@@ -124,7 +127,7 @@ public class SpeakerFragment extends Fragment implements SpeakerContract.View,Sp
         mPresenter.onSpeakerClicked(user);
     }
 
- @Override
+    @Override
     public void onSpeakerFollowerClicked(User user) {
         mPresenter.onSpeakerFollowerClicked(user);
     }

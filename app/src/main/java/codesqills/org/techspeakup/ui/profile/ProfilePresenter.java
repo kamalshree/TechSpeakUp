@@ -48,6 +48,7 @@ public class ProfilePresenter implements ProfileContract.Presenter {
     @Override
     public void destroy() {
         this.mView = null;
+        this.mDataHandler = null;
     }
 
     @Override

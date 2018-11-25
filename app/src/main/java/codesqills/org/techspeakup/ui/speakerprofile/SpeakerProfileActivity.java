@@ -38,6 +38,8 @@ import codesqills.org.techspeakup.utils.NetworkUtils;
 
 public class SpeakerProfileActivity extends AppCompatActivity implements SpeakerProfileContract.View, View.OnClickListener {
 
+    private static final String TAG = "SpeakerProfile";
+
     private SpeakerProfileContract.Presenter mPresenter;
 
     @BindView(R.id.speaker_profile_tv_name)
@@ -138,12 +140,14 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
 
     @Override
     public void showLoading() {
-
+        //Show loading here
+        Log.d(TAG, "It is Loading");
     }
 
     @Override
     public void hideLoading() {
-
+        //Hide loading here
+        Log.d(TAG, "It Loading stopped");
     }
 
     @Override

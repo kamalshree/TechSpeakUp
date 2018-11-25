@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,6 +27,7 @@ import codesqills.org.techspeakup.widgets.EventWidget;
  */
 
 public class EventsDetailsActivity extends AppCompatActivity implements EventsDetailsContract.View, View.OnClickListener {
+    private static final String TAG = "EventsDetails";
 
     private EventsDetailsContract.Presenter mPresenter;
     private Bundle extras;
@@ -102,12 +104,14 @@ public class EventsDetailsActivity extends AppCompatActivity implements EventsDe
 
     @Override
     public void showLoading() {
-
+        //Show loading here
+        Log.d(TAG, "It is Loading");
     }
 
     @Override
     public void hideLoading() {
-
+        //Hide loading here
+        Log.d(TAG, "It Loading stopped");
     }
 
 

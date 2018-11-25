@@ -47,6 +47,7 @@ public class MapPresenter implements MapContract.Presenter{
 
     @Override
     public void destroy() {
-
+        this.mView = null;
+        this.mDataHandler = null;
     }
 }

@@ -12,6 +12,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -37,6 +38,8 @@ import codesqills.org.techspeakup.utils.NetworkUtils;
  */
 
 public class FollowersActivity extends AppCompatActivity implements FollowersAdapter.FollowersItemListener, FollowersContract.View, View.OnClickListener {
+    private static final String TAG = "FollowersActivity";
+
     private FollowersContract.Presenter mPresenter;
     private Bundle extras;
     private RecyclerView mFollowersRecyclerView;
@@ -159,12 +162,14 @@ public class FollowersActivity extends AppCompatActivity implements FollowersAda
 
     @Override
     public void showLoading() {
-
+        //Show loading here
+        Log.d(TAG,"It is Loading");
     }
 
     @Override
     public void hideLoading() {
-
+        //Hide loading here
+        Log.d(TAG,"It Loading stopped");
     }
 
     @Override

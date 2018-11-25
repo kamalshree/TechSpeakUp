@@ -190,12 +190,14 @@ public class UserDashboardActivity extends AppCompatActivity implements UserDash
 
     @Override
     public void showLoading() {
-
+        //Show loading here
+        Log.d(TAG, "It is Loading");
     }
 
     @Override
     public void hideLoading() {
-
+        //Hide loading here
+        Log.d(TAG, "It Loading stopped");
     }
 
 
@@ -224,7 +226,7 @@ public class UserDashboardActivity extends AppCompatActivity implements UserDash
 
     @Override
     public void displayUserProfile() {
-        String userKey =FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Intent userProfileIntent = new Intent(this, FollowersDetailsActivity.class);
         userProfileIntent.putExtra(FollowersDetailsContract.KEY_FOLLOWERS_ID, userKey);
         startActivity(userProfileIntent);
@@ -357,26 +359,26 @@ public class UserDashboardActivity extends AppCompatActivity implements UserDash
     /* get Users Latitude and Longitude */
     private void getLatLong() {
         try {
-            if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+            if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
             }
             getLocation();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
 
-    public void getLocation(){
+    public void getLocation() {
         gpsTracker = new GpsTracker(UserDashboardActivity.this);
-        if(gpsTracker.canGetLocation()){
+        if (gpsTracker.canGetLocation()) {
             double latitude = gpsTracker.getLatitude();
             double longitude = gpsTracker.getLongitude();
-            if(latitude!=0 && longitude!=0){
+            if (latitude != 0 && longitude != 0) {
                 sendUserLocationDetails(latitude, longitude);
             }
-        }else{
+        } else {
             gpsTracker.showSettingsAlert();
         }
     }

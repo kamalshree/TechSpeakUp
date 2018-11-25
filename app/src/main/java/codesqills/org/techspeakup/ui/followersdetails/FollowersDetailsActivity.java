@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,6 +29,9 @@ import codesqills.org.techspeakup.utils.NetworkUtils;
  */
 
 public class FollowersDetailsActivity extends AppCompatActivity implements FollowersDetailsContract.View,View.OnClickListener {
+    private static final String TAG = "FollowersDetails";
+
+
     @BindView(R.id.refresh)
     Button refreshBtn;
 
@@ -112,12 +116,14 @@ public class FollowersDetailsActivity extends AppCompatActivity implements Follo
 
     @Override
     public void showLoading() {
-
+        //Show loading here
+        Log.d(TAG,"It is Loading");
     }
 
     @Override
     public void hideLoading() {
-
+        //Hide loading here
+        Log.d(TAG,"It Loading stopped");
     }
 
     @Override

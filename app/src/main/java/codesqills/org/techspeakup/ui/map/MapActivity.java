@@ -115,6 +115,7 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
         mPresenter.start(extras);
         getLocationPermission();
     }
+
     private void intialiseUI() {
         editProfile.setText(getResources().getString(R.string.speaker_map_toolbar_title));
         mBack.setOnClickListener(this);
@@ -304,12 +305,14 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void showLoading() {
-
+        //Show loading here
+        Log.d(TAG, "It is Loading");
     }
 
     @Override
     public void hideLoading() {
-
+        //Hide loading here
+        Log.d(TAG, "It Loading stopped");
     }
 
     @Override

@@ -96,7 +96,7 @@ import codesqills.org.techspeakup.ui.newnotification.NewNotificationActivity;
                         R.drawable.ic_avatar))
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                 .setContentTitle(title)
-                .setColor(getColor(R.color.colorPrimary))
+                .setColor(getColor(R.color.colorAccent))
                 .setAutoCancel(true)
                 //.setSubText(message)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(message))

@@ -96,7 +96,7 @@
     <string name="speaker_profile_link_map">link_map</string>
 
     <string name="speaker_profile_dialog_title">Profile</string>
-    <string name="speaker_profile_dialog_message">Please Update your Profile.</string>
+    <string name="speaker_profile_dialog_message">Please Update your Profile, before proceeding to other sections of the App.</string>
 
     <!-- Speaker Edit profile -->
     <string name="speaker_editprofile_profile">Edit Profile</string>
@@ -192,8 +192,8 @@
 
     <!-- Dialog Names -->
     <string name="dialog_message">dialog_message</string>
-    <string name="dialog_message_speaker">Do you want to confirm.</string>
-    <string name="dialog_message_ok">ok</string>
+    <string name="dialog_message_speaker">Do you want to Follow, confirm.</string>
+    <string name="dialog_message_ok">Ok</string>
 
     <!-- Rate -->
 

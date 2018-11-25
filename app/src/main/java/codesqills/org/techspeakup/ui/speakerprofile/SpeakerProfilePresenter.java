@@ -38,6 +38,7 @@ public class SpeakerProfilePresenter implements SpeakerProfileContract.Presenter
     @Override
     public void destroy() {
         this.mView = null;
+        this.mDataHandler = null;
     }
 
     @Override

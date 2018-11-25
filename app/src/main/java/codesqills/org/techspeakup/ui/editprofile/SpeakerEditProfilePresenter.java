@@ -38,7 +38,8 @@ public class SpeakerEditProfilePresenter implements SpeakerEditProfileContract.P
 
     @Override
     public void destroy() {
-       this.mView=null;
+        this.mView = null;
+        this.mDataHandler = null;
     }
 
     @Override
@@ -87,9 +88,8 @@ public class SpeakerEditProfilePresenter implements SpeakerEditProfileContract.P
     }
 
 
-
     @Override
-    public void saveEditProfile(@Nullable String editName, String editLocation,String editJob, String editTwitter, String editLinkedin, String editWebsite, String editAboutMe,String FollowerCount,String RateCount,String editEventCount,String editEventDetails) {
+    public void saveEditProfile(@Nullable String editName, String editLocation, String editJob, String editTwitter, String editLinkedin, String editWebsite, String editAboutMe, String FollowerCount, String RateCount, String editEventCount, String editEventDetails) {
 
         mDataHandler.saveEditName(editName);
         mDataHandler.saveEditLocation(editLocation);

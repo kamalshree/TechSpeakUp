@@ -24,6 +24,7 @@ public class SignInPresenter implements SignInContract.Presenter {
     @Override
     public void destroy() {
         this.mView = null;
+        this.mDataHandler = null;
     }
 
         public SignInPresenter(SignInContract.View view) {
