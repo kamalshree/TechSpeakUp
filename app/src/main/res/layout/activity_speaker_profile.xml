@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -29,8 +28,7 @@
                 android:orientation="vertical">
 
                 <!-- ToolBar -->
-               <include
-                   layout="@layout/toolbar_speakerprofile"/>
+                <include layout="@layout/toolbar_speakerprofile" />
 
                 <ImageView
                     android:id="@+id/speaker_profile_iv"
@@ -167,8 +165,8 @@
                 android:id="@+id/speaker_profile_cardviewtwo"
                 android:layout_width="@dimen/width_400"
                 android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
                 android:layout_below="@+id/speaker_profile_cardviewone"
+                android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/margin_larges"
                 android:layout_marginRight="@dimen/margin_larges"
                 android:layout_marginTop="@dimen/margin_medium"
@@ -380,11 +378,7 @@
             </android.support.v7.widget.CardView>
 
         </RelativeLayout>
-        <!-- No Internet Connection layout -->
-        <include
-            android:id="@+id/layout_internet"
-            android:visibility="gone"
-            layout="@layout/activity_no_internet"/>
+
 
     </LinearLayout>
 

@@ -10,7 +10,6 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -83,20 +82,13 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
     //vars
 
 
-    @BindView(R.id.tv_no_internet)
-    TextView noInternet;
-
-    @BindView(R.id.refresh)
-    Button refreshBtn;
-
     @BindView(R.id.toolbar_speakerprofile)
     View toolbar_event;
-    @BindView(R.id.layout_internet)
-    View layout_internet;
+
 
     @BindView(R.id.relative_layout)
     RelativeLayout relative_layout;
-
+    NetworkUtils networkUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,10 +97,7 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
         ButterKnife.bind(this);
         intialiseUI();
 
-        if (!NetworkUtils.connectionStatus(this)) {
-            ShowNoInternetMessage();
-            buildDialog(this).show();
-        }
+        check_connection();
 
         PresenterInjector.injectMapPresenter(this);
         extras = getIntent().getExtras();
@@ -116,10 +105,15 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
         getLocationPermission();
     }
 
+    /* Check Internet Connection */
+    public void check_connection() {
+        networkUtils = new NetworkUtils(this);
+        networkUtils.execute();
+    }
+
     private void intialiseUI() {
         editProfile.setText(getResources().getString(R.string.speaker_map_toolbar_title));
         mBack.setOnClickListener(this);
-        refreshBtn.setOnClickListener(this);
     }
 
     @Override
@@ -321,9 +315,6 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
             case R.id.speaker_profile_page_back:
                 onBackPressed();
                 break;
-            case R.id.refresh:
-                checkInternet();
-                break;
             default:
                 break;
         }
@@ -335,41 +326,5 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
         overridePendingTransition(R.anim.anim_nothing, R.anim.slide_out_right);
     }
 
-    private void checkInternet() {
-        if (NetworkUtils.connectionStatus(this)) {
-            relative_layout.setVisibility(View.VISIBLE);
-
-            toolbar_event.setVisibility(View.VISIBLE);
-        } else {
-            ShowNoInternetMessage();
-        }
-    }
-
-    /*Action when internet not available */
-    private void ShowNoInternetMessage() {
-        relative_layout.setVisibility(View.INVISIBLE);
-        layout_internet.setVisibility(View.VISIBLE);
-        noInternet.setVisibility(View.VISIBLE);
-        refreshBtn.setVisibility(View.VISIBLE);
-    }
-
-    /* No Internet Dialog */
-    private AlertDialog.Builder buildDialog(Context c) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(c);
-        builder.setTitle(getString(R.string.no_internet_title));
-        builder.setMessage(getString(R.string.no_internet_message));
-
-        builder.setPositiveButton(getString(R.string.no_interent_okbutton), new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-
-        });
-
-        return builder;
-    }
 
 }

@@ -12,8 +12,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
-import codesqills.org.techspeakup.data.models.Followers;
 import codesqills.org.techspeakup.data.models.Message;
 
 
@@ -85,16 +86,17 @@ public class NewNotificationAdapter extends RecyclerView.Adapter<NewNotification
      * {@link RecyclerView.ViewHolder} object for Messages item.
      */
     class NotificationViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.tv_notifiation_message)
+        TextView tvFollowerMessage;
+        @BindView(R.id.tv_notifiation_timestamp)
+        TextView tvFollowerTimestamp;
+        @BindView(R.id.iv_delete_notification)
+        ImageView deleteNotificationIcon;
 
-        private TextView tvFollowerMessage;
-        private TextView tvFollowerTimestamp;
-        private ImageView deleteNotificationIcon;
 
         NotificationViewHolder(View itemView) {
             super(itemView);
-            tvFollowerMessage = itemView.findViewById(R.id.tv_notifiation_message);
-            tvFollowerTimestamp = itemView.findViewById(R.id.tv_notifiation_timestamp);
-            deleteNotificationIcon = itemView.findViewById(R.id.iv_delete_notification);
+            ButterKnife.bind(this, itemView);
 
         }
 

@@ -20,6 +20,7 @@ import codesqills.org.techspeakup.data.models.User;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.message.SpeakerFollowerDialog;
 import codesqills.org.techspeakup.ui.message.SpeakerRateDialog;
+import codesqills.org.techspeakup.utils.NetworkUtils;
 
 /**
  * Created by kamalshree on 11/16/2018.
@@ -36,7 +37,7 @@ public class SpeakerFragment extends Fragment implements SpeakerContract.View, S
     private SpeakerAdapter mSpeakerAdapter;
 
     SwipeRefreshLayout swipeRefreshLayout;
-
+    NetworkUtils networkUtils;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -44,7 +45,6 @@ public class SpeakerFragment extends Fragment implements SpeakerContract.View, S
         PresenterInjector.injectSpeakerPresenter(this);
         extras = getActivity().getIntent().getExtras();
         mPresenter.start(extras);
-
         //RecyclerView
         mSpeakersRecyclerView = view.findViewById(R.id.all_speaker_list);
         mSpeakersRecyclerView.setHasFixedSize(true);
@@ -79,7 +79,6 @@ public class SpeakerFragment extends Fragment implements SpeakerContract.View, S
         });
         return view;
     }
-
 
     @Override
     public void setPresenter(SpeakerContract.Presenter presenter) {

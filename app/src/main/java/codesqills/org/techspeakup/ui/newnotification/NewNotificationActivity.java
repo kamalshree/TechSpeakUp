@@ -18,7 +18,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -28,9 +27,7 @@ import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.data.models.Message;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.message.DeleteMessageDialog;
-import codesqills.org.techspeakup.ui.message.MessageDialog;
 import codesqills.org.techspeakup.ui.notificationFollowers.NotificationFollowersActivity;
-import codesqills.org.techspeakup.ui.notificationFollowers.NotificationFollowersAdapter;
 import codesqills.org.techspeakup.utils.NetworkUtils;
 
 /**
@@ -49,10 +46,7 @@ public class NewNotificationActivity extends AppCompatActivity implements NewNot
 
     @BindView(R.id.speaker_profile_page_toolbar_settings)
     TextView editProfile;
-    @BindView(R.id.tv_no_internet)
-    TextView noInternet;
-    @BindView(R.id.refresh)
-    Button refreshBtn;
+
     @BindView(R.id.speaker_profile_page_back)
     ImageView mBack;
 
@@ -62,12 +56,11 @@ public class NewNotificationActivity extends AppCompatActivity implements NewNot
     @BindView(R.id.fab_notificaton)
     FloatingActionButton fab_notification;
 
-    @BindView(R.id.layout_internet)
-    View layout_internet;
 
     private Context mContext;
     SwipeRefreshLayout swipeRefreshLayout;
     private static final int BACK_PRESS_DURATION = 3000;
+    NetworkUtils networkUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,11 +68,7 @@ public class NewNotificationActivity extends AppCompatActivity implements NewNot
         setContentView(R.layout.activity_new_notification);
         ButterKnife.bind(this);
         intialiseUI();
-
-        if (!NetworkUtils.connectionStatus(this)) {
-            ShowNoInternetMessage();
-            buildDialog(this).show();
-        }
+        check_connection();
 
 
         PresenterInjector.injectNewNotificationPresenter(this);
@@ -90,10 +79,15 @@ public class NewNotificationActivity extends AppCompatActivity implements NewNot
 
     }
 
+    /* Check Internet Connection */
+    public void check_connection() {
+        networkUtils = new NetworkUtils(this);
+        networkUtils.execute();
+    }
+
     private void intialiseUI() {
         editProfile.setText(getResources().getString(R.string.new_notification_profile));
         mBack.setOnClickListener(this);
-        refreshBtn.setOnClickListener(this);
         fab_notification.setOnClickListener(this);
 
         //RecyclerView
@@ -155,13 +149,13 @@ public class NewNotificationActivity extends AppCompatActivity implements NewNot
     @Override
     public void showLoading() {
         //Show loading here
-        Log.d(TAG,"It is Loading");
+        Log.d(TAG, "It is Loading");
     }
 
     @Override
     public void hideLoading() {
         //Hide loading here
-        Log.d(TAG,"It Loading stopped");
+        Log.d(TAG, "It Loading stopped");
     }
 
 
@@ -171,51 +165,12 @@ public class NewNotificationActivity extends AppCompatActivity implements NewNot
             case R.id.speaker_profile_page_back:
                 onBackPressed();
                 break;
-            case R.id.refresh:
-                checkInternet();
-                break;
             case R.id.fab_notificaton:
                 mPresenter.openNewNotification();
                 break;
             default:
                 break;
         }
-    }
-
-
-    private void checkInternet() {
-        if (NetworkUtils.connectionStatus(this)) {
-            mCard.setVisibility(View.VISIBLE);
-        } else {
-            ShowNoInternetMessage();
-        }
-    }
-
-    /*Action when internet not available */
-    private void ShowNoInternetMessage() {
-        mCard.setVisibility(View.INVISIBLE);
-        layout_internet.setVisibility(View.VISIBLE);
-        noInternet.setVisibility(View.VISIBLE);
-        refreshBtn.setVisibility(View.VISIBLE);
-    }
-
-    /* No Internet Dialog */
-    private AlertDialog.Builder buildDialog(Context c) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(c);
-        builder.setTitle(getString(R.string.no_internet_title));
-        builder.setMessage(getString(R.string.no_internet_message));
-
-        builder.setPositiveButton(getString(R.string.no_interent_okbutton), new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-
-        });
-
-        return builder;
     }
 
     @Override

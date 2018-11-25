@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,12 +27,8 @@ import codesqills.org.techspeakup.utils.NetworkUtils;
  * Created by kamalshree on 11/12/2018.
  */
 
-public class FollowersDetailsActivity extends AppCompatActivity implements FollowersDetailsContract.View,View.OnClickListener {
+public class FollowersDetailsActivity extends AppCompatActivity implements FollowersDetailsContract.View, View.OnClickListener {
     private static final String TAG = "FollowersDetails";
-
-
-    @BindView(R.id.refresh)
-    Button refreshBtn;
 
     @BindView(R.id.speaker_profile_page_back)
     ImageView mBack;
@@ -41,11 +36,6 @@ public class FollowersDetailsActivity extends AppCompatActivity implements Follo
     @BindView(R.id.linear_layout_main)
     LinearLayout mLinearLayout;
 
-    @BindView(R.id.layout_internet)
-    View layout_internet;
-
-    @BindView(R.id.tv_no_internet)
-    TextView noInternet;
 
     @BindView(R.id.speaker_profile_page_toolbar_settings)
     TextView editProfile;
@@ -75,24 +65,28 @@ public class FollowersDetailsActivity extends AppCompatActivity implements Follo
 
     @BindView(R.id.speaker_followerdetails_iv)
     ImageView followerdetails_pic;
-
+    NetworkUtils networkUtils;
 
     private FollowersDetailsContract.Presenter mPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaker_followersdetails);
         ButterKnife.bind(this);
         intialiseUI();
-        if (!NetworkUtils.connectionStatus(this)) {
-            ShowNoInternetMessage();
-            buildDialog(this).show();
-        }
+        check_connection();
 
         PresenterInjector.injectFollowersDetailsPresenter(this);
         extras = getIntent().getExtras();
         mPresenter.start(extras);
         checkNewProfile();
+    }
+
+    /* Check Internet Connection */
+    public void check_connection() {
+        networkUtils = new NetworkUtils(this);
+        networkUtils.execute();
     }
 
     private void intialiseUI() {
@@ -111,19 +105,19 @@ public class FollowersDetailsActivity extends AppCompatActivity implements Follo
 
     @Override
     public void setPresenter(FollowersDetailsContract.Presenter presenter) {
-            this.mPresenter=presenter;
+        this.mPresenter = presenter;
     }
 
     @Override
     public void showLoading() {
         //Show loading here
-        Log.d(TAG,"It is Loading");
+        Log.d(TAG, "It is Loading");
     }
 
     @Override
     public void hideLoading() {
         //Hide loading here
-        Log.d(TAG,"It Loading stopped");
+        Log.d(TAG, "It Loading stopped");
     }
 
     @Override
@@ -132,48 +126,11 @@ public class FollowersDetailsActivity extends AppCompatActivity implements Follo
             case R.id.speaker_profile_page_back:
                 onBackPressed();
                 break;
-            case R.id.refresh:
-                checkInternet();
-                break;
             default:
                 break;
         }
     }
 
-    private void checkInternet() {
-        if (NetworkUtils.connectionStatus(this)) {
-            mLinearLayout.setVisibility(View.VISIBLE);
-        } else {
-            ShowNoInternetMessage();
-        }
-    }
-
-    /*Action when internet not available */
-    private void ShowNoInternetMessage() {
-        mLinearLayout.setVisibility(View.INVISIBLE);
-        layout_internet.setVisibility(View.VISIBLE);
-        noInternet.setVisibility(View.VISIBLE);
-        refreshBtn.setVisibility(View.VISIBLE);
-    }
-
-    /* No Internet Dialog */
-    private AlertDialog.Builder buildDialog(Context c) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(c);
-        builder.setTitle(getString(R.string.no_internet_title));
-        builder.setMessage(getString(R.string.no_internet_message));
-
-        builder.setPositiveButton(getString(R.string.no_interent_okbutton), new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-
-        });
-
-        return builder;
-    }
 
     @Override
     public void onBackPressed() {

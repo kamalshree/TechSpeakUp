@@ -21,6 +21,7 @@ import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.home.HomeActivity;
 import codesqills.org.techspeakup.ui.userdashboard.UserDashboardActivity;
+import codesqills.org.techspeakup.utils.NetworkUtils;
 
 /**
  * Created by kamalshree on 10/29/2018.
@@ -50,19 +51,25 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
     ProgressBar mProgressBar;
 
     String deviceid;
-
+    NetworkUtils networkUtils;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_page);
         ButterKnife.bind(this);
-        initializeUI();
+        check_connection();
 
         // Injecting presenter
         PresenterInjector.injectProfilePresenter(this);
 
         extras = getIntent().getExtras();
         mPresenter.start(extras);
+    }
+
+    /* Check Internet Connection */
+    public void check_connection(){
+        networkUtils=new NetworkUtils(this);
+        networkUtils.execute();
     }
 
     private void initializeUI() {

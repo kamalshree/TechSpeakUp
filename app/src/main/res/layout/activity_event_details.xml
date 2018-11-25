@@ -139,12 +139,6 @@
 
             </android.support.v7.widget.CardView>
 
-            <!-- No Internet Connection layout -->
-            <include
-                android:id="@+id/layout_internet"
-                layout="@layout/activity_no_internet"
-                android:visibility="gone" />
-
         </RelativeLayout>
 
     </LinearLayout>

@@ -26,9 +26,6 @@ import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.data.models.Followers;
 import codesqills.org.techspeakup.ui.PresenterInjector;
-import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfileActivity;
-import codesqills.org.techspeakup.ui.eventsdetails.EventsDetailsActivity;
-import codesqills.org.techspeakup.ui.eventsdetails.EventsDetailsContract;
 import codesqills.org.techspeakup.ui.followersdetails.FollowersDetailsActivity;
 import codesqills.org.techspeakup.ui.followersdetails.FollowersDetailsContract;
 import codesqills.org.techspeakup.utils.NetworkUtils;
@@ -47,18 +44,14 @@ public class FollowersActivity extends AppCompatActivity implements FollowersAda
 
     @BindView(R.id.speaker_profile_page_toolbar_settings)
     TextView editProfile;
-    @BindView(R.id.tv_no_internet)
-    TextView noInternet;
-    @BindView(R.id.refresh)
-    Button refreshBtn;
+
+
     @BindView(R.id.speaker_profile_page_back)
     ImageView mBack;
 
     @BindView(R.id.speaker_profile_cardviewone)
     CardView mCard;
 
-    @BindView(R.id.layout_internet)
-    View layout_internet;
 
     @BindView(R.id.toolbar_speakerprofile)
     View toolbar_event;
@@ -66,19 +59,15 @@ public class FollowersActivity extends AppCompatActivity implements FollowersAda
     private Context mContext;
     SwipeRefreshLayout swipeRefreshLayout;
     private static final int BACK_PRESS_DURATION = 3000;
-
+    NetworkUtils networkUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaker_followers);
+        check_connection();
         ButterKnife.bind(this);
         intialiseUI();
-
-        if (!NetworkUtils.connectionStatus(this)) {
-            ShowNoInternetMessage();
-            buildDialog(this).show();
-        }
 
 
         PresenterInjector.injectFollowersPresenter(this);
@@ -87,12 +76,17 @@ public class FollowersActivity extends AppCompatActivity implements FollowersAda
         setUpSwipeRefresh();
 
     }
+    /* Check Internet Connection */
+    public void check_connection() {
+        networkUtils = new NetworkUtils(this);
+        networkUtils.execute();
+    }
+
 
     private void intialiseUI() {
         editProfile.setText(getResources().getString(R.string.speaker_followers_profile));
         mBack.setOnClickListener(this);
         mContext = getApplicationContext();
-        refreshBtn.setOnClickListener(this);
 
         //RecyclerView
         mFollowersRecyclerView = findViewById(R.id.recyclerview_followers);
@@ -178,49 +172,9 @@ public class FollowersActivity extends AppCompatActivity implements FollowersAda
             case R.id.speaker_profile_page_back:
                 onBackPressed();
                 break;
-            case R.id.refresh:
-                checkInternet();
-                break;
             default:
                 break;
         }
-    }
-
-
-    private void checkInternet() {
-        if (NetworkUtils.connectionStatus(this)) {
-            mCard.setVisibility(View.VISIBLE);
-            toolbar_event.setVisibility(View.VISIBLE);
-        } else {
-            ShowNoInternetMessage();
-        }
-    }
-
-    /*Action when internet not available */
-    private void ShowNoInternetMessage() {
-        mCard.setVisibility(View.INVISIBLE);
-        layout_internet.setVisibility(View.VISIBLE);
-        noInternet.setVisibility(View.VISIBLE);
-        refreshBtn.setVisibility(View.VISIBLE);
-    }
-
-    /* No Internet Dialog */
-    private AlertDialog.Builder buildDialog(Context c) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(c);
-        builder.setTitle(getString(R.string.no_internet_title));
-        builder.setMessage(getString(R.string.no_internet_message));
-
-        builder.setPositiveButton(getString(R.string.no_interent_okbutton), new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-
-        });
-
-        return builder;
     }
 
     @Override

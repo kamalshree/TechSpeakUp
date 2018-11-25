@@ -15,6 +15,8 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.data.models.Followers;
 
@@ -87,17 +89,16 @@ public class FollowersAdapter extends RecyclerView.Adapter<FollowersAdapter.Foll
      * {@link android.support.v7.widget.RecyclerView.ViewHolder} object for events item.
      */
     class FollowersViewHolder extends RecyclerView.ViewHolder {
-
-        private TextView tvFollowerJob;
-        private TextView tvFollowerName;
-        private ImageView tvFollowerPic;
+        @BindView(R.id.tv_follower_name)
+        TextView tvFollowerJob;
+        @BindView(R.id.tv_follower_job)
+        TextView tvFollowerName;
+        @BindView(R.id.img_follower_pic)
+        ImageView tvFollowerPic;
 
         FollowersViewHolder(View itemView) {
             super(itemView);
-            tvFollowerName = itemView.findViewById(R.id.tv_follower_name);
-            tvFollowerJob = itemView.findViewById(R.id.tv_follower_job);
-            tvFollowerPic = itemView.findViewById(R.id.img_follower_pic);
-
+            ButterKnife.bind(this, itemView);
         }
 
         void bind(int position) {
@@ -129,7 +130,7 @@ public class FollowersAdapter extends RecyclerView.Adapter<FollowersAdapter.Foll
          *
          * @param followers the events that was clicked
          */
-         void onFollowersClicked(Followers followers);
+        void onFollowersClicked(Followers followers);
     }
 
 }

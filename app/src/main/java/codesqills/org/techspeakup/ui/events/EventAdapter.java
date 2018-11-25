@@ -11,6 +11,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.data.models.Events;
 
@@ -80,18 +82,17 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventsViewHo
      * {@link android.support.v7.widget.RecyclerView.ViewHolder} object for events item.
      */
     class EventsViewHolder extends RecyclerView.ViewHolder {
-
-        private TextView tvEventName;
-        private TextView tvEventDate;
-        private TextView tvEventLocation;
+        @BindView(R.id.tv_event_name)
+        TextView tvEventName;
+        @BindView(R.id.tv_event_date)
+        TextView tvEventDate;
+        @BindView(R.id.tv_event_location)
+        TextView tvEventLocation;
 
 
         EventsViewHolder(View itemView) {
             super(itemView);
-            tvEventName = itemView.findViewById(R.id.tv_event_name);
-            tvEventDate = itemView.findViewById(R.id.tv_event_date);
-            tvEventLocation = itemView.findViewById(R.id.tv_event_location);
-
+            ButterKnife.bind(this, itemView);
         }
 
         void bind(int position) {

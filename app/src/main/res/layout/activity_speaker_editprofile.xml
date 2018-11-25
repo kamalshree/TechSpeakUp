@@ -159,10 +159,6 @@
 
             </android.support.v7.widget.CardView>
 
-            <include
-                android:id="@+id/layout_internet"
-                layout="@layout/activity_no_internet"
-                android:visibility="gone" />
 
         </RelativeLayout>
 

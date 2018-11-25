@@ -11,8 +11,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
-import codesqills.org.techspeakup.data.models.Followers;
 import codesqills.org.techspeakup.data.models.User;
 
 /**
@@ -69,17 +70,16 @@ public class NotificationFollowersAdapter extends RecyclerView.Adapter<Notificat
      * {@link android.support.v7.widget.RecyclerView.ViewHolder} object for events item.
      */
     class NotificiationViewHolder extends RecyclerView.ViewHolder {
-
-        private TextView tvFollowerName;
-        private TextView tvFollowerDesignation;
-        private TextView tvFollowerLocation;
-
+        @BindView(R.id.tv_notification_followers_name)
+        TextView tvFollowerName;
+        @BindView(R.id.tv_notification_followers_designation)
+        TextView tvFollowerDesignation;
+        @BindView(R.id.tv_notification_followers_location)
+        TextView tvFollowerLocation;
 
         NotificiationViewHolder(View itemView) {
             super(itemView);
-            tvFollowerName = itemView.findViewById(R.id.tv_notification_followers_name);
-            tvFollowerDesignation = itemView.findViewById(R.id.tv_notification_followers_designation);
-            tvFollowerLocation = itemView.findViewById(R.id.tv_notification_followers_location);
+            ButterKnife.bind(this, itemView);
         }
 
         void bind(int position) {
@@ -111,7 +111,7 @@ public class NotificationFollowersAdapter extends RecyclerView.Adapter<Notificat
          *
          * @param followers the events that was clicked
          */
-         void onFollowersClicked(User followers);
+        void onFollowersClicked(User followers);
     }
 
 }

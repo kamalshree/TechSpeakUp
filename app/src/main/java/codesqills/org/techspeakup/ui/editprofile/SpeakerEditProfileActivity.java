@@ -73,19 +73,12 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
     TextView mRateCount;
 
 
-    @BindView(R.id.tv_no_internet)
-    TextView noInternet;
-
-    @BindView(R.id.refresh)
-    Button refreshBtn;
     @BindView(R.id.toolbar_speakerprofile)
     View toolbar_event;
-    @BindView(R.id.layout_internet)
-    View layout_internet;
 
     @BindView(R.id.speaker_profile_cardviewone)
     CardView cardView;
-
+    NetworkUtils networkUtils;
     //String deviceid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,15 +86,16 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
         setContentView(R.layout.activity_speaker_editprofile);
         ButterKnife.bind(this);
 
-        if (!NetworkUtils.connectionStatus(this)) {
-            ShowNoInternetMessage();
-            buildDialog(this).show();
-        }
+        check_connection();
 
         intialiseUI();
         PresenterInjector.injectSpeakerEditProfilePresenter(this);
         extras = getIntent().getExtras();
         mPresenter.start(extras);
+    }
+    public void check_connection(){
+        networkUtils=new NetworkUtils(this);
+        networkUtils.execute();
     }
 
     private void intialiseUI() {
@@ -109,7 +103,6 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
         editProfile.setText(getResources().getString(R.string.speaker_editprofile_profile));
         mBack.setOnClickListener(this);
         editSubmit.setOnClickListener(this);
-        refreshBtn.setOnClickListener(this);
         getFollowerCount();
         getRateCount();
     }
@@ -234,9 +227,6 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
                 onBackPressed();
                 break;
 
-            case R.id.refresh:
-                checkInternet();
-                break;
             default:
                 break;
         }
@@ -324,39 +314,4 @@ public class SpeakerEditProfileActivity extends AppCompatActivity implements Spe
                 .create().show();
     }
 
-    private void checkInternet() {
-        if (NetworkUtils.connectionStatus(this)) {
-            cardView.setVisibility(View.VISIBLE);
-            toolbar_event.setVisibility(View.VISIBLE);
-        } else {
-            ShowNoInternetMessage();
-        }
-    }
-
-    /*Action when internet not available */
-    private void ShowNoInternetMessage() {
-        cardView.setVisibility(View.INVISIBLE);
-        layout_internet.setVisibility(View.VISIBLE);
-        noInternet.setVisibility(View.VISIBLE);
-        refreshBtn.setVisibility(View.VISIBLE);
-    }
-
-    /* No Internet Dialog */
-    private AlertDialog.Builder buildDialog(Context c) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(c);
-        builder.setTitle(getString(R.string.no_internet_title));
-        builder.setMessage(getString(R.string.no_internet_message));
-
-        builder.setPositiveButton(getString(R.string.no_interent_okbutton), new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-
-        });
-
-        return builder;
-    }
 }

@@ -21,10 +21,5 @@
             android:layout_marginTop="60dp"
             tools:context="codesqills.org.techspeakup.ui.userdashboard.UserDashboardActivity" />
     </RelativeLayout>
-    <!-- No Internet Connection layout -->
-    <include
-        android:id="@+id/layout_internet"
-        layout="@layout/activity_no_internet"
-        android:visibility="gone" />
 
 </android.support.constraint.ConstraintLayout>

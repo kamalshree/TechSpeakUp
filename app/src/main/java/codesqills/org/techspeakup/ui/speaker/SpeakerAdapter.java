@@ -9,17 +9,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import codesqills.org.techspeakup.R;
-import codesqills.org.techspeakup.data.models.Followers;
 import codesqills.org.techspeakup.data.models.User;
-import codesqills.org.techspeakup.ui.followers.FollowersAdapter;
-import codesqills.org.techspeakup.ui.newnotification.NewNotificationAdapter;
 
 /**
  * Created by kamalshree on 11/18/2018.
@@ -35,7 +30,7 @@ public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.Speakers
     SpeakerAdapter(@NonNull SpeakerAdapter.SpeakerItemListener speakersItemListener, Context context) {
         mSpeakersList = new ArrayList<>();
         this.context = context;
-        this.mSpeakerItemListener=speakersItemListener;
+        this.mSpeakerItemListener = speakersItemListener;
     }
 
     @NonNull
@@ -85,12 +80,14 @@ public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.Speakers
      * {@link android.support.v7.widget.RecyclerView.ViewHolder} object for events item.
      */
     class SpeakersViewHolder extends RecyclerView.ViewHolder {
-
-        private TextView tvFollowerJob;
-        private TextView tvFollowerName;
-        private ImageView ivStar;
-        private ImageView ivfollow;
-
+        @BindView(R.id.tv_speaker_job)
+        TextView tvFollowerJob;
+        @BindView(R.id.tv_speaker_name)
+        TextView tvFollowerName;
+        @BindView(R.id.iv_star)
+        ImageView ivStar;
+        @BindView(R.id.iv_follow)
+        ImageView ivfollow;
 
         SpeakersViewHolder(View itemView) {
             super(itemView);
@@ -136,6 +133,7 @@ public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.Speakers
          * @param user the Messages that was clicked
          */
         void onSpeakerClicked(User user);
+
         void onSpeakerFollowerClicked(User user);
     }
 

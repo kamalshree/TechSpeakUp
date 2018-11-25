@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -27,7 +26,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import codesqills.org.techspeakup.R;
 import codesqills.org.techspeakup.data.models.Rate;
-import codesqills.org.techspeakup.data.models.User;
 import codesqills.org.techspeakup.ui.PresenterInjector;
 import codesqills.org.techspeakup.ui.editprofile.SpeakerEditProfileActivity;
 import codesqills.org.techspeakup.utils.NetworkUtils;
@@ -83,29 +81,16 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
 
     private Bundle extras;
 
-    @BindView(R.id.layout_internet)
-    View layout_internet;
-
-    @BindView(R.id.tv_no_internet)
-    TextView noInternet;
-
-    @BindView(R.id.refresh)
-    Button refreshBtn;
-
     @BindView(R.id.relative_layout)
     RelativeLayout relative_layout;
-
+    NetworkUtils networkUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaker_profile);
         ButterKnife.bind(this);
-
-        if (!NetworkUtils.connectionStatus(this)) {
-            ShowNoInternetMessage();
-            buildInternetDialog(this).show();
-        }
+        check_connection();
         intialiseUI();
         PresenterInjector.injectSpeakerProfilePresenter(this);
 
@@ -115,9 +100,14 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
         checkNewProfile();
     }
 
+    /* Check Internet Connection */
+    public void check_connection() {
+        networkUtils = new NetworkUtils(this);
+        networkUtils.execute();
+    }
+
     private void intialiseUI() {
         mBack.setOnClickListener(this);
-        refreshBtn.setOnClickListener(this);
         loadFollowerCount();
         getFollowerCount();
         loadRateCount();
@@ -307,29 +297,12 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
             case R.id.speaker_profile_page_back:
                 onBackPressed();
                 break;
-            case R.id.refresh:
-                checkInternet();
-                break;
             default:
                 break;
         }
     }
 
-    private void checkInternet() {
-        if (NetworkUtils.connectionStatus(this)) {
-            relative_layout.setVisibility(View.VISIBLE);
-        } else {
-            ShowNoInternetMessage();
-        }
-    }
 
-    /*Action when internet not available */
-    private void ShowNoInternetMessage() {
-        relative_layout.setVisibility(View.INVISIBLE);
-        layout_internet.setVisibility(View.VISIBLE);
-        noInternet.setVisibility(View.VISIBLE);
-        refreshBtn.setVisibility(View.VISIBLE);
-    }
 
     /* Profile not updated Dialog */
     private AlertDialog.Builder buildDialog(Context c) {
@@ -352,24 +325,5 @@ public class SpeakerProfileActivity extends AppCompatActivity implements Speaker
         return builder;
     }
 
-
-    /* No Internet Dialog */
-    private AlertDialog.Builder buildInternetDialog(Context c) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(c);
-        builder.setTitle(getString(R.string.no_internet_title));
-        builder.setMessage(getString(R.string.no_internet_message));
-
-        builder.setPositiveButton(getString(R.string.no_interent_okbutton), new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-
-        });
-
-        return builder;
-    }
 
 }

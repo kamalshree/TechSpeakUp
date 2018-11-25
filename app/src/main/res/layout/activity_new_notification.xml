@@ -94,6 +94,7 @@
                         android:layout_gravity="bottom|end"
                         android:layout_marginBottom="@dimen/followers_layout_marginBottom"
                         android:layout_marginEnd="@dimen/followers_layout_marginEnd"
+                        android:contentDescription="@string/fab_notification"
                         android:src="@drawable/ic_plus"
                         app:backgroundTint="@color/colorPrimary"
                         app:borderWidth="0dp"
@@ -103,11 +104,6 @@
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
-            <!-- No Internet Connection layout -->
-            <include
-                android:id="@+id/layout_internet"
-                layout="@layout/activity_no_internet"
-                android:visibility="gone" />
 
         </RelativeLayout>
 
