@@ -6,16 +6,18 @@ import android.content.SharedPreferences;
 /**
  * Created by kamalshree on 10/31/2018.
  */
- class PrefsHelper {
+ public class PrefsHelper {
 
     private static final String PREFERENCES_NAME = "techspeakup_app_prefs";
-
+    private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
+    SharedPreferences.Editor editor;
     private SharedPreferences mPrefs;
 
     private static PrefsHelper sInstance = null;
 
-    private PrefsHelper(Context context) {
+    public PrefsHelper(Context context) {
         mPrefs = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
+        editor = mPrefs.edit();
     }
 
     public static PrefsHelper getInstance(Context context) {
@@ -27,6 +29,16 @@ import android.content.SharedPreferences;
             }
         }
         return sInstance;
+    }
+
+    // Check for first time installation of the app
+    public void setFirstTimeLaunch(boolean isFirstTime) {
+        editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
+        editor.commit();
+    }
+
+    public boolean isFirstTimeLaunch() {
+        return mPrefs.getBoolean(IS_FIRST_TIME_LAUNCH, true);
     }
 
     private static final String KEY_USER_NAME = "key_user_name";

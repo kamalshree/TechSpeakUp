@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@drawable/background_color">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/pb_signin"
@@ -16,12 +16,38 @@
         app:lottie_fileName="loading.json"
         app:lottie_loop="true" />
 
+
+    <TextView
+        android:id="@+id/sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/margin_larges"
+        android:layout_marginTop="@dimen/margin_large"
+        android:fontFamily="@font/martel_extralight"
+        android:gravity="center_horizontal"
+        android:text="@string/signin_btn"
+        android:textAllCaps="true"
+        android:textAppearance="@style/sign_in" />
+
+    <ImageView
+        android:id="@+id/sigin_image_smalllogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/sign_in"
+        android:layout_marginEnd="@dimen/margin_larges"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/toolbar_logo" />
+
     <ImageView
         android:id="@+id/sigin_image_logo"
         android:layout_width="@dimen/box_x_large"
         android:layout_height="@dimen/box_x_large"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_xx_large"
+        android:layout_alignEnd="@+id/signin_text_almost_there"
+        android:layout_below="@+id/sign_in"
+        android:layout_marginTop="@dimen/desc_padding"
         android:contentDescription="@string/app_name"
         android:src="@drawable/signin_logo" />
 
@@ -29,13 +55,13 @@
         android:id="@+id/signin_text_almost_there"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/google_signin_btn"
-        android:layout_below="@id/sigin_image_logo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_x_large"
-        android:fontFamily="@font/lato_bold"
+        android:layout_below="@+id/sigin_image_logo"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_toEndOf="@+id/sign_in"
+        android:fontFamily="@font/martel_extralight"
         android:text="@string/app_title"
-        android:textColor="@color/logo_text_color" />
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/font_24sp" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/google_signin_btn"

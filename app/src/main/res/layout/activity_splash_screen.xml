@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_color">
+
+
+    <ImageView
+        android:id="@+id/im_techspeakuplogo"
+        android:layout_width="105dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/signin_logo"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.818"
+        />
+
+    <TextView
+        android:id="@+id/tv_techspeakuplogo_app_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sigin_image_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/martel_extralight"
+        android:text="@string/app_title"
+        android:textAlignment="center"
+        android:textColor="@color/colorText"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/im_techspeakuplogo" />
+
+    <TextView
+        android:id="@+id/tv_techspeakuplogo_tagline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="68dp"
+        android:fontFamily="@font/martel_extralight"
+        android:text="@string/tagline"
+        android:textAlignment="center"
+        android:textColor="#FFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/im_techspeakuplogo" />
+
+
+
+</android.support.constraint.ConstraintLayout>

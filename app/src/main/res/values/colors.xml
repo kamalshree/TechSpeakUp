@@ -3,12 +3,44 @@
     <color name="colorPrimary">#265D9E</color>
     <color name="colorPrimaryDark">#265D9E</color>
     <color name="colorAccent">#FD6A08</color>
-    <color name="colorText">#ffffff</color>
+
     <color name="colorTextBlue">#265D9E</color>
     <color name="colorTextOrange">#FD6A08</color>
     <color name="white">#ffffff</color>
-    <color name="background_color">#e1e1e1</color>
 
     <color name="viewcolor">#909090</color>
     <color name="logo_text_color">#90ffffff</color>
+
+
+    <color name="colorText">#F4AC3B</color>
+    <color name="colorHighlighter">#F4AC3B</color>
+    <color name="background_color">#e1e1e1</color>
+    <color name="colorWhite">#ffffff</color>
+
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">@color/background_color</color>
+    <color name="dot_dark_screen2">@color/background_color</color>
+    <color name="dot_dark_screen3">@color/background_color</color>
+    <color name="dot_dark_screen4">@color/background_color</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">@color/colorHighlighter</color>
+    <color name="dot_light_screen2">@color/colorHighlighter</color>
+    <color name="dot_light_screen3">@color/colorHighlighter</color>
+    <color name="dot_light_screen4">@color/colorHighlighter</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+        <item>@color/dot_dark_screen3</item>
+        <item>@color/dot_dark_screen4</item>
+    </array>
 </resources>

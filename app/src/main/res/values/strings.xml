@@ -1,9 +1,27 @@
 <resources>
     <string name="app_name">Tech SpeakUp</string>
     <string name="app_title">TechSpeakUp</string>
+    <string name="tagline">TechSpeakUP\nFinding Technical Speakers Got it All....</string>
     <string name="google_id" translatable="false">36669457617-98hkugcdatagk6c37hi3tji5pgcbupsl.apps.googleusercontent.com</string>
     <string name="home_back_btn_msg">Press back again to exit.</string>
 
+    <!-- introscreen -->
+    <string name="tv_intro_connect_heading">CONNECT</string>
+    <string name="tv_intro_connect_subheading">Find Speakers near you...</string>
+    <string name="tv_intro_meetup_heading">MEETUP</string>
+    <string name="tv_intro_meetup_subheading">Meet Speakers...</string>
+    <string name="tv_intro_network_heading">NETWORK</string>
+    <string name="tv_intro_network_subheading">Grow your Connections...</string>
+    <string name="tv_intro_event_heading">EVENT</string>
+    <string name="tv_intro_event_subheading">Join your Community...</string>
+
+
+
+
+
+    <string name="introscreen_skip">SKIP</string>
+    <string name="introscreen_gotit">GOT IT</string>
+    <string name="introscreen_next">NEXT</string>
 
     <!-- Home User-->
     <string name="home_user_display_text">Welcome to TechSpeakUp, Vision of TechSpeakUp is to providde a easy way for students,Professors, Event organizers, Developers to connect.</string>
