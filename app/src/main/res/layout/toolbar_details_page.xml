@@ -1,25 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/details_page_toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorDarkTheme">
 
-    <ImageView
-        android:id="@+id/details_page_toolbar_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/details_page_toolbar_logo_text"
-        android:src="@drawable/toolbar_logo" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/details_page_toolbar_settings"
-        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/details_page_toobar_title_horizontal"
-        android:text="@string/details_page_setup_profile"
-        android:textColor="@android:color/white" />
+        <TextView
+            android:id="@+id/details_page_toolbar_settings"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/details_page_toolbar_logo"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:fontFamily="@font/martel_extralight"
+            android:gravity="center_horizontal"
+            android:text="@string/details_page_setup_profile"
+            android:textAllCaps="true"
+            android:textAppearance="@style/sign_in"
+            android:textColor="@android:color/white" />
+
+        <ImageView
+            android:id="@+id/details_page_toolbar_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/margin_larges"
+            android:contentDescription="@string/details_page_toolbar_logo_text"
+            android:src="@drawable/toolbar_logo" />
+    </RelativeLayout>
+
+
 </android.support.v7.widget.Toolbar>

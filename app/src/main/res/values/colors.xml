@@ -2,16 +2,18 @@
 <resources>
     <color name="colorPrimary">#265D9E</color>
     <color name="colorPrimaryDark">#265D9E</color>
-    <color name="colorAccent">#FD6A08</color>
+    <color name="colorAccent">#951549</color>
 
     <color name="colorTextBlue">#265D9E</color>
-    <color name="colorTextOrange">#FD6A08</color>
+    <color name="colorTextOrange">#951549</color>
     <color name="white">#ffffff</color>
 
     <color name="viewcolor">#909090</color>
     <color name="logo_text_color">#90ffffff</color>
 
-
+    <color name="colorTheme">#BA2E79</color>
+    <color name="colorDarkTheme">#951549</color>
+    <color name="colorLightTheme">#CA3A8F</color>
     <color name="colorText">#F4AC3B</color>
     <color name="colorHighlighter">#F4AC3B</color>
     <color name="background_color">#e1e1e1</color>

@@ -26,7 +26,7 @@
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_medium"
             android:contentDescription="@string/details_page_image_name_text"
-            android:src="@drawable/details_page_profile_pic"
+            android:src="@drawable/ic_user"
             app:layout_constraintBottom_toTopOf="@+id/tv_follower_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

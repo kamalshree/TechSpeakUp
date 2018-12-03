@@ -58,7 +58,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
         setContentView(R.layout.activity_details_page);
         ButterKnife.bind(this);
         check_connection();
-
+        initializeUI();
         // Injecting presenter
         PresenterInjector.injectProfilePresenter(this);
 
@@ -73,7 +73,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
     }
 
     private void initializeUI() {
-
         mBtnNext = findViewById(R.id.btn_details_proceed);
         mBtnNext.setOnClickListener(this);
 

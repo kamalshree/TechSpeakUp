@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -28,21 +27,23 @@
                 android:id="@+id/img_user_pic"
                 android:layout_width="@dimen/details_page_profile_pic_width"
                 android:layout_height="@dimen/details_page_profile_pic_height"
-                android:layout_marginBottom="@dimen/details_page_image_vertical_margin"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/details_page_image_vertical_margin"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="42dp"
                 android:contentDescription="@string/details_page_image_name_text"
-                android:src="@drawable/details_page_profile_pic" />
+                android:src="@drawable/ic_user" />
 
             <TextView
                 android:id="@+id/tv_email_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/img_user_pic"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="18dp"
-                android:layout_toEndOf="@+id/img_user_pic"
-                android:fontFamily="@font/lato_bold"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/martel_extralight"
                 android:text="@string/details_page_email"
+                android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/details_page_email_text" />
 
@@ -57,7 +58,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/details_page_linear_layout"
         android:layout_marginTop="@dimen/details_page_large_vertical_margin"
-        android:background="@color/colorText"
         android:orientation="vertical">
 
         <ImageView
@@ -77,6 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/details_page_small_horizontal_margin"
             android:layout_marginStart="@dimen/details_page_small_horizontal_margin"
+            android:textColorHint="@color/colorDarkTheme"
             android:layout_toEndOf="@id/details_page_image_name">
 
             <EditText
@@ -86,12 +87,13 @@
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/details_page_small_horizontal_margin"
                 android:layout_marginTop="@dimen/details_page_large_vertical_margin"
-                android:fontFamily="@font/lato_bold"
+                android:fontFamily="@font/martel_extralight"
                 android:hint="@string/details_page_name"
                 android:inputType="textPersonName"
                 android:padding="@dimen/details_page_padding"
-                android:textColor="@android:color/black"
-                android:textColorHint="@color/colorAccent" />
+                android:textColor="@color/colorDarkTheme"
+                android:textColorHint="@color/colorDarkTheme"
+                android:backgroundTint="@color/colorDarkTheme"/>
         </android.support.design.widget.TextInputLayout>
 
 
@@ -115,6 +117,7 @@
             android:layout_marginTop="@dimen/details_page_large_vertical_margin"
             android:layout_toEndOf="@id/details_page_image_track"
             android:entries="@array/details_page_track_spinner"
+            style="@style/mySpinnerItemStyle"
             android:fontFamily="@font/lato_bold"
             android:spinnerMode="dropdown" />
 
@@ -126,17 +129,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:background="@drawable/buttonborder"
+        android:background="@drawable/rounded_corner_button"
         android:clickable="true"
         android:focusable="true"
-        android:fontFamily="@font/lato_bold"
+        android:fontFamily="@font/martel_extralight"
         android:text="@string/details_page_next_btn"
         android:textAllCaps="false"
-        android:textColor="@color/colorAccent"
-        android:textSize="@dimen/details_page_button_text"
-        android:theme="@style/DetailsActivityButton" />
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/details_page_button_text" />
 
     <ProgressBar
         android:id="@+id/pb_profile"
@@ -147,7 +148,7 @@
         android:layout_marginBottom="@dimen/margin_small"
         android:backgroundTint="@color/white"
         android:indeterminate="true"
-        android:indeterminateTint="@color/colorPrimary"
+        android:indeterminateTint="@color/colorDarkTheme"
         android:max="100"
         android:visibility="gone" />
 
