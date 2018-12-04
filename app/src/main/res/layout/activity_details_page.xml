@@ -99,8 +99,8 @@
 
         <ImageView
             android:id="@+id/details_page_image_track"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/details_et_image"
+            android:layout_height="@dimen/details_et_image"
             android:layout_below="@id/details_page_textinput_name"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/details_page_icon_vertical_margin"
@@ -116,9 +116,6 @@
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/details_page_large_vertical_margin"
             android:layout_toEndOf="@id/details_page_image_track"
-            android:entries="@array/details_page_track_spinner"
-            style="@style/mySpinnerItemStyle"
-            android:fontFamily="@font/lato_bold"
             android:spinnerMode="dropdown" />
 
     </RelativeLayout>

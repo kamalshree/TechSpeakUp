@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -73,6 +74,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
     }
 
     private void initializeUI() {
+
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.details_page_track_spinner, R.layout.spinner_item_userType);
+        mUserType.setAdapter(adapter);
         mBtnNext = findViewById(R.id.btn_details_proceed);
         mBtnNext.setOnClickListener(this);
 
