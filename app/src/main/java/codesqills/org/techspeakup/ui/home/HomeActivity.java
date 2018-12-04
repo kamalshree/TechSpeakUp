@@ -3,6 +3,7 @@ package codesqills.org.techspeakup.ui.home;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -23,6 +24,15 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +40,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -70,7 +81,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     boolean mTwiceClicked = false;
     Snackbar mSnackbar;
-
 
 
     @Override
@@ -144,7 +154,45 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         bnve.enableShiftingMode(false);
         bnve.enableItemShiftingMode(false);
         setSupportActionBar(myToolbar);
+        intializeChart();
+    }
 
+    //Pie Chart Implementation
+    private void intializeChart(){
+        PieChart chart = (PieChart) findViewById(R.id.chart);
+        chart.setUsePercentValues(true);
+        chart.getDescription().setEnabled(false);
+        chart.setExtraOffsets(5,10,5,5);
+
+
+
+        chart.setDragDecelerationFrictionCoef(0.99f);
+
+        chart.setDrawHoleEnabled(true);
+        chart.setHoleColor(getResources().getColor(R.color.colorWhite));
+        chart.getLegend().setTextColor(getResources().getColor(R.color.colorDarkTheme));
+        chart.setTransparentCircleRadius(40f);
+
+        ArrayList<PieEntry> yValues=new ArrayList<>();
+
+        yValues.add(new PieEntry(31f,getResources().getString(R.string.pie_middleeast)));
+        yValues.add(new PieEntry(138f,getResources().getString(R.string.pie_Asia)));
+        yValues.add(new PieEntry(254f,getResources().getString(R.string.pie_Americas)));
+        yValues.add(new PieEntry(287f,getResources().getString(R.string.pie_Europe)));
+
+
+        chart.animateY(1000, Easing.EasingOption.EaseInOutCubic);
+        PieDataSet dataSet=new PieDataSet(yValues,getResources().getString(R.string.pie_location));
+        dataSet.setSliceSpace(3f);
+        dataSet.setSelectionShift(5f);
+        dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+
+        PieData data=new PieData((dataSet));
+        data.setValueTextSize(15f);
+        data.setValueTextColor(getResources().getColor(R.color.colorDarkTheme));
+        data.setValueFormatter(new PercentFormatter());
+
+        chart.setData(data);
     }
 
     @Override

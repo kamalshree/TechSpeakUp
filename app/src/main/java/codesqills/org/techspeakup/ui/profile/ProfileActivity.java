@@ -75,7 +75,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileContrac
 
     private void initializeUI() {
 
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.details_page_track_spinner, R.layout.spinner_item_userType);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.details_page_track_spinner, R.layout.spinner_item_usertype);
         mUserType.setAdapter(adapter);
         mBtnNext = findViewById(R.id.btn_details_proceed);
         mBtnNext.setOnClickListener(this);

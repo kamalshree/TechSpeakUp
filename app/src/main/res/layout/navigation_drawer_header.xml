@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/box_large"
-    android:background="?attr/colorPrimaryDark"
+    android:background="@color/colorDarkTheme"
     android:gravity="bottom"
     android:orientation="vertical"
     android:padding="@dimen/margin_large"
@@ -13,9 +13,9 @@
         android:id="@+id/navigation_drawer_welcome_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/lato_bold"
         android:text="@string/welcome"
-        android:textColor="@color/colorAccent"
+        android:fontFamily="@font/martel_extralight"
+        android:textColor="@color/colorWhite"
         android:textSize="18sp" />
 
 </RelativeLayout>

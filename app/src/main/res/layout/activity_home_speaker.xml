@@ -20,19 +20,25 @@
             android:id="@+id/toolbar_home_page"
             layout="@layout/toolbar_home_page"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/height_80"
             android:layout_weight="0.5" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/padding_10"
-            android:layout_marginRight="@dimen/padding_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_larges"
+            android:text="@string/home_user_display_text"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:fontFamily="@font/martel_extralight"
+            android:textSize="@dimen/font_24sp" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/chart"
             android:layout_weight="2"
             android:paddingTop="@dimen/padding_150"
-            android:text="@string/home_user_display_text"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/font_24sp" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         <!-- Bottom Navigation MenuBar-->
         <include
@@ -51,6 +57,8 @@
         android:layout_gravity="start"
         android:visibility="visible"
         app:headerLayout="@layout/navigation_drawer_header"
+        app:itemIconTint="@color/colorDarkTheme"
+        app:itemTextColor="@color/colorDarkTheme"
         app:menu="@menu/navigation_drawer_home_speaker_menu">
 
     </android.support.design.widget.NavigationView>

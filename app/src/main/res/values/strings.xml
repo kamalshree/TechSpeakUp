@@ -15,16 +15,23 @@
     <string name="tv_intro_event_heading">EVENT</string>
     <string name="tv_intro_event_subheading">Join your Community...</string>
 
-
-
-
-
     <string name="introscreen_skip">SKIP</string>
     <string name="introscreen_gotit">GOT IT</string>
     <string name="introscreen_next">NEXT</string>
 
+
+
+    <!-- PieChart -->
+    <string name="pie_middleeast">Middle East &amp; Africa</string>
+    <string name="pie_Asia">Asia Pacific</string>
+    <string name="pie_Americas">Americas</string>
+    <string name="pie_Europe">Europe</string>
+
+    <string name="pie_location">Location</string>
+
+
     <!-- Home User-->
-    <string name="home_user_display_text">Welcome to TechSpeakUp, Vision of TechSpeakUp is to providde a easy way for students,Professors, Event organizers, Developers to connect.</string>
+    <string name="home_user_display_text">Google Developer Experts</string>
 
     <!-- Sign -->
     <string name="signin_text_logo">TechSpeakUp</string>
