@@ -6,7 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,6 +86,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventsViewHo
      * {@link android.support.v7.widget.RecyclerView.ViewHolder} object for events item.
      */
     class EventsViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.im_event)
+        ImageView imEvent;
         @BindView(R.id.tv_event_name)
         TextView tvEventName;
         @BindView(R.id.tv_event_date)
@@ -105,6 +111,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventsViewHo
             tvEventName.setText(currentEvents.getEventName());
             tvEventDate.setText(currentEvents.getEventDate());
             tvEventLocation.setText(currentEvents.getEventLocation());
+            Glide.with(context).load(currentEvents.getEventImage()).apply(RequestOptions.circleCropTransform()).into(imEvent);
             // Attaching click listener to each quiz item
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

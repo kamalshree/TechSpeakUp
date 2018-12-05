@@ -1,57 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="@dimen/margin_medium"
-    android:layout_marginStart="@dimen/margin_medium"
-    app:cardBackgroundColor="@color/colorPrimary"
-    app:cardCornerRadius="@dimen/eventdetails_corner_radis"
-    app:cardElevation="@dimen/eventdetails_corner_radis"
-    app:cardMaxElevation="@dimen/eventdetails_corner_radis"
-    app:cardUseCompatPadding="true">
+    android:layout_margin="10dp"
+    android:background="@drawable/shadow"
+    android:padding="@dimen/padding_8">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/im_event"
+        android:layout_width="105dp"
+        android:layout_height="127dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_event_name"
+        app:layout_constraintEnd_toStartOf="@+id/tv_event_location"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.107"
+        app:srcCompat="@drawable/flutter" />
+
+    <TextView
+        android:id="@+id/tv_event_name"
+        android:layout_width="0dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="13dp"
+        android:fontFamily="@font/martel_extralight"
+        android:textColor="@color/colorDarkTheme"
+        android:textSize="@dimen/font_24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/im_event"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/tv_eventdetail_eventname" />
+
+    <TextView
+        android:id="@+id/tv_event_date"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/padding_8">
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="127dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/martel_extralight"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/colorDarkTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/im_event"
+        app:layout_constraintTop_toBottomOf="@+id/tv_event_location"
+        tools:text="@string/event_details_eventdate" />
 
-        <TextView
-            android:id="@+id/tv_event_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/font_24sp"
-            app:layout_constraintEnd_toStartOf="@+id/tv_event_date"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/tv_eventdetail_eventname" />
+    <TextView
+        android:id="@+id/tv_event_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="103dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/martel_extralight"
+        android:text="@string/event_details_eventlocation"
+        android:textColor="@color/colorDarkTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/tv_event_name" />
 
-        <TextView
-            android:id="@+id/tv_event_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textColor="@color/colorAccent"
-            app:layout_constraintBottom_toTopOf="@+id/tv_event_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_event_name"
-            tools:text="@string/event_details_eventdate" />
+</android.support.constraint.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/tv_event_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:text="@string/event_details_eventlocation"
-            android:textColor="@android:color/white"
-            app:layout_constraintStart_toStartOf="@+id/tv_event_name"
-            app:layout_constraintTop_toBottomOf="@+id/tv_event_name" />
-
-    </android.support.constraint.ConstraintLayout>
-</android.support.v7.widget.CardView>

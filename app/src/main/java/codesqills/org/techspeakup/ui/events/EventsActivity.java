@@ -1,5 +1,7 @@
 package codesqills.org.techspeakup.ui.events;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
+
 
 import java.util.List;
 
@@ -45,18 +48,11 @@ public class EventsActivity extends AppCompatActivity implements EventAdapter.Ev
     private static final int BACK_PRESS_DURATION = 3000;
 
 
-    @BindView(R.id.speaker_profile_cardviewone)
-    CardView mCard;
-
     @BindView(R.id.speaker_profile_page_back)
     ImageView mBack;
 
     @BindView(R.id.toolbar_speakerprofile)
     View toolbar_event;
-
-
-    @BindView(R.id.home_screen_pb)
-    LottieAnimationView loading;
 
     SwipeRefreshLayout swipeRefreshLayout;
     NetworkUtils networkUtils;
@@ -142,12 +138,12 @@ public class EventsActivity extends AppCompatActivity implements EventAdapter.Ev
 
     @Override
     public void showLoading() {
-        loading.setVisibility(View.VISIBLE);
+
     }
 
     @Override
     public void hideLoading() {
-        loading.setVisibility(View.GONE);
+
     }
 
     @Override

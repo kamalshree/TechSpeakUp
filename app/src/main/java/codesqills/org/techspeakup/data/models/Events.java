@@ -28,6 +28,10 @@ public class Events {
     @SerializedName("eventdetails")
     private String mEventDetails;
 
+    @Expose
+    @SerializedName("eventimage")
+    private String mEventImage;
+
     @Exclude
     private String mKey;
 
@@ -70,6 +74,16 @@ public class Events {
     @PropertyName("eventdetails")
     public void setEventDetails(String eventdetails) {
         mEventDetails = eventdetails;
+    }
+
+    @PropertyName("eventimage")
+    public String getEventImage() {
+        return mEventImage;
+    }
+
+    @PropertyName("eventimage")
+    public void setEventImage(String eventimage) {
+        mEventImage = eventimage;
     }
 
     @Exclude
